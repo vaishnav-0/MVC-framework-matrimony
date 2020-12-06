@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 06, 2020 at 06:20 PM
+-- Generation Time: Dec 06, 2020 at 08:00 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -24,6 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `address`
+--
+
+CREATE TABLE `address` (
+  `a_id` int(11) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `locality` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `district` varchar(100) NOT NULL,
+  `pin` int(6) NOT NULL,
+  `landmark` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `caste_religion`
 --
 
@@ -31,6 +47,19 @@ CREATE TABLE `caste_religion` (
   `caste_id` int(11) NOT NULL,
   `caste` int(11) NOT NULL,
   `religion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_details`
+--
+
+CREATE TABLE `contact_details` (
+  `contact_id` int(11) NOT NULL,
+  `mobile_no` int(11) NOT NULL,
+  `mail_id` int(11) NOT NULL,
+  `landline` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -56,9 +85,31 @@ CREATE TABLE `members` (
   `complexion` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sibling`
+--
+
+CREATE TABLE `sibling` (
+  `s_id` int(11) NOT NULL,
+  `f_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `age` int(11) NOT NULL,
+  `sex` varchar(10) NOT NULL,
+  `marital_status` varchar(10) NOT NULL,
+  `contact_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`a_id`);
 
 --
 -- Indexes for table `caste_religion`
@@ -67,11 +118,24 @@ ALTER TABLE `caste_religion`
   ADD PRIMARY KEY (`caste_id`);
 
 --
+-- Indexes for table `contact_details`
+--
+ALTER TABLE `contact_details`
+  ADD PRIMARY KEY (`contact_id`);
+
+--
 -- Indexes for table `members`
 --
 ALTER TABLE `members`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_caste` (`caste_rel_id`);
+
+--
+-- Indexes for table `sibling`
+--
+ALTER TABLE `sibling`
+  ADD PRIMARY KEY (`s_id`),
+  ADD UNIQUE KEY `f_id` (`f_id`);
 
 --
 -- Constraints for dumped tables
