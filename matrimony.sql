@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 06, 2020 at 08:00 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Dec 06, 2020 at 07:24 PM
+-- Server version: 10.5.8-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,6 +61,22 @@ CREATE TABLE `contact_details` (
   `mail_id` int(11) NOT NULL,
   `landline` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `family`
+--
+
+CREATE TABLE `family` (
+  `pId` int(11) NOT NULL,
+  `fName` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mName` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fCId` int(11) DEFAULT NULL,
+  `mCId` int(11) DEFAULT NULL,
+  `fOcc` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mOcc` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -124,29 +140,53 @@ ALTER TABLE `contact_details`
   ADD PRIMARY KEY (`contact_id`);
 
 --
+-- Indexes for table `family`
+--
+ALTER TABLE `family`
+  ADD PRIMARY KEY (`pId`),
+  ADD KEY `fk_fcontact` (`fCId`),
+  ADD KEY `fk_mcontact` (`mCId`) USING BTREE;
+
+--
 -- Indexes for table `members`
 --
 ALTER TABLE `members`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_caste` (`caste_rel_id`);
+  ADD KEY `fk_caste` (`caste_rel_id`),
+  ADD KEY `fk_memcontact` (`contact_id`);
 
 --
 -- Indexes for table `sibling`
 --
 ALTER TABLE `sibling`
   ADD PRIMARY KEY (`s_id`),
-  ADD UNIQUE KEY `f_id` (`f_id`);
+  ADD UNIQUE KEY `f_id` (`f_id`),
+  ADD KEY `fk_scontact` (`contact_id`);
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `family`
+--
+ALTER TABLE `family`
+  ADD CONSTRAINT `fk_contact` FOREIGN KEY (`mCId`) REFERENCES `contact_details` (`contact_id`),
+  ADD CONSTRAINT `fk_fcontact` FOREIGN KEY (`fCId`) REFERENCES `contact_details` (`contact_id`);
+
+--
 -- Constraints for table `members`
 --
 ALTER TABLE `members`
   ADD CONSTRAINT `caste_fk` FOREIGN KEY (`caste_rel_id`) REFERENCES `caste_religion` (`caste_id`),
-  ADD CONSTRAINT `fk_caste` FOREIGN KEY (`caste_rel_id`) REFERENCES `caste_religion` (`caste_id`);
+  ADD CONSTRAINT `fk_caste` FOREIGN KEY (`caste_rel_id`) REFERENCES `caste_religion` (`caste_id`),
+  ADD CONSTRAINT `fk_memcontact` FOREIGN KEY (`contact_id`) REFERENCES `contact_details` (`contact_id`);
+
+--
+-- Constraints for table `sibling`
+--
+ALTER TABLE `sibling`
+  ADD CONSTRAINT `fk_scontact` FOREIGN KEY (`contact_id`) REFERENCES `contact_details` (`contact_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
