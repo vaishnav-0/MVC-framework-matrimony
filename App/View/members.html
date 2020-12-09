@@ -7,7 +7,7 @@
     <title>Matrimony -- Members</title>
 
 
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link href="assets/css/style.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -21,9 +21,10 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 
-        <!-- datatables -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <!-- datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
 
 </head>
@@ -63,7 +64,9 @@
 
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
-                                            <td class="center ovr">efeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</td>
+                                            <td class="center ovr">
+                                                efeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                            </td>
                                             <td class="center"><?php echo htmlentities($result->AccNo);?></td>
                                             <td class="center"><?php echo htmlentities($result->CategoryName);?></td>
                                             <td class="center"><?php echo htmlentities($result->AuthorName);?></td>
@@ -71,16 +74,10 @@
                                             <td class="center"><?php echo htmlentities($result->BookPrice);?></td>
                                             <td class="center">
 
-                                                <a
-                                                    href="edit-book.php?bookid=<?php echo htmlentities($result->bookid);?>"><button
-                                                        class="btn btn-primary"><i class="fa fa-edit "></i> </button>
-                                                    <a href="manage-books.php?del=<?php echo htmlentities($result->bookid);?>"
-                                                        onclick="return confirm('Are you sure you want to delete?');"" >  <button class="
-                                                        btn btn-danger"><i class="fa fa-pencil"></i> </button>
-                                                        <a
-                                                            href="code128/barcode.php?generate=<?php echo htmlentities($result->AccNo);?>">
-                                                            <button class="btn btn-warning"><i
-                                                                    class="fa fa-print"></i></button>
+                                                <a href=""><button class="btn btn-primary"><i
+                                                            class="fas fa-edit "></i></button></a>
+                                                <a href="" onclick="return confirm('Are you sure you want to delete?')";>  <button class="btn btn-danger"><i class="fas fa-trash"></i> </button></a>
+                                                <a href=""><button class="btn btn-warning"><i class="fas fa-print"></i></button></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -96,11 +93,11 @@
 
         </div>
     </div>
-<script>
-    $(document).ready( function () {
-        $('#memTbl').DataTable();
-    } );
-</script>
+    <script>
+        $(document).ready(function () {
+            $('#memTbl').DataTable();
+        });
+    </script>
 </body>
 
 </html>
