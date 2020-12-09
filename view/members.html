@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimony -- Members</title>
+
+
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row pad-botm">
+                <div class="col-md-12">
+                    <h4 class="header-line">Members</h4>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Member Listing
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Religion / Caste</th>
+                                            <th>Address</th>
+                                            <th>Occupation</th>
+                                            <th>Photo</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr class="odd gradeX">
+                                            <td class="center"><?php echo htmlentities($cnt);?></td>
+                                            <td class="center"><?php echo htmlentities($result->BookName);?></td>
+                                            <td class="center"><?php echo htmlentities($result->AccNo);?></td>
+                                            <td class="center"><?php echo htmlentities($result->CategoryName);?></td>
+                                            <td class="center"><?php echo htmlentities($result->AuthorName);?></td>
+                                            <td class="center"><?php echo htmlentities($result->ISBNNumber);?></td>
+                                            <td class="center"><?php echo htmlentities($result->BookPrice);?></td>
+                                            <td class="center">
+
+                                                <a
+                                                    href="edit-book.php?bookid=<?php echo htmlentities($result->bookid);?>"><button
+                                                        class="btn btn-primary"><i class="fa fa-edit "></i> </button>
+                                                    <a href="manage-books.php?del=<?php echo htmlentities($result->bookid);?>"
+                                                        onclick="return confirm('Are you sure you want to delete?');"" >  <button class="
+                                                        btn btn-danger"><i class="fa fa-pencil"></i> </button>
+                                                        <a
+                                                            href="code128/barcode.php?generate=<?php echo htmlentities($result->AccNo);?>">
+                                                            <button class="btn btn-warning"><i
+                                                                    class="fa fa-print"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
