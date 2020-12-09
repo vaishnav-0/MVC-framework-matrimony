@@ -24,6 +24,7 @@ class main
         $controller = $rt->getController();
         $method = $rt->getMethod();
         $custloader = new CustomCheck;
+        echo "h1";
         if ($custloader->check("Matr\\Controller\\".$controller)){
         } 
         else {
