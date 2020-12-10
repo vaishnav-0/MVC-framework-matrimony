@@ -175,6 +175,10 @@ class Psr4Autoloader
         return false;
     }
 
+    public function loadDep(){
+        include_once(DEP."doctrine_dbal_3.0.0.0_require/index.php");
+    }
+
     /**
      * If a file exists, require it from the file system.
      *

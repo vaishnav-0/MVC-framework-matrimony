@@ -6,17 +6,17 @@ include_once(__DIR__."/Autoloader.php");
 class main
 {
     private static function init()
-    {                
+    {
         include_once("../conf/Meta.php");
         session_start();
     }
 
-    private static function autoload(){
-
-       $loader = new Psr4autoloader;
-        $loader->register;    
-
-      }
+    private static function autoload()
+    {
+        $loader = new Psr4autoloader;
+        $loader->register();
+        $loader->loadDep();
+    }
 
     private static function Route()
     {
@@ -25,10 +25,8 @@ class main
         $method = $rt->getMethod();
         $custloader = new CustomCheck;
         echo "h1";
-        if ($custloader->check("Matr\\Controller\\".$controller)){
-        } 
-        else {
-
+        if ($custloader->check("Matr\\Controller\\".$controller)) {
+        } else {
         }
     }
 

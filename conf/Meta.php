@@ -10,6 +10,7 @@ define("MAIN_PATH", ROOT . "main" . DS);
 
 define("PUBLIC_PATH", ROOT . "public" . DS);
 
+define("DEP", ROOT. "Dependencies" . DS);
 
 define("CONFIG_PATH", APP_PATH . "config" . DS);
 
@@ -29,6 +30,7 @@ define("HELPER_PATH", MAIN_PATH."helpers".DS);
 define("UPLOAD_PATH", PUBLIC_PATH . "uploads" . DS); 
 
 define("NAMESPACE_MAP",array(
-    'Matr\Controller' => APP_PATH."Controller"
+    "Matr\\Controller" => APP_PATH."Controller"
 ));
+
 ?>
