@@ -12,7 +12,7 @@ define("PUBLIC_PATH", ROOT . "public" . DS);
 
 define("DEP", ROOT. "Dependencies" . DS);
 
-define("CONFIG_PATH", APP_PATH . "config" . DS);
+define("CONFIG_PATH", ROOT . "conf" . DS);
 
 define("CONTROLLER_PATH", APP_PATH . "controller" . DS);
 
@@ -21,7 +21,7 @@ define("MODEL_PATH", APP_PATH . "Model" . DS);
 define("VIEW_PATH", APP_PATH . "View" . DS);
 
 
-define("CORE_PATH", MAIN_PATH . "Core" . DS);
+define("CORE_PATH", ROOT. "core" . DS);
 
 define('DB_PATH', MAIN_PATH . "database" . DS);
 
@@ -30,7 +30,9 @@ define("HELPER_PATH", MAIN_PATH."helpers".DS);
 define("UPLOAD_PATH", PUBLIC_PATH . "uploads" . DS); 
 
 define("NAMESPACE_MAP",array(
-    "Matr\\Controller" => APP_PATH."Controller"
+    "Matr\\Controller" => APP_PATH."Controller",
+    "Matr\\Model" => APP_PATH."Model",
+    "Core\\data" => CORE_PATH."data"
 ));
 
 ?>

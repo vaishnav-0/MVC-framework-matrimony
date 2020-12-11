@@ -1,13 +1,5 @@
-<?php
-define("DB_CONF", array(
-    'dbname' => 'matrimony',
-    'user' => 'vaichu',
-    'password' => 'mysmysmys',
-    'host' => 'localhost',
-    'driver' => 'mysqli'
-));
-define("DB_META",array(                            
-    "address"=> [
+{                               
+    "address": [
         "a_id",
         "address",
         "locality",
@@ -16,18 +8,18 @@ define("DB_META",array(
         "pin",
         "landmark"
     ],
-    "caste_religion"=> [
+    "caste_religion": [
         "caste_id",
         "caste",
         "religion"
     ],
-    "contact_details"=> [
+    "contact_details": [
         "contact_id",
         "mobile_no",
         "mail_id",
         "landline"
     ],
-    "family"=> [
+    "family": [
         "pId",
         "fName",
         "mName",
@@ -36,7 +28,7 @@ define("DB_META",array(
         "fOcc",
         "mOcc"
     ],
-    "members"=> [
+    "members": [
         "id",
         "join_date",
         "name",
@@ -52,7 +44,7 @@ define("DB_META",array(
         "contact_id",
         "complexion"
     ],
-    "sibling"=> [
+    "sibling": [
         "s_id",
         "f_id",
         "name",
@@ -60,5 +52,4 @@ define("DB_META",array(
         "sex",
         "marital_status"
     ]
-));
-?>
+}

@@ -1,7 +1,7 @@
 <?php
-use \Core\main;
-phpinfo();
+use Core\main;
 require("../core/Core.php");
 $app = new main;
 $app->start();
+
 ?>
