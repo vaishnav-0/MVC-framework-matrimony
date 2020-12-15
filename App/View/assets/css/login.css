@@ -144,17 +144,16 @@ textarea {
 }
 
 .logformcontainer {
-    margin: 30px 80px 0;
+    margin: 30px 0 0 80px;
     width: 25%;
 }
 
-.coupleVect {
-    background-color: bisque;
+.cvector {
     position: absolute;
     padding-right: 10px;
-    right: 0;
     bottom: 0;
-    height: 60%;
+    right: 10%;
+    height: 70%;
 }
 
 .formheading {
@@ -252,5 +251,19 @@ textarea:focus {
 @media screen and (max-width:960px) {
     .logformcontainer {
         width: 40%;
+    }
+    .cvector {
+        right: 5%;
+        height: 50%;
+    }
+}
+
+@media screen and (max-width:660px) {
+    .logformcontainer {
+        width: 95%;
+        margin-left: calc(5%/2);
+    }
+    .cvector {
+        display: none;
     }
 }
