@@ -105,7 +105,7 @@ textarea {
 /* ---------------LAYOUT--------------- */
 
 .wrapper {
-    position: absolute;
+    position: relative;
     left: 0;
     top: 0;
     height: 100vh;
@@ -146,6 +146,15 @@ textarea {
 .logformcontainer {
     margin: 30px 80px 0;
     width: 25%;
+}
+
+.coupleVect {
+    background-color: bisque;
+    position: absolute;
+    padding-right: 10px;
+    right: 0;
+    bottom: 0;
+    height: 60%;
 }
 
 .formheading {
