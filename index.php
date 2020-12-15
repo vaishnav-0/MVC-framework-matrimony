@@ -15,7 +15,6 @@ if($result = $con->query("SHOW tables")) {
                 }
             }
     }
-
     /* free result set */
     $result->close();
     echo json_encode($db_obj);

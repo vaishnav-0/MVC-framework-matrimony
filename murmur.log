@@ -1,0 +1,59 @@
+<W>2020-12-14 21:41:02.208 SSL: OpenSSL version is 'OpenSSL 1.1.1h  22 Sep 2020'
+<W>2020-12-14 21:41:02.209 Initializing settings from /home/vaichu/.murmurd/murmur.ini (basepath /home/vaichu/.murmurd)
+<W>2020-12-14 21:41:02.629 MetaParams: TLS cipher preference is "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:AES256-SHA:AES128-SHA"
+<W>2020-12-14 21:41:02.864 ServerDB: Opened SQLite database /run/media/vaichu/New Volume/Projects/matrimony/murmur.sqlite
+<W>2020-12-14 21:41:02.878 ServerDB: Using SQLite's default rollback journal.
+<W>2020-12-14 21:41:02.926 Murmur 1.3.3 (1.3.3) running on X11: Manjaro Linux: Booting servers
+<W>2020-12-14 21:41:03.265 1 => Server listening on 0.0.0.0:64738
+<W>2020-12-14 21:41:03.920 1 => Generating new server certificate.
+<W>2020-12-14 21:41:04.554 1 => Announcing server via bonjour
+<W>2020-12-14 21:41:04.709 1 => Not registering server as public
+<W>2020-12-14 22:01:02.220 SSL: OpenSSL version is 'OpenSSL 1.1.1h  22 Sep 2020'
+<W>2020-12-14 22:01:02.220 Initializing settings from /home/vaichu/.murmurd/murmur.ini (basepath /home/vaichu/.murmurd)
+<W>2020-12-14 22:01:02.655 MetaParams: TLS cipher preference is "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:AES256-SHA:AES128-SHA"
+<W>2020-12-14 22:01:02.701 ServerDB: Opened SQLite database /run/media/vaichu/New Volume/Projects/matrimony/murmur.sqlite
+<W>2020-12-14 22:01:02.701 ServerDB: Using SQLite's default rollback journal.
+<W>2020-12-14 22:01:02.739 Murmur 1.3.3 (1.3.3) running on X11: Manjaro Linux: Booting servers
+<W>2020-12-14 22:01:02.945 1 => Server: TCP Listen on 0.0.0.0:64738 failed: The bound address is already in use
+<W>2020-12-14 22:01:03.122 1 => Stopped
+<W>2020-12-14 22:03:54.868 SSL: OpenSSL version is 'OpenSSL 1.1.1h  22 Sep 2020'
+<W>2020-12-14 22:03:54.868 Initializing settings from /home/vaichu/.murmurd/murmur.ini (basepath /home/vaichu/.murmurd)
+<W>2020-12-14 22:03:55.292 MetaParams: TLS cipher preference is "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:AES256-SHA:AES128-SHA"
+<W>2020-12-14 22:03:55.335 ServerDB: Opened SQLite database /run/media/vaichu/New Volume/Projects/matrimony/murmur.sqlite
+<W>2020-12-14 22:03:55.335 ServerDB: Using SQLite's default rollback journal.
+<W>2020-12-14 22:03:55.350 Murmur 1.3.3 (1.3.3) running on X11: Manjaro Linux: Booting servers
+<W>2020-12-14 22:03:55.543 1 => Server: TCP Listen on 0.0.0.0:64738 failed: The bound address is already in use
+<W>2020-12-14 22:03:55.699 1 => Stopped
+<W>2020-12-14 22:05:00.149 SSL: OpenSSL version is 'OpenSSL 1.1.1h  22 Sep 2020'
+<W>2020-12-14 22:05:00.149 Initializing settings from /home/vaichu/.murmurd/murmur.ini (basepath /home/vaichu/.murmurd)
+<W>2020-12-14 22:05:00.568 MetaParams: TLS cipher preference is "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:AES256-SHA:AES128-SHA"
+<W>2020-12-14 22:05:00.968 ServerDB: Opened SQLite database /run/media/vaichu/New Volume/Projects/matrimony/murmur.sqlite
+<W>2020-12-14 22:05:00.968 ServerDB: Using SQLite's default rollback journal.
+<W>2020-12-14 22:05:01.016 Murmur 1.3.3 (1.3.3) running on X11: Manjaro Linux: Booting servers
+<W>2020-12-14 22:05:01.636 1 => Server listening on 0.0.0.0:64738
+<W>2020-12-14 22:05:02.280 1 => Announcing server via bonjour
+<W>2020-12-14 22:05:02.458 1 => Not registering server as public
+<W>2020-12-14 22:30:58.410 SSL: OpenSSL version is 'OpenSSL 1.1.1h  22 Sep 2020'
+<W>2020-12-14 22:30:58.422 Initializing settings from /home/vaichu/.murmurd/murmur.ini (basepath /home/vaichu/.murmurd)
+<W>2020-12-14 22:30:58.920 MetaParams: TLS cipher preference is "TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:AES256-SHA:AES128-SHA"
+<W>2020-12-14 22:30:58.985 ServerDB: Opened SQLite database /run/media/vaichu/New Volume/Projects/matrimony/murmur.sqlite
+<W>2020-12-14 22:30:58.986 ServerDB: Using SQLite's default rollback journal.
+<W>2020-12-14 22:30:59.040 Murmur 1.3.3 (1.3.3) running on X11: Manjaro Linux: Booting servers
+<W>2020-12-14 22:30:59.334 1 => Server listening on 0.0.0.0:64738
+<W>2020-12-14 22:31:00.179 1 => Announcing server via bonjour
+<W>2020-12-14 22:31:00.640 1 => Not registering server as public
+<W>2020-12-14 22:34:23.477 1 => <1:(-1)> New connection: 127.0.0.1:34322
+<W>2020-12-14 22:34:23.889 1 => <1:(-1)> Connection closed: The remote host closed the connection [1]
+<W>2020-12-14 22:34:46.345 1 => <2:(-1)> New connection: 127.0.0.1:34510
+<W>2020-12-14 22:34:46.556 1 => <2:(-1)> Client version 1.3.3 (X11: 1.3.3)
+<W>2020-12-14 22:34:46.723 1 => Starting voice thread
+<W>2020-12-14 22:34:46.923 1 => CELT codec switch ffffffff80000010 0 (prefer ffffffff80000010) (Opus 1)
+<W>2020-12-14 22:34:47.112 1 => <2:Vaichu(-1)> Authenticated
+<W>2020-12-14 22:35:20.570 1 => <2:Vaichu(1)> Connection closed: The remote host closed the connection [1]
+<W>2020-12-14 22:35:20.933 1 => Ending voice thread
+<W>2020-12-14 22:35:21.319 1 => <3:(-1)> New connection: 127.0.0.1:34794
+<W>2020-12-14 22:35:21.614 1 => <3:(-1)> Client version 1.3.3 (X11: 1.3.3)
+<W>2020-12-14 22:35:21.781 1 => Starting voice thread
+<W>2020-12-14 22:35:22.114 1 => <3:SuperUser(0)> Authenticated
+<W>2020-12-14 23:58:22.998 1 => <3:SuperUser(0)> Connection closed: The remote host closed the connection [1]
+<W>2020-12-14 23:58:23.724 1 => Ending voice thread

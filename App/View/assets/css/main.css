@@ -1,0 +1,246 @@
+/* ---------------BASE--------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Jost;
+    font-weight: 200;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Thin.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Light.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Regular.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Medium.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Bold.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Ostrich-sans;
+    src: url(/matrimony/App/View/assets/fonts/ostrich-sans-master/webfonts/ostrich-sans-bold.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Ostrich-sans;
+    src: url(/matrimony/App/View/assets/fonts/ostrich-sans-master/webfonts/ostrich-sans-regular.ttf);
+    font-weight: 200;
+}
+
+:root {
+    --bg-color: #131C21;
+    --bg-chat-color: #C4C4C4;
+    --bg-nav-color: #2A2F32;
+    --border-thin-color: #d4d4d4;
+    --click-active-bg: rgba(255, 255, 255, 0.05);
+    --inputbox-bg: #33383b;
+    --inputheight: 15px;
+    --tranparent: rgba(0, 0, 0, 0);
+}
+
+.none {
+    display: none !important;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    resize: none;
+    border: 1px solid #B5ACAC;
+    border-radius: 5px;
+    outline: none;
+    caret-color: #B5ACAC;
+    padding: 0 4px 0 4px;
+    background-color: var(--tranparent);
+}
+
+
+/* ---------------LAYOUT--------------- */
+
+.wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #f5f3fb;
+    overflow-y: auto;
+}
+
+.topnav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+}
+
+.brand {}
+
+.navopt {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.topnav::after {
+    content: "XYZ MATRIMONY";
+    font-family: "Ostrich-sans";
+    font-size: 1.9rem;
+    font-weight: 300;
+    visibility: hidden;
+}
+
+.formcontainer {
+    margin: 40px auto 0 auto;
+    width: 85%;
+}
+
+.formheading {
+    display: flex;
+    flex-flow: column nowrap;
+    width: max-content;
+}
+
+.formbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+    grid-auto-flow: dense;
+    padding-top: 10px;
+}
+
+.subform1 {}
+
+.subform2 {}
+
+.subform3 {}
+
+.subform1,.subform2,.subform3 {
+    display: grid;
+    grid-template: repeat(6, 1fr) /repeat(2, 1fr);
+    column-gap: 15px;
+}
+
+.feildcont {
+    margin: 10px 0 10px 0;
+    justify-self: stretch;
+    min-width: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: stretch;
+}
+
+.row-2 {
+    grid-row-end: span 2;
+}
+
+.row-2 .feildinp {
+    height: 100%;
+}
+
+.col-2 {
+    grid-column-end: span 2;
+}
+
+.feildname {
+    flex: 0 0 17px;
+}
+
+.feildinp {
+    flex: 1 0;
+}
+
+/*-------------------MODULES-----------------------*/
+
+
+.formheading::after {
+    content: "";
+    background: linear-gradient(#77B1B4, #77B1B4);
+    width: 120%;
+    height: 2px;
+}
+
+.topnav {
+    background-color: white;
+}
+
+.brandname {
+    /*Before editing look for .topnav:after used for aligning*/
+    font-family: "Ostrich-sans";
+    font-size: 1.9rem;
+    font-weight: 300;
+}
+
+.navopt a {
+    font-family: "Ostrich-sans";
+    font-size: 1.9rem;
+    font-weight: 200;
+    color: black;
+    text-decoration: none;
+}
+
+.formtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+
+/*----------STATES----------------------*/
+
+input:focus,
+select:focus,
+textarea:focus {
+    border: 1px solid #928b8b;
+}

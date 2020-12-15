@@ -2,14 +2,10 @@
    GENERAL STYLES
  ============================================================ */
 
-.ovr{
+.ovr {
     max-width: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-a {
-  text-decoration: none;
 }
 
