@@ -20,16 +20,7 @@ class main
 
     private static function Route()
     {
-        $rt = new Router;
-        $controller = $rt->getController(); 
-        $method = $rt->getMethod();
-        $custloader = new CustomCheck;
-        if ($custloader->check("Matr\\Controller\\".$controller)) {
-                $func = "\\Matr\\Controller\\".$controller."::".$method;
-                call_user_func($func);
-        } else {
-            // do this when controller does not exist
-        }
+        
     }
 
     public function start()
