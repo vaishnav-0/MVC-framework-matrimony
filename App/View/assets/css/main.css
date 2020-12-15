@@ -155,10 +155,10 @@ textarea {
 
 .formbox {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     grid-gap: 1rem;
     grid-auto-flow: dense;
-    padding-top: 10px;
+    padding: 10px 0 10px 0;
 }
 
 .subform1 {}
@@ -171,7 +171,8 @@ textarea {
 .subform2,
 .subform3 {
     display: grid;
-    grid-template: repeat(6, 1fr) /repeat(2, 1fr);
+    grid-template: repeat(6, 75px) /repeat(2, 1fr);
+    /*Customize row height(input feild height according to layout) here*/
     column-gap: 15px;
 }
 
@@ -245,4 +246,10 @@ input:focus,
 select:focus,
 textarea:focus {
     border: 1px solid #928b8b;
+}
+
+@media screen and (max-width:1264px) {
+    .formcontainer {
+        width: 95%;
+    }
 }

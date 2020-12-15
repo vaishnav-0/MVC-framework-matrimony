@@ -73,6 +73,8 @@
     --inputbox-bg: #33383b;
     --inputheight: 15px;
     --tranparent: rgba(0, 0, 0, 0);
+    --bluegreen: #5FB2BA;
+    --bluegreenfont: white;
 }
 
 .none {
@@ -143,8 +145,7 @@ textarea {
 
 .logformcontainer {
     margin: 30px 80px 0;
-    width: 30%;
-    background-color: cadetblue;
+    width: 25%;
 }
 
 .formheading {
@@ -163,25 +164,18 @@ textarea {
 
 .logsubform {
     display: grid;
-    grid-template: 1fr/repeat(2, 1fr);
+    /*Customize row height(input feild height according to layout) here*/
+    grid-template: repeat(3, 58px)/repeat(2, 1fr);
     column-gap: 15px;
 }
 
 .feildcont {
-    margin: 10px 0 10px 0;
+    margin-top: 5px;
     justify-self: stretch;
     min-width: 0;
     display: flex;
     flex-flow: column nowrap;
     justify-content: stretch;
-}
-
-.row-2 {
-    grid-row-end: span 2;
-}
-
-.row-2 .feildinp {
-    height: 100%;
 }
 
 .col-2 {
@@ -201,7 +195,7 @@ textarea {
 
 .formheading::after {
     content: "";
-    background: linear-gradient(#77B1B4, #77B1B4);
+    background: linear-gradient(var(--bluegreen), var(--bluegreen));
     width: 120%;
     height: 2px;
 }
@@ -230,6 +224,13 @@ textarea {
     font-weight: 300;
 }
 
+.feildcont button {
+    border-radius: 20px;
+    width: 75%;
+    color: var(--bluegreenfont);
+    background-color: #5FB2BA;
+}
+
 
 /*----------STATES----------------------*/
 
@@ -237,4 +238,10 @@ input:focus,
 select:focus,
 textarea:focus {
     border: 1px solid #928b8b;
+}
+
+@media screen and (max-width:960px) {
+    .logformcontainer {
+        width: 40%;
+    }
 }
