@@ -36,12 +36,14 @@
                     <div class=formtitle> Personal details</div>
                 </div>
             </div>
+
+            <form id="a" name="a">
             <div class="formbox">
                 <div class="subform1">
                     <div class="feildcont col-2">
                         <div class="feildname">Name:</div>
                         <div class="feildinp">
-                            <input type="text">
+                            <input type="text" name="name">
                         </div>
                     </div>
                     <div class="feildcont col-2">
@@ -64,7 +66,7 @@
                                 <option value="saab">Saab</option>
                                 <option value="mercedes">Mercedes</option>
                                 <option value="audi">Audi</option>
-                              </select>
+                            </select>
 
                         </div>
 
@@ -77,7 +79,7 @@
                                 <option value="saab">Saab</option>
                                 <option value="mercedes">Mercedes</option>
                                 <option value="audi">Audi</option>
-                              </select>
+                            </select>
 
                         </div>
 
@@ -90,7 +92,7 @@
                                 <option value="saab">Saab</option>
                                 <option value="mercedes">Mercedes</option>
                                 <option value="audi">Audi</option>
-                              </select>
+                            </select>
 
                         </div>
 
@@ -181,10 +183,13 @@
 
                 </div>
             </div>
+            </form>
         </div>
     </div>
 
     <script>
+        var f = document.getElementsByName("a");
+        console.log(f);
     </script>
 </body>
 
