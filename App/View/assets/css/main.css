@@ -167,9 +167,7 @@ textarea {
 
 .subform3 {}
 
-.subform1,
-.subform2,
-.subform3 {
+.subform1,.subform2,.subform3 {
     display: grid;
     grid-template: repeat(6, 75px) /repeat(2, 1fr);
     /*Customize row height(input feild height according to layout) here*/
@@ -205,8 +203,8 @@ textarea {
     flex: 1 0;
 }
 
-
 /*-------------------MODULES-----------------------*/
+
 
 .formheading::after {
     content: "";

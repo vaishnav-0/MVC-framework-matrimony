@@ -1,4 +1,10 @@
 <?php
+<<<<<<< HEAD
+define("DB_USER","root");
+define("DB_PASS","");
+define("DB_HOST","localhost");
+define("DB_NAME","matrimony");
+=======
 define("DB_CONF", array(
     'dbname' => 'matrimony',
     'user' => 'vaichu',
@@ -61,4 +67,5 @@ define("DB_META",array(
         "marital_status"
     ]
 ));
+>>>>>>> de85226651374abd25821f82bee42cea0f227256
 ?>
