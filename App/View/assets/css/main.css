@@ -73,6 +73,8 @@
     --inputbox-bg: #33383b;
     --inputheight: 15px;
     --tranparent: rgba(0, 0, 0, 0);
+    --bluegreen: #5FB2BA;
+    --bluegreenfont: white;
 }
 
 .none {
@@ -234,6 +236,17 @@ textarea {
 
 
 /*-------------------MODULES-----------------------*/
+
+.formcontainer>#submit {
+    border: 0;
+    background-color: var(--bluegreen);
+    color: var(--bluegreenfont);
+    box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.25);
+    width: 100px;
+    border-radius: 20px;
+    padding: 5px 0 5px 0;
+    margin-top: 15px;
+}
 
 .formheading::after {
     content: "";
