@@ -362,12 +362,32 @@
             element.addEventListener("click", accordionctrl);
 
         });
+        let activehead = -1;
         document.addEventListener("keydown", e => {
+
             switch (e.key) {
                 case "ArrowDown":
-
+                    if (activehead === -1 || activehead === accButton.length - 1) {
+                        accButton[0].focus();
+                        activehead = 0;
+                    } else {
+                        activehead++;
+                        accButton[activehead].focus();
+                    }
+                    break;
                 case "ArrowUp":
+                    if (activehead === -1 || activehead === 0) {
+                        accButton[accButton.length - 1].focus();
+                        activehead = accButton.length - 1;
+                    } else {
+                        activehead--;
+                        accButton[activehead].focus();
+
+                    }
+                    break;
             }
+
+            console.log(activehead);
         });
     </script>
 </body>
