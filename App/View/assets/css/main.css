@@ -93,8 +93,8 @@ textarea {
     resize: none;
     border: 1px solid #B5ACAC;
     border-radius: 5px;
-    outline: none;
     caret-color: #B5ACAC;
+    outline: none;
     padding: 0 4px 0 4px;
     background-color: var(--tranparent);
 }
@@ -144,21 +144,47 @@ textarea {
 
 .formcontainer {
     margin: 40px auto 0 auto;
-    width: 85%;
+    max-width: 1185px;
+}
+
+.formheadbtn {
+    position: relative;
+    border-radius: 0;
+    width: 100%;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .formheading {
     display: flex;
     flex-flow: column nowrap;
-    width: max-content;
+    width: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.formtitle {
+    margin-left: 4px;
+    text-align: left;
+}
+
+.formheadcaret {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
 }
 
 .formbox {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     grid-gap: 1rem;
     grid-auto-flow: dense;
-    padding: 10px 0 10px 0;
+    height: 0;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
 }
 
 .subform1 {}
@@ -167,7 +193,10 @@ textarea {
 
 .subform3 {}
 
-.subform1,.subform2,.subform3 {
+.subform1,
+.subform2,
+.subform3 {
+    margin: 10px 0 10px 0;
     display: grid;
     grid-template: repeat(6, 75px) /repeat(2, 1fr);
     /*Customize row height(input feild height according to layout) here*/
@@ -203,13 +232,13 @@ textarea {
     flex: 1 0;
 }
 
-/*-------------------MODULES-----------------------*/
 
+/*-------------------MODULES-----------------------*/
 
 .formheading::after {
     content: "";
     background: linear-gradient(#77B1B4, #77B1B4);
-    width: 120%;
+    width: 100%;
     height: 2px;
 }
 
@@ -240,14 +269,32 @@ textarea {
 
 /*----------STATES----------------------*/
 
+.activeformhead {
+    width: 20%;
+}
+
 input:focus,
 select:focus,
 textarea:focus {
-    border: 1px solid #928b8b;
+    border: 1px solid #6b6a6a;
 }
 
-@media screen and (max-width:1264px) {
+.formheadbtn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (max-width:1400px) {
+    .formcontainer {
+        margin: 40px auto 0 auto;
+        width: 85%;
+    }
+}
+
+@media screen and (max-width:992px) {
     .formcontainer {
         width: 95%;
     }
 }
+
+
+/*----------ANIMATIONS----------------------*/

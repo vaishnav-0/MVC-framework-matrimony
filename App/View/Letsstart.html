@@ -31,14 +31,14 @@
             </div>
         </nav>
         <div class="formcontainer">
-            <div class="formheadwrap">
+            <button class="formheadbtn activeformbtn" data-target="p_details">
                 <div class="formheading">
                     <div class=formtitle> Personal details</div>
                 </div>
-            </div>
+                <div class="formheadcaret"><span class="fa fa-caret-right faicon"></span></div>
+            </button>
 
-            <form id="a" name="a">
-            <div class="formbox">
+            <div id="p_details" class="formbox">
                 <div class="subform1">
                     <div class="feildcont col-2">
                         <div class="feildname">Name:</div>
@@ -183,13 +183,192 @@
 
                 </div>
             </div>
-            </form>
+            <button class="formheadbtn activeformbtn" data-target="fam_details">
+                <div class="formheading">
+                    <div class=formtitle> Family details</div>
+                </div>
+                <div class="formheadcaret"><span class="fa fa-caret-right faicon"></span></div>
+            </button>
+
+            <div id="fam_details" class="formbox">
+                <div class="subform1">
+                    <div class="feildcont col-2">
+                        <div class="feildname">Name:</div>
+                        <div class="feildinp">
+                            <input type="text" name="name">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Age:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont">
+                        <div class="feildname">Date:</div>
+                        <div class="feildinp">
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="feildcont">
+                        <div class="feildname">Gender:</div>
+                        <div class="feildinp">
+                            <select name="cars" id="cars">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="feildcont">
+                        <div class="feildname">Religion:</div>
+                        <div class="feildinp">
+                            <select name="cars" id="cars">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="feildcont">
+                        <div class="feildname">Caste:</div>
+                        <div class="feildinp">
+                            <select name="cars" id="cars">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Name:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Name:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="subform2">
+                    <div class="feildcont col-2 row-2">
+                        <div class="feildname">Address:</div>
+                        <div class="feildinp">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                    <div class="feildcont">
+                        <div class="feildname">City/Town:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont">
+                        <div class="feildname">Pin Code:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">District:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Email:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Phone no:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="subform3">
+                    <div class="feildcont col-2">
+                        <div class="feildname">Qualification:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Occupation:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Height:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+
+                    <div class="feildcont col-2">
+                        <div class="feildname">Physique:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Complexion:</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        var f = document.getElementsByName("a");
-        console.log(f);
+        function accordionctrl(e) {
+            let currPress = e.currentTarget;
+            let heading = currPress.querySelector(".formheading");
+            heading.classList.toggle("activeformhead");
+            let iconspan = currPress.querySelector(".faicon");
+            let target = document.getElementById(currPress.dataset.target);
+            if (target.clientHeight) {
+                target.style.height = 0;
+                iconspan.classList.replace("fa-caret-down", "fa-caret-right");
+
+            } else {
+                target.style.height = target.scrollHeight + "px";
+                iconspan.classList.replace("fa-caret-right", "fa-caret-down");
+
+            }
+
+        }
+
+        let accButton = document.querySelectorAll(".formheadbtn");
+        accButton.forEach(element => {
+            element.addEventListener("click", accordionctrl);
+
+        });
+        document.addEventListener("keydown", e => {
+            switch (e.key) {
+                case "ArrowDown":
+
+                case "ArrowUp":
+            }
+        });
     </script>
 </body>
 
