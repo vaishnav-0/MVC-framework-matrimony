@@ -138,7 +138,7 @@
                     <div class="feildcont col-2">
                         <div class="feildname">Email:</div>
                         <div class="feildinp">
-                            <input type="text">
+                            <input type="text" data-validate="email">
                         </div>
                     </div>
                     <div class="feildcont col-2">
@@ -336,8 +336,11 @@
                 </div>
             </div>
             <button id="submit">Add</button>
+            <input type="file" id="profileUp">
+            <img id="profilePic" src="assets/img/altProfile.jpeg">
         </div>
     </div>
+    <script src="assets/js/approve.min.js"></script>
 
     <script>
         function accordionctrl(e) {
@@ -388,8 +391,52 @@
                     break;
             }
 
-            console.log(activehead);
         });
+
+        function getValidRule(rule) {
+            switch (rule) {
+                case "email":
+                    return {
+                        stop: true,
+                        required: true,
+                        email: true
+                    }
+                    break;
+
+
+            }
+        }
+
+        function validate(e) {
+            let feild = e.target;
+            if (feild.dataset.validate) {
+                valRes = approve.value(feild.value, getValidRule(feild.dataset.validate));
+                valRes.each(function(error) {
+                    console.log(error);
+                });
+            }
+        }
+        let formctnr = document.querySelectorAll(".formcontainer");
+        formctnr.forEach(value => {
+            value.querySelectorAll("input,textarea").forEach(input => {
+                input.addEventListener("focusout", validate);
+            });
+        });
+        const inputElement = document.getElementById("profileUp");
+        inputElement.addEventListener("change", handleFile, false);
+
+        function handleFile() {
+            const file = this.files[0];
+            if (file.type.startsWith('image/')) {
+                const img = document.getElementById("profilePic");
+                img.file = file;
+                const objectURL = window.URL.createObjectURL(file);
+                img.src = objectURL;
+            }
+
+
+
+        }
     </script>
 </body>
 
