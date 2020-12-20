@@ -176,6 +176,7 @@ class Psr4Autoloader
     }
 
     public function loadDep(){
+        //include composer autoloader
         include_once(DEP."doctrine_dbal_3.0.0.0_require/index.php");
     }
 

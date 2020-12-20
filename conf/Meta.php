@@ -32,7 +32,7 @@ define("UPLOAD_PATH", PUBLIC_PATH . "uploads" . DS);
 define("NAMESPACE_MAP",array(
     "Matr\\Controller" => APP_PATH."Controller",
     "Matr\\Model" => APP_PATH."Model",
-    "Core\\data" => CORE_PATH."data"
+    "Core" => CORE_PATH
 ));
 
 ?>
