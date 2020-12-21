@@ -193,21 +193,21 @@
             <div id="fam_details" class="formbox">
                 <div class="subform1">
                     <div class="feildcont col-2">
-                        <div class="feildname">Name:</div>
+                        <div class="feildname">Father's name:</div>
                         <div class="feildinp">
                             <input type="text" name="name">
                         </div>
                     </div>
                     <div class="feildcont col-2">
-                        <div class="feildname">Age:</div>
+                        <div class="feildname">Father's contact No.</div>
                         <div class="feildinp">
                             <input type="text">
                         </div>
                     </div>
-                    <div class="feildcont">
-                        <div class="feildname">Date:</div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Father's occupation</div>
                         <div class="feildinp">
-                            <input type="date">
+                            <input type="text">
                         </div>
                     </div>
                     <div class="feildcont">
@@ -263,20 +263,20 @@
                     </div>
                 </div>
                 <div class="subform2">
-                    <div class="feildcont col-2 row-2">
-                        <div class="feildname">Address:</div>
-                        <div class="feildinp">
-                            <textarea></textarea>
-                        </div>
-                    </div>
-                    <div class="feildcont">
-                        <div class="feildname">City/Town:</div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Mother's name:</div>
                         <div class="feildinp">
                             <input type="text">
                         </div>
                     </div>
-                    <div class="feildcont">
-                        <div class="feildname">Pin Code:</div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Mother's contact No.</div>
+                        <div class="feildinp">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="feildcont col-2">
+                        <div class="feildname">Mother's occupation</div>
                         <div class="feildinp">
                             <input type="text">
                         </div>
@@ -367,29 +367,37 @@
 
         });
         let activehead = -1;
+        accButton.forEach(element => {
+            element.addEventListener("focus", e => {
+                activehead = Array.prototype.indexOf.call(accButton, e.target);
+            });
+        });
+        accButton.forEach(element => {
+            element.addEventListener("blur", e => {
+                activehead = -1;
+            });
+        });
         document.addEventListener("keydown", e => {
-
+            console.log(activehead);
             switch (e.key) {
                 case "ArrowDown":
                     if (activehead === -1 || activehead === accButton.length - 1) {
                         accButton[0].focus();
-                        activehead = 0;
                     } else {
-                        activehead++;
-                        accButton[activehead].focus();
+                        accButton[activehead + 1].focus();
                     }
                     break;
                 case "ArrowUp":
                     if (activehead === -1 || activehead === 0) {
                         accButton[accButton.length - 1].focus();
-                        activehead = accButton.length - 1;
                     } else {
-                        activehead--;
-                        accButton[activehead].focus();
+                        accButton[activehead - 1].focus();
 
                     }
                     break;
             }
+            console.log(activehead);
+
 
         });
 
