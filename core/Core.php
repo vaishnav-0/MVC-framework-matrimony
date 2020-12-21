@@ -21,9 +21,10 @@ class main
         $req = new Request;
         Routes::setRoutes();
         $router = new Router;
-        $disp = new Dispacher($router);
+        $response = new Response;
+        $disp = new Dispacher($router,$response);
         $disp->handle($req);
-
+        $response->respond();
     }
 
     public function start()
@@ -31,5 +32,6 @@ class main
         self::init();
         self::autoload();   // can use autoloading after this
         self::Route();
+
     }
 }

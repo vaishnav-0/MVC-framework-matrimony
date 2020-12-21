@@ -5,18 +5,23 @@ class Request
     public $url;
     private $path;
     private $method;
-    private $args = [];
+    public $body;
     public function __construct()
     {
+        $this->body = new \stdClass;
         $this->url = $_SERVER['REQUEST_URI'];
         $this->evalReq();
     }
     
     public function strip()
     {
-        $ar = explode('/', $this->url);
+        $ar = explode('/', trim($this->url,'/'));
         $ar_pos = array_search("matrimony", $ar) + 1;
+        $ar_get_pos = array_key_first(preg_grep('/^\?/',$ar));
         $ar = array_slice($ar, $ar_pos);
+        if(isset($ar_get_pos)){
+            $ar = array_slice($ar, 0, $ar_get_pos - 1);
+        }
         return $ar;
     }
     private function evalReq()
@@ -26,11 +31,11 @@ class Request
         $this->method = $_SERVER['REQUEST_METHOD'];
         if($_GET){
             foreach($_GET as $key => $value)
-                $this->args[$key] = $value; 
+                $this->body->{$key} = $value; 
         }
         else if($_POST){
             foreach($_POST as $key => $value)
-                $this->args[$key] = $value; 
+                $this->body->{$key} = $value; 
         }
     }
     public function getArgs(){
