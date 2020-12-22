@@ -1,6 +1,5 @@
 <?php
 namespace Matr\Controller;
-use Matr\Model\dbModel\contactModel;
 use Core\Request;
 use Core\Response;
 class auth{
