@@ -227,8 +227,15 @@ textarea {
     grid-column-end: span 2;
 }
 
-.feildname {
-    flex: 0 0 17px;
+.feildtitle {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.feilderror {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .feildinp {
@@ -280,6 +287,34 @@ textarea {
     font-weight: 300;
 }
 
+.feilderror span {
+    margin-left: 5px;
+    color: rgb(245, 0, 0);
+}
+
+.feilderror>.errmsg {
+    position: absolute;
+    left: 17px;
+    top: 10px;
+    padding: 4px 7px 4px 7px;
+    width: max-content;
+    margin-left: 16px;
+    background-color: rgb(255, 236, 70);
+    transition: all 3s ease;
+    opacity: 1;
+}
+
+.feilderror>.errmsg::after {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid rgb(255, 236, 70);
+    border-left: 10px solid transparent;
+}
+
 #profilePic {
     height: 100px;
 }
@@ -303,6 +338,10 @@ textarea:focus {
 
 .formheadbtn:focus {
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+.errmsg-fadeout {
+    opacity: 0 !important;
 }
 
 @media screen and (max-width:1400px) {

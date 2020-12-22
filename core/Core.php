@@ -26,7 +26,7 @@ class main
         $disp->handle($req);
         $response->respond();
     }
-
+    
     public function start()
     {
         self::init();
