@@ -1,9 +1,8 @@
 <?php
+namespace Matr\Model;
 class contactModel{
-    private $cust_id;
-
     public $con;
-    function __construct( $cust_id,$conn)
+    function __construct($conn)
     {
  
         $this->con = $conn;
@@ -23,17 +22,8 @@ class contactModel{
         
     }
 
-    public function addContact(){
-        $stmp = $this->con->prepare("");
-        $stmp->bind_param("issi",);
-        if ($stmp->execute()){
-            $this->t = $this->returnId();
-        }
-        else{
-            return false;
-        }
-        $stmp->close();
-        
+    public function addContact($mob,$mail,$landline){
+        return $this->con->executeStatement('INSERT INTO contact_details (mobile_no, mail_id, landline) VALUES (?,?,?)', array($mob,$mail,$landline));
     }
 
     public function editContact(){

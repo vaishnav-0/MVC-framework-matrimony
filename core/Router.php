@@ -6,7 +6,7 @@ class Router
     protected static $routes = [
         'GET' => [],
         'POST' => [],
-        'PUT' => [],
+        'DELETE' => [],
         'PATCH' => []
     ];
     
@@ -16,6 +16,12 @@ class Router
     }
     protected static function post($pattern, callable $handler) {
         self::$routes['POST'][$pattern] = $handler;
+    }
+    protected static function patch($pattern, callable $handler) {
+        self::$routes['PATCH'][$pattern] = $handler;
+    }
+    protected static function delete($pattern, callable $handler) {
+        self::$routes['DELETE'][$pattern] = $handler;
     }
     
     function route(Request $request) {

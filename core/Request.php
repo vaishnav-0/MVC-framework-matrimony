@@ -41,8 +41,9 @@ class Request
             foreach($_GET as $key => $value)
                 $this->body->{$key} = $value; 
         }
-        else if($_POST){
-            foreach($_POST as $key => $value)
+        else{
+            $content = json_decode(file_get_contents("php://input"));
+            foreach($content as $key => $value)
                 $this->body->{$key} = $value; 
         }
     }
