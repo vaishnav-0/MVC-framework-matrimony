@@ -38,10 +38,17 @@ class Request
         $this->path = implode('/',$arc);
         $this->method = $_SERVER['REQUEST_METHOD'];
         if($_GET){
-            foreach($_GET as $key => $value)
-                $this->body->{$key} = $value; 
+            foreach($_GET as $key => $value){
+                $this->body->{$key} = $value;
+                return;
+            }
         }
-        else{
+        else if($_POST){
+            foreach($_POST as $key => $value){
+                $this->body->{$key} = $value;
+                return;
+            }
+        }else{
             $content = json_decode(file_get_contents("php://input"));
             foreach($content as $key => $value)
                 $this->body->{$key} = $value; 

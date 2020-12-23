@@ -1,6 +1,5 @@
 <?php
 namespace Matr\Controller;
-use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 use Core\Request;
 use Core\Response;
 class auth{
