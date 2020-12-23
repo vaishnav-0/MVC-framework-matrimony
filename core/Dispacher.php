@@ -10,11 +10,13 @@ class Dispacher{
     }
 
     function handle(Request $request) {
+
         $handler = $this->router->route($request);
         if (!$handler) {
             $this->response->setStatusCode(404);
             return;
         }
+
 
         $handler($request,$this->response);
     }

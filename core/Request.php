@@ -43,8 +43,9 @@ class Request
         }
         else{
             $content = json_decode(file_get_contents("php://input"));
-            foreach($content as $key => $value)
-                $this->body->{$key} = $value; 
+            if($content)
+                foreach($content as $key => $value)
+                    $this->body->{$key} = $value; 
         }
     }
     public function getArgs(){

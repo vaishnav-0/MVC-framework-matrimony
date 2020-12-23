@@ -30,6 +30,7 @@ class Router
             return false;
         }
 
+
         $path = $request->getPath();
         foreach (self::$routes[$method] as $pattern => $handler) {
             if ($pattern === $path) {
