@@ -1,6 +1,6 @@
 <?php
 namespace Matr\Controller;
-use Matr\Model\authModel;
+use Matr\Model\userModel;
 use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 use Core\Request;
 use Core\Response;
@@ -9,11 +9,11 @@ class auth{
     public static function login(Request $req, Response $res){
         $conn = Connection::GetCon();
         $reqbody = $req->body;
-        $loginObj = new authModel($conn);
+        $loginObj = new userModel($conn);
         $login = $loginObj->login($reqbody->username,$reqbody->password);
         if($login == 1){
             session_start();
-            $res->json((object)["messages"=>"Success"]);
+            $res->json((object)["status"=>"Success"]);
         }
         else {
             $res->json((object)["status"=>"Failed"]);
@@ -26,7 +26,16 @@ class auth{
         return;
     }
     public static function register(Request $req, Response $res){
- 
+        $conn = Connection::GetCon();
+        $reqbody = $req->body;
+        $regObj = new userModel($conn);
+        $register = $regObj->register($reqbody->username,$reqbody->password,NULL);
+        if($register){
+            $res->json((object)["messages"=>"User Added"]);
+        }
+        else {
+            $res->json((object)["messages"=>"Failed"]);
+        }
     }
 
 }
