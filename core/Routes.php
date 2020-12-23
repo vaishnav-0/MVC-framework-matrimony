@@ -1,9 +1,14 @@
 <?php
 namespace Core;
 class Routes extends Router{
-    public static function setRoutes(){                             // set your routes here
-        Router::get("auth","Matr\\Controller\\auth::testfunc");
-        Router::get("contact","Matr\\Controller\\contact::testfunc");
+    public static function setRoutes(){                             
+        // set your routes here
+
+        //authentication routes
+        Router::post("login","Matr\\Controller\\auth::login");
+        Router::get("logout","Matr\\Controller\\auth::logout");
+        Router::post("register","Matr\\Controller\\auth::register");
+
 
         // contact routes
         Router::get("contact","Matr\\Controller\\contact::getContact");
