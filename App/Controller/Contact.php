@@ -17,23 +17,23 @@ class Contact extends BaseController{
 
     // this is purely experimental
 
-    public function getContact(){
-        $result = $this->$contact->addContact($this->$reqbody->id);
+    public function get(){
+        $result = $this->$contact->getContact($this->$reqbody->id);
         if($result)
             $this->response->json((object) $result);
         else
             $this->response->json((object)["status"=>"failed"]);
     }
 
-    public function editContact(){
-        $result = $this->$contact->addContact($this->$reqbody->id,$this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
+    public function edit(){
+        $result = $this->$contact->editContact($this->$reqbody->id,$this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
             $this->response->json((object)["status"=>"failed"]);
     }
     
-    public function addContact(){
+    public function add(){
         $result = $this->$contact->addContact($this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
         if($result)
             $this->response->json((object)["status"=>"success"]);
@@ -41,8 +41,8 @@ class Contact extends BaseController{
             $this->response->json((object)["status"=>"failed"]);
     }
 
-    public function deleteContact(Request $req, Response $res){
-        $result = $this->$contact->addContact($this->$reqbody->id);
+    public function delete(Request $req, Response $res){
+        $result = $this->$contact->deleteContact($this->$reqbody->id);
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
