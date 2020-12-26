@@ -13,7 +13,6 @@ class Contact extends BaseController{
     public function get(){
         $result = $this->contactModel->getContact($this->reqBody->id);
         if ($result) {
-            print_r($result);
             $this->response->json((object) $result);
         }
         else
