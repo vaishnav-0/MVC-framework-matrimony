@@ -13,10 +13,10 @@ class Routes extends Router{
 
 
         // contact routes
-        Router::get("contact",[Contact::class,"getContact"]);
-        Router::post("contact",[Contact::class,"addContact"]);
-        Router::patch("contact",[Contact::class,"editContact"]);
-        Router::delete("contact",[Contact::class,"deleteContact"]);
+        Router::get("contact",[Contact::class,"get"]);
+        Router::post("contact",[Contact::class,"add"]);
+        Router::patch("contact",[Contact::class,"edit"]);
+        Router::delete("contact",[Contact::class,"delete"]);
 
     }
 }

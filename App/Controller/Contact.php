@@ -2,52 +2,46 @@
 namespace Matr\Controller;
 use Matr\Model\contactModel;
 class Contact extends BaseController{
+    private $contactModel;
     public function __construct($a,$b){
         parent::__construct($a,$b);
-        $this->reqBody = $this->request->body;
+        $contactModel = new contactModel($this->con);
     }
 
     // this is purely experimental
 
     public function getContact(){
-        $contact = new contactModel($this->con);
-        $result = $contact->getContact($this->reqBody->id);
+        $result = $this->contactModel->getContact($this->reqBody->id);
         if ($result) {
             print_r($result);
             $this->response->json((object) $result);
         }
         else
-            $this->resonse->json((object)["status"=>"failed"]);
+            $this->response->json((object)["status"=>"failed"]);
     }
 
-    public function editContact(){
-        $reqbody = $this->request->body;
-        $contact = new contactModel($this->con);
-        $result = $contact->addContact($reqbody->id,$reqbody->mobile,$reqbody->mail,$reqbody->landline);
+    public function edit(){
+        $result = $this->$contactModel->editContact($this->$reqbody->id,$this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
-            $this->resonse->json((object)["status"=>"failed"]);
+            $this->response->json((object)["status"=>"failed"]);
     }
     
-    public function addContact(){
-        $reqbody = $this->request->body;
-        $contact = new contactModel($this->con);
-        $result = $contact->addContact($reqbody->mobile,$reqbody->mail,$reqbody->landline);
+    public function add(){
+        $result = $this->$contactModel->addContact($this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
-            $this->resonse->json((object)["status"=>"failed"]);
+            $this->response->json((object)["status"=>"failed"]);
     }
 
-    public function deleteContact(Request $req, Response $res){
-        $reqbody = $this->request->body;
-        $contact = new contactModel($this->con);
-        $result = $contact->addContact($reqbody->id);
+    public function delete(Request $req, Response $res){
+        $result = $this->$contactModel->deleteContact($this->$reqbody->id);
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
-            $this->resonse->json((object)["status"=>"failed"]);
+            $this->response->json((object)["status"=>"failed"]);
 
     }
 

@@ -11,6 +11,7 @@ abstract class BaseController{
     public function __construct(Request $req, Response $res){
         $this->request = $req;
         $this->response = $res;
+        $this->reqBody = $this->request->body;
         $this->con = Connection::GetCon();
     }
 }
