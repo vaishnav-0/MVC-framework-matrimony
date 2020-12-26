@@ -5,10 +5,12 @@ use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 
 abstract class tableModel
 {
+    protected $tablename;
     protected $columns = [];
     protected $con;
     public function __construct()
     {
+        //set table name here
         $this->con = Connection::getCon();
        $this->columns = DB_META[$this->tablename];
     }                                   
@@ -38,15 +40,26 @@ abstract class tableModel
     {
         if (isset($params)) {
             $attr = $params->attributes;
-            $cond = $params->condition;
-            $colCheck = $this->checkCol($attr);
-            if (false !== $colCheck) {
-                $queryBuilder = $this->con->createQueryBuilder();
-                $query = $queryBuilder->select($attr)->from($this->tablename);
-                return $this->con->fetchAllAssociative($query);
+            $cond = each($params->condition);
+            if ($attr) {
+                $colCheck = $this->checkCol($attr);
+                if (false !== $colCheck) {
+                    if (!$cond) {
+                        $queryBuilder = $this->con->createQueryBuilder();
+                        $query = $queryBuilder->select($attr)->from($this->tablename);
+                        return $this->con->fetchAllAssociative($query);
+                    } elseif ($cond) {
+                        $queryBuilder = $this->con->createQueryBuilder();
+                     //   $query = $queryBuilder->select($attr)->from($this->tablename)->where($cond[key]);
+                        return $this->con->fetchAllAssociative($query);
+                    }
+                }
+            }else{
+                return false;
             }
         } else {
-
+            return false;
         }
     }
+    public function add(){}
 }
