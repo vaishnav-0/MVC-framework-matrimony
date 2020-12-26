@@ -10,7 +10,7 @@ class Auth extends BaseController{
         parent::__construct($a,$b);
     }
     public function login(){
-      /*  $conn = Connection::GetCon();
+        $conn = Connection::GetCon();
         $reqbody = $req->body;
         $loginObj = new userModel($conn);
         $login = $loginObj->login($reqbody->username,$reqbody->password);
@@ -20,8 +20,7 @@ class Auth extends BaseController{
         }
         else {
             $res->json((object)["status"=>"Failed"]);
-        }*/
-        echo "hello";
+        }
     }
 
     public function logout(Request $req, Response $res){

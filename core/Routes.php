@@ -7,8 +7,8 @@ class Routes extends Router{
         // set your routes here
 
         //authentication routes
-        Router::get("login",[Auth::class,"login"]);
-        Router::get("logout",[Auth::class,"loginout"]);
+        Router::post("login",[Auth::class,"login"]);
+        Router::get("logout",[Auth::class,"logout"]);
         Router::post("register",[Auth::class,"register"]);
 
 
