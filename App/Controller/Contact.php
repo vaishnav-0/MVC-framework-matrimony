@@ -8,12 +8,12 @@ class Contact extends BaseController{
     public function __construct($a,$b){
         parent::__construct($a,$b);
         $this->con = Connection::GetCon();
+        $this->reqBody = $this->request->body;
     }
 
     // this is purely experimental
 
     public function getContact(){
-        $reqbody = $this->request->body;
         $contact = new contactModel($this->con);
         $result = $contact->addContact($reqbody->id);
         if($result)
