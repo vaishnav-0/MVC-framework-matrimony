@@ -7,15 +7,11 @@ class contactModel{
     }
     
     public function getContact($id){
-        $exec =  $this->con->executeStatement($queryBuilder
+        return $this->con->executeStatement($queryBuilder
         ->select('*')
         ->from('contact_details')
         ->where('contact_id',$id)
         );  
-        if(!$exec)  
-            return true;
-        else
-            return false;    
     }
 
     public function addContact($mob,$mail,$landline){
