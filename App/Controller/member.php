@@ -9,19 +9,19 @@ class Auth extends BaseController{
     public function __construct($a,$b){
         parent::__construct($a,$b);
     }
-    public function addMember(Request $req, Response $res){
+    public function addMember(){
 
     }
 
-    public function editMember(Request $req, Response $res){
+    public function editMember(){
 
     }
 
-    public function getMember(Request $req, Response $res){
+    public function getMember(){
 
     }
 
-    public function deleteMember(Request $req, Response $res){
+    public function deleteMember(){
 
     }
 

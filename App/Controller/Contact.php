@@ -8,23 +8,23 @@ class Contact extends BaseController{
     public function __construct($a,$b){
         parent::__construct($a,$b);
     }
-    public function getContact(Request $req, Response $res){
+    public function getContact(){
 
 
     }
-    public function editContact(Request $req, Response $res){
+    public function editContact(){
  
 
     }
-    public function addContact(Request $req, Response $res){
+    public function addContact(){
         $conn = Connection::GetCon();
-        $reqbody = $req->body;
+        $reqbody = $this->request->body;
         $contact = new contactModel($conn);
         $added = $contact->addContact($reqbody->mobile,$reqbody->mail,$reqbody->landline);
         if($added)
-            $res->json((object)["status"=>"success"]);
+            $this->response->json((object)["status"=>"success"]);
         else
-            $res->json((object)["status"=>"failed"]);
+            $this->resonse->json((object)["status"=>"failed"]);
     }
     public function deleteContact(Request $req, Response $res){
 

@@ -28,28 +28,21 @@ class contactModel{
     }
 
     public function editContact($id,$mob,$mail,$landline){
-        $exec =  $this->con->executeStatement($queryBuilder
+        return $this->con->executeStatement($queryBuilder
             ->update('contact_details')
             ->set('mobile_no',$mob )
             ->set('mail_id', $mail)
             ->set('landline',$landline)
             ->where('contact_id' ,$id)
         );
-        if(!$exec)  
-            return true;
-        else
-            return false;
+
     }
 
     private function deleteContact($id){
-        $exec =  $this->con->executeStatement($queryBuilder
+        return $this->con->executeStatement($queryBuilder
             ->delete('contact_details')
             ->where('contact_id',$id)
-        );    
-        if(!$exec)  
-            return true;
-        else
-            return false;    
+        );      
     }
 
 }
