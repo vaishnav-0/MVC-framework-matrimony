@@ -10,7 +10,7 @@ class Contact extends BaseController{
 
     // this is purely experimental
 
-    public function getContact(){
+    public function get(){
         $result = $this->contactModel->getContact($this->reqBody->id);
         if ($result) {
             print_r($result);
