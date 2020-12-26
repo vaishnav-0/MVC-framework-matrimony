@@ -11,6 +11,7 @@ class Contact extends BaseController{
     // this is purely experimental
 
     public function get(){
+        
         $result = $this->contactModel->getContact($this->reqBody->id);
         $this->cntrlRespond($result, true);
     }
