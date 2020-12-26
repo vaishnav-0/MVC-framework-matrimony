@@ -17,7 +17,7 @@ class memberModel{
         )->fetchAllAssociative();  
     }
 
-    public function addMember($id,$join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$family_id,$occupation,$qualification,$photo,$contact_id,$complexion){
+    public function addMember($id,$join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$occupation,$qualification,$photo,$complexion){
         return $this->con->executeStatement($this->queryBuilder->insert('members')->values(
             array(
                 'id' => '?',	
@@ -28,14 +28,12 @@ class memberModel{
                 'height'	 => '?',
                 'physique' => '?',	
                 'gender'	 => '?',
-                'family_id'	 => '?',
                 'occupation'	 => '?',
                 'qualification'	 => '?',
                 'photo'	 => '?',
-                'contact_id'	 => '?',
                 'complexion'	 => '?',
             )
-        ), array($id,$join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$family_id,$occupation,$qualification,$photo,$contact_id,$complexion));
+        ), array($id,$join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$occupation,$qualification,$photo,$complexion));
     }
 
     public function editMember($id,$join_date,$name	,$dob,$caste_rel_id,$height,$physique,$gender,$family_id,$occupation,$qualification,$photo,$contact_id,$complexion){

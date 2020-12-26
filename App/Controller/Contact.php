@@ -17,18 +17,18 @@ class Contact extends BaseController{
     }
 
     public function edit(){
-        $result = $this->$contactModel->editContact($this->$reqbody->id,$this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
+        $result = $this->$contactModel->editContact($this->reqBody->id,$this->reqBody->mobile,$this->reqBody->mail,$this->reqBody->landline);
         $this->cntrlRespond($result);
     }
     
     public function add(){
-        $result = $this->$contactModel->addContact($this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
+        $result = $this->$contactModel->addContact($this->reqBody->mobile,$this->reqBody->mail,$this->reqBody->landline);
         $this->cntrlRespond($result);
 
     }
 
     public function delete(Request $req, Response $res){
-        $result = $this->$contactModel->deleteContact($this->$reqbody->id);
+        $result = $this->$contactModel->deleteContact($this->reqBody->id);
         $this->cntrlRespond($result);
 
 
