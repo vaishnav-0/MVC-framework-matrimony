@@ -22,8 +22,8 @@ class main
         Routes::setRoutes();
         $router = new Router;
         $response = new Response;
-        $disp = new Dispacher($router,$response);
-        $disp->handle($req);
+        $disp = new Dispacher($router,$req,$response);
+        $disp->handle();
         $response->respond();
     }
     
