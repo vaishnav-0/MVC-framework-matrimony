@@ -7,7 +7,7 @@ class userModel{
     public static function init(){
         $schema = new \Doctrine\DBAL\Schema\Schema();
 
-        $userTable = $schema->createTable("my_table");
+        $userTable = $schema->createTable("users");
         $userTable->addColumn("userId", "integer", array("autoincrement" => true));
         $userTable->addColumn("username", "string", array("length" => 50));
         $userTable->addColumn("password", "string", array("length" => 50));

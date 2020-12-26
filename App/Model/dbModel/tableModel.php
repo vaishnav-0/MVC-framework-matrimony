@@ -5,12 +5,12 @@ use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 
 abstract class tableModel
 {
-    protected $columns = [];
+   // protected $columns = [];
     protected $con;
     public function __construct()
     {
         $this->con = Connection::getCon();
-        $this->columns = DB_META[$this->tablename];
+       // $this->columns = DB_META[$this->tablename];
     }                                   
     /*protected function checkCol($colNames) //checks if columns exist. (ARRAY)
     {
