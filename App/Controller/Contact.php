@@ -4,17 +4,17 @@ use Matr\Model\contactModel;
 use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 use Core\Request;
 use Core\Response;
-class contact{
+class Contact{
     
-    public static function getContact(Request $req, Response $res){
+    public function getContact(Request $req, Response $res){
 
 
     }
-    public static function editContact(Request $req, Response $res){
+    public function editContact(Request $req, Response $res){
  
 
     }
-    public static function addContact(Request $req, Response $res){
+    public function addContact(Request $req, Response $res){
         $conn = Connection::GetCon();
         $reqbody = $req->body;
         $contact = new contactModel($conn);
@@ -24,7 +24,7 @@ class contact{
         else
             $res->json((object)["status"=>"failed"]);
     }
-    public static function deleteContact(Request $req, Response $res){
+    public function deleteContact(Request $req, Response $res){
 
 
     }
