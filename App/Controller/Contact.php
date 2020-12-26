@@ -19,7 +19,7 @@ class Contact extends BaseController{
         if($result)
             $this->response->json((object) $result);
         else
-            $this->resonse->json((object)["status"=>"failed"]);
+            $this->response->json((object)["status"=>"failed"]);
     }
 
     public function editContact(){
@@ -30,7 +30,7 @@ class Contact extends BaseController{
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
-            $this->resonse->json((object)["status"=>"failed"]);
+            $this->response->json((object)["status"=>"failed"]);
     }
     
     public function addContact(){
@@ -41,7 +41,7 @@ class Contact extends BaseController{
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
-            $this->resonse->json((object)["status"=>"failed"]);
+            $this->response->json((object)["status"=>"failed"]);
     }
 
     public function deleteContact(Request $req, Response $res){
@@ -52,7 +52,7 @@ class Contact extends BaseController{
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
-            $this->resonse->json((object)["status"=>"failed"]);
+            $this->response->json((object)["status"=>"failed"]);
 
     }
 
