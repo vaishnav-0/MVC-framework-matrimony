@@ -16,9 +16,11 @@ class Auth extends BaseController{
     public function editMember(Request $req, Response $res){
 
     }
+
     public function getMember(Request $req, Response $res){
 
     }
+
     public function deleteMember(Request $req, Response $res){
 
     }
