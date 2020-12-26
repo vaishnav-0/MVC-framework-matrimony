@@ -5,14 +5,14 @@ use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 
 abstract class tableModel
 {
-   // protected $columns = [];
+    protected $columns = [];
     protected $con;
     public function __construct()
     {
         $this->con = Connection::getCon();
-       // $this->columns = DB_META[$this->tablename];
+       $this->columns = DB_META[$this->tablename];
     }                                   
-    /*protected function checkCol($colNames) //checks if columns exist. (ARRAY)
+    protected function checkCol($colNames) //checks if columns exist. (ARRAY)
     {
         $Exist = [];
         foreach ($colNames as $colName) {
@@ -34,18 +34,19 @@ abstract class tableModel
         }
         return false;
     }
-*/
     public function get($params) // select from table
     {
         if (isset($params)) {
-            $colCheck = $this->checkCol($params->attributes);
+            $attr = $params->attributes;
+            $cond = $params->condition;
+            $colCheck = $this->checkCol($attr);
             if (false !== $colCheck) {
                 $queryBuilder = $this->con->createQueryBuilder();
-                $query = $queryBuilder->select($params->attributes)->from($this->tablename);
-                print_r($this->con->fetchAllAssociative($query));
+                $query = $queryBuilder->select($attr)->from($this->tablename);
+                return $this->con->fetchAllAssociative($query);
             }
         } else {
-                                 
+
         }
     }
 }
