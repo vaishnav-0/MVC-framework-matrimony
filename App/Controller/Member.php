@@ -1,11 +1,11 @@
 <?php
 namespace Matr\Controller;
-use Matr\Model\userModel;
+use Matr\Model\memberModel;
 class Member extends BaseController{
     
     public function __construct($a,$b){
         parent::__construct($a,$b);
-        $this->userModel = new userModel($this->con);
+        $this->userModel = new memberModel($this->con);
     }
     public function addMember(){
         
