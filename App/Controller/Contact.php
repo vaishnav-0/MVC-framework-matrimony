@@ -5,7 +5,7 @@ class Contact extends BaseController{
     private $contactModel;
     public function __construct($a,$b){
         parent::__construct($a,$b);
-        $contactModel = new contactModel($this->con);
+        $this->contactModel = new contactModel($this->con);
     }
 
     // this is purely experimental
