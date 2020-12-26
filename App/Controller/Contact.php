@@ -5,17 +5,20 @@ use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 use Core\Request;
 use Core\Response;
 class Contact extends BaseController{
+    private $reqbody;
+    private $contact;
+
     public function __construct($a,$b){
         parent::__construct($a,$b);
         $this->con = Connection::GetCon();
+        $this->$reqbody = $this->request->body;
+        $this->$contact = new contactModel($this->con);
     }
 
     // this is purely experimental
 
     public function getContact(){
-        $reqbody = $this->request->body;
-        $contact = new contactModel($this->con);
-        $result = $contact->addContact($reqbody->id);
+        $result = $this->$contact->addContact($this->$reqbody->id);
         if($result)
             $this->response->json((object) $result);
         else
@@ -23,9 +26,7 @@ class Contact extends BaseController{
     }
 
     public function editContact(){
-        $reqbody = $this->request->body;
-        $contact = new contactModel($this->con);
-        $result = $contact->addContact($reqbody->id,$reqbody->mobile,$reqbody->mail,$reqbody->landline);
+        $result = $this->$contact->addContact($this->$reqbody->id,$this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
@@ -33,9 +34,7 @@ class Contact extends BaseController{
     }
     
     public function addContact(){
-        $reqbody = $this->request->body;
-        $contact = new contactModel($this->con);
-        $result = $contact->addContact($reqbody->mobile,$reqbody->mail,$reqbody->landline);
+        $result = $this->$contact->addContact($this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
@@ -43,9 +42,7 @@ class Contact extends BaseController{
     }
 
     public function deleteContact(Request $req, Response $res){
-        $reqbody = $this->request->body;
-        $contact = new contactModel($this->con);
-        $result = $contact->addContact($reqbody->id);
+        $result = $this->$contact->addContact($this->$reqbody->id);
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
