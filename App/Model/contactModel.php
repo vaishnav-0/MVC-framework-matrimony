@@ -2,11 +2,8 @@
 namespace Matr\Model;
 class contactModel{
     public $con;
-    function __construct($conn)
-    {
- 
+    function __construct($conn){
         $this->con = $conn;
-
     }
     
     public function getContact($id){
@@ -14,7 +11,7 @@ class contactModel{
         ->select('*')
         ->from('contact_details')
         ->where('contact_id',$id)
-    );      
+        );      
     }
 
     public function addContact($mob,$mail,$landline){
@@ -38,11 +35,11 @@ class contactModel{
     }
 
     private function deleteContact($id){
-        return $this->con->executeStatement($queryBuilder->delete('contact_details')
-        ->where('contact_id',$id)
-    );        
+        return $this->con->executeStatement($queryBuilder
+            ->delete('contact_details')
+            ->where('contact_id',$id)
+        );        
     }
 
 }
-
 ?>
