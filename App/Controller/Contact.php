@@ -7,14 +7,14 @@ use Core\Response;
 class Contact extends BaseController{
     public function __construct($a,$b){
         parent::__construct($a,$b);
+        $this->con = Connection::GetCon();
     }
 
     // this is purely experimental
 
     public function getContact(){
-        $conn = Connection::GetCon();
         $reqbody = $this->request->body;
-        $contact = new contactModel($conn);
+        $contact = new contactModel($this->con);
         $result = $contact->addContact($reqbody->id);
         if($result)
             $this->response->json((object) $result);
@@ -23,9 +23,8 @@ class Contact extends BaseController{
     }
 
     public function editContact(){
-        $conn = Connection::GetCon();
         $reqbody = $this->request->body;
-        $contact = new contactModel($conn);
+        $contact = new contactModel($this->con);
         $result = $contact->addContact($reqbody->id,$reqbody->mobile,$reqbody->mail,$reqbody->landline);
         if($result)
             $this->response->json((object)["status"=>"success"]);
@@ -34,9 +33,8 @@ class Contact extends BaseController{
     }
     
     public function addContact(){
-        $conn = Connection::GetCon();
         $reqbody = $this->request->body;
-        $contact = new contactModel($conn);
+        $contact = new contactModel($this->con);
         $result = $contact->addContact($reqbody->mobile,$reqbody->mail,$reqbody->landline);
         if($result)
             $this->response->json((object)["status"=>"success"]);
@@ -45,9 +43,8 @@ class Contact extends BaseController{
     }
 
     public function deleteContact(Request $req, Response $res){
-        $conn = Connection::GetCon();
         $reqbody = $this->request->body;
-        $contact = new contactModel($conn);
+        $contact = new contactModel($this->con);
         $result = $contact->addContact($reqbody->id);
         if($result)
             $this->response->json((object)["status"=>"success"]);
