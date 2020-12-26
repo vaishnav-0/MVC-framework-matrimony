@@ -13,8 +13,8 @@ class contactModel{
         return $this->con->executeQuery($this->queryBuilder
         ->select('*')
         ->from('contact_details')
-        ->where('contact_id',$id)
-        )->fetchAllAssociative;  
+        ->where('contact_id = 10'),array($id)
+        )->fetchAllAssociative();  
     }
 
     public function addContact($mob,$mail,$landline){
