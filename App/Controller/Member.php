@@ -5,7 +5,14 @@ class Member extends BaseController{
     private $memberModel;
     public function __construct($a,$b){
         parent::__construct($a,$b);
+<<<<<<< HEAD
         $this->memberModel = new memberModel($this->con);
+=======
+        $this->userModel = new memberModel($this->con);
+    }
+    public function addMember(){
+        
+>>>>>>> c7f336028477ce73a7ad0d1b9eb7a08c68c633fc
     }
 
     // this is purely experimental
