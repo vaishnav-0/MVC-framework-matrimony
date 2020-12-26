@@ -44,7 +44,7 @@ class contactModel{
     private function deleteContact($id){
         return $this->con->executeStatement($this->queryBuilder
             ->delete('contact_details')
-            ->where('contact_id',$id)
+            ->where('contact_id = ?'),array($id)
         );      
     }
 
