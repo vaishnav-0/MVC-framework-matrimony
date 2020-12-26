@@ -9,17 +9,12 @@ class contactModel{
 
     }
     
-    public function getContact(){
-        $stmp = $this->con->prepare("");
-        $stmp->bind_param("issi",);
-        if ($stmp->execute()){
-            $this->t = $this->returnId();
-        }
-        else{
-            return false;
-        }
-        $stmp->close();
-        
+    public function getContact($id){
+        return $this->con->executeStatement($queryBuilder
+        ->select('*')
+        ->from('contact_details')
+        ->where('contact_id',$id)
+        );  
     }
 
     public function addContact($mob,$mail,$landline){
