@@ -11,7 +11,7 @@ class Router
     ];
     
     
-    protected static function get($pattern, $handler) {
+    protected static function get($pattern,array $handler) {
         self::$routes['GET'][$pattern] = $handler;
     }
     protected static function post($pattern, callable $handler) {
@@ -24,7 +24,7 @@ class Router
         self::$routes['DELETE'][$pattern] = $handler;
     }
     
-    function route(Request $request) {
+    public function route(Request $request) {
         $method = $request->getMethod();
         if (!isset(self::$routes[$method])) {
             return false;
