@@ -23,7 +23,7 @@ class contactModel{
     }
 
     public function addContact($mob,$mail,$landline){
-        return $this->con->executeStatement($queryBuilder->insert('contact_details')->values(
+        return $this->con->executeStatement($this->con->queryBuilder->insert('contact_details')->values(
             array(
                 'mobile_no' => '?',
                 'mail_id' => '?',
