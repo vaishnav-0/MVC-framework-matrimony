@@ -10,7 +10,7 @@ class contactModel{
     }
     
     public function getContact($id){
-        return $this->con->executeStatement($queryBuilder
+        return $this->con->executeQuery($this->con->$queryBuilder
         ->select('*')
         ->from('contact_details')
         ->where('contact_id',$id)
@@ -28,7 +28,7 @@ class contactModel{
     }
 
     public function editContact($id,$mob,$mail,$landline){
-        return $this->con->executeStatement($queryBuilder
+        return $this->con->executeStatement($this->con->$queryBuilder
             ->update('contact_details')
             ->set('mobile_no',$mob )
             ->set('mail_id', $mail)
@@ -39,7 +39,7 @@ class contactModel{
     }
 
     private function deleteContact($id){
-        return $this->con->executeStatement($queryBuilder
+        return $this->con->executeStatement($this->con->$queryBuilder
             ->delete('contact_details')
             ->where('contact_id',$id)
         );      

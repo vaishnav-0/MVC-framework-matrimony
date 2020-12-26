@@ -16,7 +16,7 @@ class userModel{
     }
 
     public function login($username,$password){
-        return $this->con->executeStatement('SELECT * FROM users WHERE username = ? AND password = ? ',array($username,$password))->rowCount();
+        return $this->con->executeQuery('SELECT * FROM users WHERE username = ? AND password = ? ',array($username,$password))->rowCount();
     }
 
     public function register($username,$password,$role){
