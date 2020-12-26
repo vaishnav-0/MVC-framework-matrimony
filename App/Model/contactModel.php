@@ -16,7 +16,7 @@ class contactModel{
         return $this->con->executeQuery($this->queryBuilder
         ->select('*')
         ->from('contact_details')
-        ->where('contact_id = 10'),array($id)
+        ->where('contact_id = ?'),array($id)
         )->fetchAllAssociative();  
     }
 
