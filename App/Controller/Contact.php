@@ -4,8 +4,10 @@ use Matr\Model\contactModel;
 use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 use Core\Request;
 use Core\Response;
-class Contact{
-    
+class Contact extends BaseController{
+    public function __construct($a,$b){
+        parent::__construct($a,$b);
+    }
     public function getContact(Request $req, Response $res){
 
 
