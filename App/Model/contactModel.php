@@ -5,11 +5,8 @@ class contactModel{
     public $queryBuilder;
     function __construct($conn)
     {
- 
         $this->con = $conn;
         $this->queryBuilder = $conn->createQueryBuilder();
-
-
     }
     
     public function getContact($id){
