@@ -18,7 +18,9 @@ class Contact extends BaseController{
     // this is purely experimental
 
     public function get(){
+
         $result = $this->$contact->getContact($this->$reqbody->id);
+
         if($result)
             $this->response->json((object) $result);
         else
@@ -26,7 +28,15 @@ class Contact extends BaseController{
     }
 
     public function edit(){
-        $result = $this->$contact->editContact($this->$reqbody->id,$this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
+        
+        $result = $this->$contact
+            ->editContact(
+                $this->$reqbody->id,
+                $this->$reqbody->mobile,
+                $this->$reqbody->mail,
+                $this->$reqbody->landline
+        );
+        
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
@@ -34,7 +44,13 @@ class Contact extends BaseController{
     }
     
     public function add(){
-        $result = $this->$contact->addContact($this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
+        $result = $this->$contact
+            ->addContact(
+                $this->$reqbody->mobile,
+                $this->$reqbody->mail,
+                $this->$reqbody->landline
+            );
+        
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
@@ -42,7 +58,9 @@ class Contact extends BaseController{
     }
 
     public function delete(Request $req, Response $res){
+
         $result = $this->$contact->deleteContact($this->$reqbody->id);
+
         if($result)
             $this->response->json((object)["status"=>"success"]);
         else
