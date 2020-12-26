@@ -11,54 +11,25 @@ class Contact extends BaseController{
     // this is purely experimental
 
     public function get(){
-
-        $result = $this->$contact->getContact($this->$reqbody->id);
-
-        if($result)
-            $this->response->json((object) $result);
-        
-        else
-            $this->response->json((object)["status"=>"failed"]);
+        $result = $this->contactModel->getContact($this->reqBody->id);
+        $this->cntrlRespond($result, true);
     }
 
     public function edit(){
-        
-        $result = $this->$contact
-            ->editContact(
-                $this->$reqbody->id,
-                $this->$reqbody->mobile,
-                $this->$reqbody->mail,
-                $this->$reqbody->landline
-        );
-        
-        if($result)
-            $this->response->json((object)["status"=>"success"]);
-        else
-            $this->response->json((object)["status"=>"failed"]);
+        $result = $this->$contactModel->editContact($this->$reqbody->id,$this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
+        $this->cntrlRespond($result);
     }
     
     public function add(){
-        $result = $this->$contact
-            ->addContact(
-                $this->$reqbody->mobile,
-                $this->$reqbody->mail,
-                $this->$reqbody->landline
-            );
-        
-        if($result)
-            $this->response->json((object)["status"=>"success"]);
-        else
-            $this->response->json((object)["status"=>"failed"]);
+        $result = $this->$contactModel->addContact($this->$reqbody->mobile,$this->$reqbody->mail,$this->$reqbody->landline);
+        $this->cntrlRespond($result);
+
     }
 
     public function delete(Request $req, Response $res){
+        $result = $this->$contactModel->deleteContact($this->$reqbody->id);
+        $this->cntrlRespond($result);
 
-        $result = $this->$contact->deleteContact($this->$reqbody->id);
-
-        if($result)
-            $this->response->json((object)["status"=>"success"]);
-        else
-            $this->response->json((object)["status"=>"failed"]);
 
     }
 
