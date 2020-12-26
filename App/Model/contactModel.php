@@ -15,13 +15,17 @@ class contactModel{
     }
 
     public function addContact($mob,$mail,$landline){
-        return $this->con->executeStatement($queryBuilder->insert('contact_details')->values(
+        $exec = $this->con->executeStatement($this->con->queryBuilder->insert('contact_details')->values(
             array(
                 'mobile_no' => '?',
                 'mail_id' => '?',
                 'landline' => '?'
             )
         ), array($mob,$mail,$landline));
+        if(!$exec)  
+            return true;
+        else
+            return false;
     }
 
     public function editContact($id,$mob,$mail,$landline){
