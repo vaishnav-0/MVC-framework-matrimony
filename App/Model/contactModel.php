@@ -7,11 +7,15 @@ class contactModel{
     }
     
     public function getContact($id){
-        return $this->con->executeStatement($queryBuilder
+        $exec =  $this->con->executeStatement($queryBuilder
         ->select('*')
         ->from('contact_details')
         ->where('contact_id',$id)
-        );      
+        );  
+        if(!$exec)  
+            return true;
+        else
+            return false;    
     }
 
     public function addContact($mob,$mail,$landline){
@@ -29,20 +33,28 @@ class contactModel{
     }
 
     public function editContact($id,$mob,$mail,$landline){
-        return $this->con->executeStatement($queryBuilder
+        $exec =  $this->con->executeStatement($queryBuilder
             ->update('contact_details')
             ->set('mobile_no',$mob )
             ->set('mail_id', $mail)
             ->set('landline',$landline)
             ->where('contact_id' ,$id)
         );
+        if(!$exec)  
+            return true;
+        else
+            return false;
     }
 
     private function deleteContact($id){
-        return $this->con->executeStatement($queryBuilder
+        $exec =  $this->con->executeStatement($queryBuilder
             ->delete('contact_details')
             ->where('contact_id',$id)
-        );        
+        );    
+        if(!$exec)  
+            return true;
+        else
+            return false;    
     }
 
 }
