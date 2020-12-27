@@ -2,7 +2,7 @@
 namespace Core;
 use Matr\Controller\Auth;
 use Matr\Controller\Contact;
-use Matr\Conroller\Member;
+use Matr\Controller\Member;
 class Routes extends Router{
     public static function setRoutes(){                             
         // set your routes here
