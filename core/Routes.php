@@ -11,6 +11,11 @@ class Routes extends Router{
         Router::get("logout",[Auth::class,"logout"]);
         Router::post("register",[Auth::class,"register"]);
 
+        // member routes
+        Router::get("member",[Member::class,"get"]);
+        Router::post("member",[Member::class,"add"]);
+        Router::patch("member",[Member::class,"edit"]);
+        Router::delete("member",[Member::class,"delete"]);
 
         // contact routes
         Router::get("contact",[Contact::class,"get"]);
