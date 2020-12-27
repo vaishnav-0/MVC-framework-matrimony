@@ -36,7 +36,8 @@ define("NAMESPACE_MAP",array(
     "Matr\\Model" => APP_PATH."Model",
     "Core" => CORE_PATH,
     "Matr\\Helper" => APP_PATH."Helper",
-    "Bulletproof" => DEP."samyo".DS."bulletproof".DS."src"
+    "Bulletproof" => DEP."samayo".DS."bulletproof".DS."src"
 ));
+
 
 ?>
