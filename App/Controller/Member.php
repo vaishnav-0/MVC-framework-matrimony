@@ -22,8 +22,9 @@ class Member extends BaseController{
     
     public function add(){
 
-        $result = $this->$memberModel      // join_date=&name=&dob=&caste_rel_id=&height=&physique=&gender=&occupation=&qualification=&photo=&complexion=
-            ->addMember($this->reqBody->join_date,
+        $result = $this->$memberModel
+            ->addMember(
+                        $this->reqBody->join_date,
                         $this->reqBody->name,
                         $this->reqBody->dob,
                         $this->reqBody->caste_rel_id,
@@ -50,4 +51,3 @@ class Member extends BaseController{
 }
 
 ?>
-
