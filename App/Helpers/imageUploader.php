@@ -11,7 +11,7 @@ class imageUploader{
         if($image["pictures"]){
             $upload = $image->upload(); 
             if($upload){
-                return $upload->getFullPath();
+                return $upload->Getname();
             }
             else{
                 return $image->getError(); 
