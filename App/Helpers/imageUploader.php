@@ -1,14 +1,17 @@
 <?php
 namespace Matr\Helper;
+use Bulletproof\Image;
+class imageUploader{
+    public function addImage($image){
 
-class upload{
-    public function addImage($img){
-        $image = new Bulletproof\Image($img);
-        $image->setLocation('./static');
+// import bulletproof here
+
+        $image = new Image($image);
+        $image->setLocation(UPLOADED_IMAGE_PATH);
         if($image["pictures"]){
             $upload = $image->upload(); 
             if($upload){
-                return $upload->getFullPath();
+                return $upload->Getname();
             }
             else{
                 return $image->getError(); 
