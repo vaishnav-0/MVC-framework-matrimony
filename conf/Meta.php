@@ -29,10 +29,13 @@ define("HELPER_PATH", MAIN_PATH."helpers".DS);
 
 define("UPLOAD_PATH", PUBLIC_PATH . "uploads" . DS); 
 
+define("UPLOADED_IMAGE_PATH", UPLOAD_PATH . "images" . DS); 
+
 define("NAMESPACE_MAP",array(
     "Matr\\Controller" => APP_PATH."Controller",
     "Matr\\Model" => APP_PATH."Model",
     "Core" => CORE_PATH,
+    "Matr\\Helper" => APP_PATH."Helper",
     "Bulletproof" => DEP."samyo".DS."bulletproof".DS."src"
 ));
 

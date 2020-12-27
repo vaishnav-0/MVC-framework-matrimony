@@ -1,6 +1,7 @@
 <?php
 namespace Matr\Controller;
 use Matr\Model\memberModel;
+use Matr\Helper\imageUploader;
 class Member extends BaseController{
     private $memberModel;
     public function __construct($a,$b){
@@ -21,10 +22,9 @@ class Member extends BaseController{
     }
     
     public function add(){
-
-        $result = $this->$memberModel
-            ->addMember(
-                        $this->reqBody->join_date,
+        $image = imageUploader\addImage($this->reqBody->photo);
+        $result = $this->$memberModel      // join_date=&name=&dob=&caste_rel_id=&height=&physique=&gender=&occupation=&qualification=&photo=&complexion=
+            ->addMember($this->reqBody->join_date,
                         $this->reqBody->name,
                         $this->reqBody->dob,
                         $this->reqBody->caste_rel_id,
@@ -33,7 +33,7 @@ class Member extends BaseController{
                         $this->reqBody->gender,
                         $this->reqBody->occupation,
                         $this->reqBody->qualification,
-                        $this->reqBody->photo,
+                        $image,
                         $this->reqBody->complexion
                     );
 

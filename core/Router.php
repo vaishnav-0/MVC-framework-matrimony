@@ -14,13 +14,13 @@ class Router
     protected static function get($pattern,array $handler) {
         self::$routes['GET'][$pattern] = $handler;
     }
-    protected static function post($pattern, callable $handler) {
+    protected static function post($pattern, array $handler) {
         self::$routes['POST'][$pattern] = $handler;
     }
-    protected static function patch($pattern, callable $handler) {
+    protected static function patch($pattern, array $handler) {
         self::$routes['PATCH'][$pattern] = $handler;
     }
-    protected static function delete($pattern, callable $handler) {
+    protected static function delete($pattern, array $handler) {
         self::$routes['DELETE'][$pattern] = $handler;
     }
     
