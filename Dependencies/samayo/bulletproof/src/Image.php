@@ -261,7 +261,7 @@ class Image implements \ArrayAccess
      */
     protected function getImageMime($tmp_name)
     {
-      $this->mime = @$this->acceptedMimes[exif_imagetype($tmp_name)];
+      $this->mime = @$this->acceptedMimes[\exif_imagetype($tmp_name)];
       if (!$this->mime) {
         return null;
       }
@@ -392,7 +392,6 @@ class Image implements \ArrayAccess
       }
 
       $this->location = $dir;
-
       return $this;
     }
 

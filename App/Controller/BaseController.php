@@ -14,7 +14,7 @@ abstract class BaseController{
         $this->reqBody = $this->request->body;
         $this->con = Connection::GetCon();
     }
-    protected function cntrlRespond($data, bool $pass){
+    protected function cntrlRespond($data, bool $pass=false){
         if ($pass) {
             $this->response->json((object) $data);
         } elseif ($data && !$pass) {
