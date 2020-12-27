@@ -17,7 +17,7 @@ class memberModel{
         )->fetchAllAssociative();  
     }
 
-    public function addMember($id,$join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$occupation,$qualification,$photo,$complexion){
+    public function addMember($join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$occupation,$qualification,$photo,$complexion){
         return $this->con->executeStatement($this->queryBuilder->insert('members')->values(
             array(
                 'join_date' => '?',	

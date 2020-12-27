@@ -52,4 +52,3 @@ class Member extends BaseController{
 }
 
 ?>
-
