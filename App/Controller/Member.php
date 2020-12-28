@@ -28,7 +28,7 @@ class Member extends BaseController{
     
     public function add(){
         $imageUploader = new imageUploader;
-        $image = $imageUploader->addImage($_FILES['photo']);
+        $image = $imageUploader->addImage($_FILES['photo'],$this->reqBody->name);
         $result = $this->memberModel     
             ->addMember($this->reqBody->join_date,
                         $this->reqBody->name,

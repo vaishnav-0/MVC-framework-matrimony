@@ -3,12 +3,12 @@ namespace Matr\Helper;
 
 class imageUploader
 {
-    public function addImage($image)
+    public function addImage($image,$name)
     {
         $image = new \Bulletproof\Image($image);
         $image->setLocation(UPLOADED_IMAGE_PATH);
-        $image->getName();              // bulletproof is strange
-        $image->getMime();
+        $image->setName(uniqid(strtoupper(substr($name,0,4))."_",true));              
+        $image->getMime();  // bulletproof is strange
         $image->getFullPath();
         
         $upload = $image->upload();
