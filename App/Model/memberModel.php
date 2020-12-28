@@ -17,6 +17,13 @@ class memberModel{
         )->fetchAllAssociative();  
     }
 
+    public function getAllMember($id){
+        return $this->con->executeQuery($this->queryBuilder
+        ->select('*')
+        ->from('members'),array($id)
+        )->fetchAllAssociative();  
+    }
+
     public function addMember($join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$occupation,$qualification,$photo,$complexion){
         return $this->con->executeStatement($this->queryBuilder->insert('members')->values(
             array(

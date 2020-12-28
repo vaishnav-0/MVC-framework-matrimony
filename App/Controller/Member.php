@@ -16,6 +16,11 @@ class Member extends BaseController{
         $this->cntrlRespond($result, true);
     }
 
+    public function getAll(){
+        $result = $this->memberModel->getAllMember();
+        $this->cntrlRespond($result, true);
+    }
+
     public function edit(){
         $result = $this->$memberModel->editMember();
         $this->cntrlRespond($result);

@@ -1,8 +1,8 @@
 <?php
 define("DB_CONF", array(
     'dbname' => 'matrimony',
-    'user' => 'vaichu',
-    'password' => 'mysmysmys',
+    'user' => 'root',
+    'password' => '',
     'host' => 'localhost',
     'driver' => 'mysqli'
 ));
