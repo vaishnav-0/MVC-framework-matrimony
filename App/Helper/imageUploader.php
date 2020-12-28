@@ -10,6 +10,7 @@ class imageUploader
         $image->getName();              // bulletproof is strange
         $image->getMime();
         $image->getFullPath();
+        
         $upload = $image->upload();
         if ($upload) {
             return $upload->getName().'.'.$image->getMime();

@@ -17,10 +17,9 @@ class memberModel{
         )->fetchAllAssociative();  
     }
 
-    public function getAllMember($id){
+    public function getAllMember(){
         return $this->con->executeQuery($this->queryBuilder
-        ->select('*')
-        ->from('members'),array($id)
+        ->select('*')->from('members')
         )->fetchAllAssociative();  
     }
 

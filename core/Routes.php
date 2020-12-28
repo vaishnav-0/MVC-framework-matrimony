@@ -14,6 +14,7 @@ class Routes extends Router{
 
         // member routes
         Router::get("member",[Member::class,"get"]);
+        Router::get("member/all",[Member::class,"getAll"]);
         Router::post("member",[Member::class,"add"]);
         Router::patch("member",[Member::class,"edit"]);
         Router::delete("member",[Member::class,"delete"]);
