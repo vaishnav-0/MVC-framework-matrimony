@@ -39,7 +39,7 @@ class addressModel{
             ->set('locality',$locality)
             ->set('pin',$pin)
             ->set('landmark',$landmark)
-            ->where('a_id' ,$id)
+            ->where('a_id' ,$a_id)
         );
 
     }

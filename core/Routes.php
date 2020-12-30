@@ -3,6 +3,8 @@ namespace Core;
 use Matr\Controller\Auth;
 use Matr\Controller\Contact;
 use Matr\Controller\Member;
+use Matr\Controller\Family;
+
 class Routes extends Router{
     public static function setRoutes(){                             
         // set your routes here
@@ -18,6 +20,12 @@ class Routes extends Router{
         Router::post("member",[Member::class,"add"]);
         Router::patch("member",[Member::class,"edit"]);
         Router::delete("member",[Member::class,"delete"]);
+
+        // family routes
+        Router::get("family",[Family::class,"get"]);
+        Router::post("family",[Family::class,"add"]);
+        Router::patch("family",[Family::class,"edit"]);
+        Router::delete("family",[Family::class,"delete"]);
 
         // contact routes
         Router::get("contact",[Contact::class,"get"]);
