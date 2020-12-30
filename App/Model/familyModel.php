@@ -1,4 +1,5 @@
 <?php
+use Doctrine\DBAL\Connection;
 namespace Matr\Model;
 class familyModel{
     public $con;
@@ -27,7 +28,7 @@ class familyModel{
                 'fOcc'	 => '?',
                 'mOcc' => '?'
             )
-        ), array($fName,$mName,$fCId,$mCId,$fOcc,$mOcc));
+        ), array($fName,$mName,$fCId,$mCId,$fOcc,$mOcc))->lastInsertId();
     }
 
     public function editFamily($id,$fName,$mName,$fCId,$mCId,$fOcc,$mOcc){
@@ -42,6 +43,14 @@ class familyModel{
             ->where('pId' ,$id)
         );
 
+    }
+
+    public function updateFamilyContact($id,$contact_id){
+        return $this->con->executeStatement($this->queryBuilder
+            ->update('family')
+            ->set('pId', $contact_id)
+            ->where('pId' ,$id)
+        );
     }
 
     private function deleteFamily($id){

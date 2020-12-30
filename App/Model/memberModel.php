@@ -38,7 +38,8 @@ class memberModel{
                 'photo'	 => '?',
                 'complexion'	 => '?',
             )
-        ), array($join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$occupation,$qualification,$photo,$complexion));
+        ), array($join_date,$name,$dob,$caste_rel_id,$height,$physique,$gender,$occupation,$qualification,$photo,$complexion))
+        ->lastInsertId();
     }
 
     public function editMember($id,$join_date,$name	,$dob,$caste_rel_id,$height,$physique,$gender,$family_id,$occupation,$qualification,$photo,$contact_id,$complexion){
@@ -52,14 +53,20 @@ class memberModel{
 
     }
 
-    public function updateMember($id,$family_id,$contact_id){
+    public function updateMemberContact($id,$contact_id){
         return $this->con->executeStatement($this->queryBuilder
             ->update('members')
-            ->set('family_id',$family_id )
             ->set('contact_id', $contact_id)
             ->where('id' ,$id)
         );
+    }
 
+    public function updateMemberFamily($id,$family_id){
+        return $this->con->executeStatement($this->queryBuilder
+            ->update('members')
+            ->set('family_id', $family_id)
+            ->where('id' ,$id)
+        );
     }
 
     private function deleteMember($id){

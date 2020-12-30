@@ -24,7 +24,7 @@ class contactModel{
                 'mail_id' => '?',
                 'landline' => '?'
             )
-        ), array($mob,$mail,$landline));
+        ), array($mob,$mail,$landline))->lastInsertId();
     }
 
     public function editContact($id,$mob,$mail,$landline){

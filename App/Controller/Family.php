@@ -1,6 +1,9 @@
 <?php
 namespace Matr\Controller;
 use Matr\Model\familyModel;
+use Matr\Model\contactModel;
+use Matr\Model\siblingModel;
+
 
 class Family extends BaseController{
     private $familyModel;
@@ -29,7 +32,7 @@ class Family extends BaseController{
     
     public function add(){
 
-        $result = $this->familyModel     
+        $famId = $this->familyModel     
             ->addFamily(
                         $this->reqBody->fName,
                         $this->reqBody->mName,
@@ -39,8 +42,26 @@ class Family extends BaseController{
                         $this->reqBody->mOcc
                     );
 
-        $this->cntrlRespond($result);
-
+        // can be simplified by calling contact controller here :|
+        $mconId = $this->contactModel     
+            ->addContact(
+                        $this->reqBody->mmobile,
+                        $this->reqBody->mmail,
+                        $this->reqBody->mlandline
+                    );
+        $fconId = $this->contactModel     
+            ->addContact(
+                        $this->reqBody->fmobile,
+                        $this->reqBody->fmail,
+                        $this->reqBody->flandline
+                    );
+        $res1 = $this->updateFamilyContact($famId,$mconId);
+        $res2 = $this->updateFamilyContact($famId,$fconId);
+        if(res1 && res2 == 1){
+            $this->cntrlRespond(true);
+        }
+        else
+            $this->cntrlRespond(false);
     }
 
     public function delete(){

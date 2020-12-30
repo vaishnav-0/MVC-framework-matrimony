@@ -1,6 +1,8 @@
 <?php
 namespace Matr\Controller;
 use Matr\Model\memberModel;
+use Matr\Model\contactModel;
+
 use Matr\Helper\imageUploader;
 class Member extends BaseController{
     private $memberModel;
@@ -29,7 +31,7 @@ class Member extends BaseController{
     public function add(){
         $imageUploader = new imageUploader;
         $image = $imageUploader->addImage($_FILES['photo'],$this->reqBody->name);
-        $result = $this->memberModel     
+        $memId = $this->memberModel     
             ->addMember($this->reqBody->join_date,
                         $this->reqBody->name,
                         $this->reqBody->dob,
@@ -42,7 +44,13 @@ class Member extends BaseController{
                         $image,
                         $this->reqBody->complexion
                     );
-
+        $conId = $this->contactModel     
+            ->addContact(
+                        $this->reqBody->mobile,
+                        $this->reqBody->mail,
+                        $this->reqBody->landline
+                    );
+        $result = $this->updateMemberContact($memId,$conId);
         $this->cntrlRespond($result);
 
     }
