@@ -24,7 +24,7 @@ class Dispacher{
         $this->call($handler);
     }
 
-    public function call(array $handler){                 // Second param bad idea?
+    public function call(array $handler){                
         $obj = new $handler[0]($this->request,$this->response);
         call_user_func(array($obj, $handler[1]));
     }

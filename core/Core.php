@@ -6,6 +6,7 @@ class main
     private static function init()   // sets the constansts(config)
     {
         include_once("../conf/Meta.php");
+        include_once("../conf/Routes.php");
         session_start();
     }
 
@@ -19,8 +20,7 @@ class main
     private static function Route()
     {
         $req = new Request;
-        Routes::setRoutes();
-        $router = new Router;
+        $router = \Conf\Routes::setRoutes();
         $response = new Response;
         $disp = new Dispacher($router,$req,$response);
         $disp->handle();

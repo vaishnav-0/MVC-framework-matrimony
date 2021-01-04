@@ -3,7 +3,7 @@ namespace Core;
 
 class Router
 {
-    protected static $routes = [
+    protected $routes = [
         'GET' => [],
         'POST' => [],
         'DELETE' => [],
@@ -11,28 +11,27 @@ class Router
     ];
     
     
-    protected static function get($pattern,array $handler) {
-        self::$routes['GET'][$pattern] = $handler;
+    public function get($pattern,array $handler) {
+        $this->routes['GET'][$pattern] = $handler;
     }
-    protected static function post($pattern, array $handler) {
-        self::$routes['POST'][$pattern] = $handler;
+    public function post($pattern, array $handler) {
+        $this->routes['POST'][$pattern] = $handler;
     }
-    protected static function patch($pattern, array $handler) {
-        self::$routes['PATCH'][$pattern] = $handler;
+    public function patch($pattern, array $handler) {
+        $this->routes['PATCH'][$pattern] = $handler;
     }
-    protected static function delete($pattern, array $handler) {
-        self::$routes['DELETE'][$pattern] = $handler;
+    public function delete($pattern, array $handler) {
+        $this->routes['DELETE'][$pattern] = $handler;
     }
-    
     public function route(Request $request) {
         $method = $request->getMethod();
-        if (!isset(self::$routes[$method])) {
+        if (!isset($this->routes[$method])) {
             return false;
         }
 
 
         $path = $request->getPath();
-        foreach (self::$routes[$method] as $pattern => $handler) {
+        foreach ($this->routes[$method] as $pattern => $handler) {
             if ($pattern === $path) {
                 return $handler;
             }
