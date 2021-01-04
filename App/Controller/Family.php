@@ -14,7 +14,7 @@ class Family extends BaseController{
 
     public function get(){
         $result = $this->familyModel->getFamily($this->reqBody->id);
-        $this->cntrlRespond($result, true);
+        return $this->cntrlRespond($result, true);
     }
 
 
@@ -27,7 +27,7 @@ class Family extends BaseController{
                         $this->reqBody->fOcc,
                         $this->reqBody->mOcc
         );
-        $this->cntrlRespond($result);
+        return $this->cntrlRespond($result);
     }
     
     public function add(){
@@ -58,15 +58,15 @@ class Family extends BaseController{
         $res1 = $this->updateFamilyContact($famId,$mconId);
         $res2 = $this->updateFamilyContact($famId,$fconId);
         if(res1 && res2 == 1){
-            $this->cntrlRespond(true);
+            return $this->cntrlRespond(true);
         }
         else
-            $this->cntrlRespond(false);
+            return $this->cntrlRespond(false);
     }
 
     public function delete(){
         $result = $this->$familyModel->deleteFamily($this->$reqbody->id);
-        $this->cntrlRespond($result);
+        return $this->cntrlRespond($result);
 
 
     }

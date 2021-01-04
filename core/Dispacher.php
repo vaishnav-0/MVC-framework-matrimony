@@ -12,21 +12,18 @@ class Dispacher{
 
     }
 
-    public function handle() {
+    public function handle():Response {
 
         $handler = $this->router->route($this->request);
         if (!$handler) {
-            $this->response->setStatusCode(404);
-            return;
+            return $this->response->withStatus(404);
         }
-
-
-        $this->call($handler);
+        return $this->call($handler);
     }
 
     public function call(array $handler){                
         $obj = new $handler[0]($this->request,$this->response);
-        call_user_func(array($obj, $handler[1]));
+        return call_user_func(array($obj, $handler[1]));
     }
 }
 

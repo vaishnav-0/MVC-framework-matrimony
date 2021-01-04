@@ -15,17 +15,17 @@ class Member extends BaseController{
 
     public function get(){
         $result = $this->memberModel->getMember($this->reqBody->id);
-        $this->cntrlRespond($result, true);
+        return $this->cntrlRespond($result, true);
     }
 
     public function getAll(){
         $result = $this->memberModel->getAllMember();
-        $this->cntrlRespond($result, true);
+        return $this->cntrlRespond($result, true);
     }
 
     public function edit(){
         $result = $this->$memberModel->editMember();
-        $this->cntrlRespond($result);
+        return $this->cntrlRespond($result);
     }
     
     public function add(){
@@ -51,13 +51,13 @@ class Member extends BaseController{
                         $this->reqBody->landline
                     );
         $result = $this->updateMemberContact($memId,$conId);
-        $this->cntrlRespond($result);
+        return $this->cntrlRespond($result);
 
     }
 
     public function delete(){
         $result = $this->$memberModel->deleteMember($this->$reqbody->id);
-        $this->cntrlRespond($result);
+        return $this->cntrlRespond($result);
 
 
     }

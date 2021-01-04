@@ -4,7 +4,7 @@ namespace Core;
 
 use InvalidArgumentException;
 use Closure;
-use Optimus\Onion\LayerInterface;
+use LayerInterface;
 
 class Middleware {
 

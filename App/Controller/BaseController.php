@@ -16,11 +16,11 @@ abstract class BaseController{
     }
     protected function cntrlRespond($data, bool $pass=false){
         if ($pass) {
-            $this->response->json((object) $data);
+            return $this->response->json((object) $data);
         } elseif ($data && !$pass) {
-            $this->response->json((object)["status"=>"success"]);
+            return $this->response->json((object)["status"=>"success"]);
         } else {
-            $this->response->json((object)["status"=>"failed"]);
+            return $this->response->json((object)["status"=>"failed"]);
         }
     }
 }

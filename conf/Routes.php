@@ -5,8 +5,7 @@ use Matr\Controller\Auth;
 use Matr\Controller\Contact;
 use Matr\Controller\Member;
 class Routes {
-    public static function setRoutes(){   
-        $router = new Router;                         
+    public static function setRoutes(Router $router){   
         // set your routes here
 
         //authentication routes
