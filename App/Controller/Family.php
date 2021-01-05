@@ -59,7 +59,7 @@ class Family extends BaseController{
                         $this->reqBody->fmail,
                         $this->reqBody->flandline
                     );
-        $res = $this->updateFamilyContact($famId,$fconId,$mconId);
+        $res = $this->familyModel->updateFamilyContact($famId,$fconId,$mconId);
         if(res == 1){
             return $this->cntrlRespond(true);
         }
