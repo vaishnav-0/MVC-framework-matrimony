@@ -19,13 +19,15 @@ class Family extends BaseController{
 
 
     public function edit(){
-        $result = $this->$familyModel->editFamily(
-                        $this->reqBody->fName,
-                        $this->reqBody->mName,
-                        $this->reqBody->fCId,
-                        $this->reqBody->mCId,
-                        $this->reqBody->fOcc,
-                        $this->reqBody->mOcc
+        $result = $this->$familyModel->editFamily(array
+                        ("fname"=>$this->reqBody->fName,
+                        "mName"=>$this->reqBody->mName,
+                        "fCId"=>$this->reqBody->fCId,
+                        "mCId"=>$this->reqBody->mCId,
+                        "fOcc"=>$this->reqBody->fOcc,
+                        "mOcc"=>$this->reqBody->mOcc,
+                        "pId"=>$this->reqBody->PId
+                        )
         );
         return $this->cntrlRespond($result);
     }
