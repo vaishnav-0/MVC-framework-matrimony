@@ -31,7 +31,7 @@ class familyModel{
         ), array($fName,$mName,$fCId,$mCId,$fOcc,$mOcc))->lastInsertId();
     }
 
-    public function editFamily(array $changes){
+    public function editFamily($id,array $changes){
         $changes = array_filter($changes,function($value){
             if($value)
                 return true;
@@ -40,7 +40,7 @@ class familyModel{
         $query = $this->queryBuilder->update('family');
         foreach($changes as $key=>$value)
             $query->set($key,$value);
-        return $this->con->executeStatement($query);
+        return $this->con->executeStatement($query->where('pId' ,$id));
 
     }
 

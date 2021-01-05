@@ -3,7 +3,7 @@ namespace Matr\Controller;
 use Matr\Model\familyModel;
 use Matr\Model\contactModel;
 use Matr\Model\siblingModel;
-
+use Core\utils\functions;
 
 class Family extends BaseController{
     private $familyModel;
@@ -19,22 +19,20 @@ class Family extends BaseController{
 
 
     public function edit(){
-        $result = $this->$familyModel->editFamily(array
+        $result = $this->$familyModel->editFamily($this->reqBody->PId,
+                        array
                         ("fname"=>$this->reqBody->fName,
                         "mName"=>$this->reqBody->mName,
                         "fCId"=>$this->reqBody->fCId,
                         "mCId"=>$this->reqBody->mCId,
                         "fOcc"=>$this->reqBody->fOcc,
                         "mOcc"=>$this->reqBody->mOcc,
-                        "pId"=>$this->reqBody->PId
                         )
         );
         return $this->cntrlRespond($result);
     }
     
     public function add(){
-
-        $famId = $this->familyModel     
             ->addFamily(
                         $this->reqBody->fName,
                         $this->reqBody->mName,
