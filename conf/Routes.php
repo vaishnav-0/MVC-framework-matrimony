@@ -5,6 +5,8 @@ use Core\Routing\Router;
 use Matr\Controller\Auth;
 use Matr\Controller\Contact;
 use Matr\Controller\Member;
+use Matr\Controller\Family;
+
 use Matr\Middleware\middlewareTest;
 
 class Routes
@@ -26,6 +28,7 @@ class Routes
             $group->patch("member", [Member::class,"edit"]);
             $group->delete("member", [Member::class,"delete"]);
         });
+
         // family routes
         $router->get("family", [Family::class,"get"]);
         $router->post("family", [Family::class,"add"]);
