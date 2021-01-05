@@ -44,10 +44,12 @@ class familyModel{
 
     }
 
-    public function updateFamilyContact($id,$contact_id){
+    public function updateFamilyContact($id,$contact_id,$mcontact_id){
         return $this->con->executeStatement($this->queryBuilder
-            ->update('family')
-            ->set('pId', $contact_id)
+            ->update('members')
+            ->set('fCId', $contact_id)
+            ->set('mCId', $mcontact_id)
+
             ->where('pId' ,$id)
         );
     }

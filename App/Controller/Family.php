@@ -10,13 +10,17 @@ class Family extends BaseController{
     public function __construct($a,$b){
         parent::__construct($a,$b);
         $this->familyModel = new familyModel($this->con);
+
+        $this->contactModel = new contactModel($this->con);
+        $this->siblingModel = new siblingModel($this->con);
+
+
     }
 
     public function get(){
         $result = $this->familyModel->getFamily($this->reqBody->id);
         return $this->cntrlRespond($result, true);
     }
-
 
     public function edit(){
         $result = $this->$familyModel->editFamily($this->reqBody->PId,
@@ -55,9 +59,8 @@ class Family extends BaseController{
                         $this->reqBody->fmail,
                         $this->reqBody->flandline
                     );
-        $res1 = $this->updateFamilyContact($famId,$mconId);
-        $res2 = $this->updateFamilyContact($famId,$fconId);
-        if(res1 && res2 == 1){
+        $res = $this->familyModel->updateFamilyContact($famId,$fconId,$mconId);
+        if(res == 1){
             return $this->cntrlRespond(true);
         }
         else

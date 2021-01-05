@@ -27,6 +27,7 @@ class Routes
             $group->patch("", [Member::class,"edit"]);
             $group->delete("", [Member::class,"delete"]);
         });
+
         // family routes
         $router->get("family", [Family::class,"get"]);
         $router->post("family", [Family::class,"add"]);
