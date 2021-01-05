@@ -32,8 +32,7 @@ define("UPLOAD_PATH", PUBLIC_PATH . "uploads" . DS);
 define("UPLOADED_IMAGE_PATH", UPLOAD_PATH . "images" . DS); 
 
 define("NAMESPACE_MAP",array(
-    "Matr\\Controller" => APP_PATH."Controller",
-    "Matr\\Model" => APP_PATH."Model",
+    "Matr" => APP_PATH,
     "Core" => CORE_PATH,
     "Psr" => DEP."Psr",
     "Matr\\Helper" => APP_PATH."Helper",

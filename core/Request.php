@@ -15,14 +15,7 @@ class Request
     
     public function strip()
     {   
-        if (!function_exists('array_key_first')) { // polyfill for array_key_first
-            function array_key_first(array $arr) {
-                foreach($arr as $key => $unused) {
-                    return $key;
-                }
-                return NULL;
-            }
-        }
+        
         $ar = explode('/', trim($this->url,'/'));
         $ar_pos = array_search("matrimony", $ar) + 1;
         $ar_get_pos = array_key_first(preg_grep('/^\?/',$ar));

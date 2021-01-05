@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use Closure;
 use LayerInterface;
 
-class Middleware {
+class Onion {
 
     private $layers;
 
@@ -26,7 +26,7 @@ class Middleware {
             $layers = $layers->toArray();
         }
 
-        if ($layers instanceof LayerInterface) {
+        if ($layers instanceof MiddleLayerInterface) {
             $layers = [$layers];
         }
 
@@ -44,7 +44,7 @@ class Middleware {
      * @param  Closure $core
      * @return mixed         
      */
-    public function peel($object, Closure $core)
+    public function peel(Request $req,Response $res, Closure $core)
     {
         $coreFunction = $this->createCoreFunction($core);
 
@@ -63,7 +63,7 @@ class Middleware {
 
         // We now have the complete onion and can start passing the object
         // down through the layers.
-        return $completeOnion($object);
+        return $completeOnion($req, $res);
     }
 
     /**
@@ -83,8 +83,8 @@ class Middleware {
      */
     private function createCoreFunction(Closure $core)
     {
-        return function($object) use($core) {
-            return $core($object);
+        return function($req, $res) use($core) {
+            return $core($req, $res);
         };
     }
 
@@ -97,8 +97,8 @@ class Middleware {
      */
     private function createLayer($nextLayer, $layer)
     {
-        return function($object) use($nextLayer, $layer){
-            return $layer->peel($object, $nextLayer);
+        return function($req, $res) use($nextLayer, $layer){
+            return $layer->handle($req, $res, $nextLayer);
         };
     }
 

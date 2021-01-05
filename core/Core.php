@@ -1,11 +1,15 @@
 <?php
 namespace Core;
+
+use Core\Routing\Router;
+
 include_once(__DIR__."/Autoloader.php");
 class main
 {
     private static function init()   // sets the constansts(config)
     {
         include_once("../conf/Meta.php");
+        include_once("Polyfills.php");
         include_once("../conf/Routes.php");
         session_start();
     }
@@ -21,18 +25,17 @@ class main
     {
         $req = new Request;
         $router = \Conf\Routes::setRoutes(new Router);
-        $response = new Response;
-        $disp = new Dispacher($router,$req,$response);
-        return $disp->handle();
-        $response->respond();
+        return $router->match($req);
     }
-    private static function respond(Response $res){
-        header($res->getProtocolVersion.' '.$res->getStatusCode.' '.$res->getReasonPhrase);
-        foreach($res->getHeaders() as $feild=>$value){
-            header($feild.':'.implode(',',$value));
+    private static function respond(Response $res)
+    {
+        header($res->getProtocolVersion().' '.$res->getStatusCode().' '.$res->getReasonPhrase());
+        foreach ($res->getHeaders() as $feild=>$value) {
+            header($feild.':'.implode(',', $value));
         }
-        if($body = $res->getBody())
+        if ($body = $res->getBody()) {
             echo $body;
+        }
     }
     public function start()
     {

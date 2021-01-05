@@ -1,10 +1,11 @@
 <?php
 namespace Conf;
 
-use Core\Router;
+use Core\Routing\Router;
 use Matr\Controller\Auth;
 use Matr\Controller\Contact;
 use Matr\Controller\Member;
+use Matr\Middleware\middlewareTest;
 
 class Routes
 {
@@ -18,12 +19,13 @@ class Routes
         $router->post("register", [Auth::class,"register"]);
 
         // member routes
-        $router->get("member", [Member::class,"get"]);
-        $router->get("member/all", [Member::class,"getAll"]);
-        $router->post("member", [Member::class,"add"]);
-        $router->patch("member", [Member::class,"edit"]);
-        $router->delete("member", [Member::class,"delete"]);
-        
+        $router->group(['middleware' => new middlewareTest ], function ($group) {
+            $group->get("member", [Member::class,"get"]);
+            $group->get("member/all", [Member::class,"getAll"]);
+            $group->post("member", [Member::class,"add"]);
+            $group->patch("member", [Member::class,"edit"]);
+            $group->delete("member", [Member::class,"delete"]);
+        });
         // family routes
         $router->get("family", [Family::class,"get"]);
         $router->post("family", [Family::class,"add"]);
@@ -35,7 +37,6 @@ class Routes
         $router->post("contact", [Contact::class,"add"]);
         $router->patch("contact", [Contact::class,"edit"]);
         $router->delete("contact", [Contact::class,"delete"]);
-
         return $router;
     }
 }
