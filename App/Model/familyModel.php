@@ -31,17 +31,16 @@ class familyModel{
         ), array($fName,$mName,$fCId,$mCId,$fOcc,$mOcc))->lastInsertId();
     }
 
-    public function editFamily($id,$fName,$mName,$fCId,$mCId,$fOcc,$mOcc){
-        return $this->con->executeStatement($this->queryBuilder
-            ->update('family')
-            ->set('fName',$fName )
-            ->set('mName', $mName)
-            ->set('fCId',$fCId)
-            ->set('mCId',$mCId)
-            ->set('fOcc',$fOcc)
-            ->set('mOcc',$mOcc)
-            ->where('pId' ,$id)
-        );
+    public function editFamily(array $changes){
+        $changes = array_filter($changes,function($value){
+            if($value)
+                return true;
+            return false;
+        });
+        $query = $this->queryBuilder->update('family');
+        foreach($changes as $key=>$value)
+            $query->set($key,$value);
+        return $this->con->executeStatement($query);
 
     }
 

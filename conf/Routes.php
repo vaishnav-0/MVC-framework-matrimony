@@ -6,7 +6,6 @@ use Matr\Controller\Auth;
 use Matr\Controller\Contact;
 use Matr\Controller\Member;
 use Matr\Controller\Family;
-
 use Matr\Middleware\middlewareTest;
 
 class Routes
@@ -21,12 +20,12 @@ class Routes
         $router->post("register", [Auth::class,"register"]);
 
         // member routes
-        $router->group(['middleware' => new middlewareTest ], function ($group) {
-            $group->get("member", [Member::class,"get"]);
-            $group->get("member/all", [Member::class,"getAll"]);
-            $group->post("member", [Member::class,"add"]);
-            $group->patch("member", [Member::class,"edit"]);
-            $group->delete("member", [Member::class,"delete"]);
+        $router->group(['prefix'=>'member'], function ($group) {
+            $group->get("", [Member::class,"get"]);
+            $group->get("all", [Member::class,"getAll"]);
+            $group->post("", [Member::class,"add"]);
+            $group->patch("", [Member::class,"edit"]);
+            $group->delete("", [Member::class,"delete"]);
         });
 
         // family routes
