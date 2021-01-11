@@ -8,13 +8,13 @@ class HttpClient {
     }
 
     request() {
-        const response = new Object();
+        var response = new Object();
         if (window.fetch) {
-            response = new Fetch(this.baseUrl = baseUrl, this.path = path, this.method = method, this.headers = headers, this.data = data);
+            response = new Fetch(this.baseUrl, this.path, this.method, this.headers, this.data);
         } else {
             response = new XHR();
         }
-        return JSON.parse(response);
+        return response;
     }
 }
 
@@ -23,27 +23,16 @@ class Fetch extends HttpClient {
         super(baseUrl, path, method, headers, data);
         this.Init = {
             method: this.method,
-            headers: this.headers,
-            data: this.data
         };
         this.url = new URL(this.path, this.baseUrl);
         this.Request = new Request(this.url, this.Init);
-        this.init(this.Request)
-            .then(data => {
-                if (!data.ok) {
-                    throw new Error('network issue');
-                }
-                return data;
-            })
-            .catch(error => {
-                return `error ${error}`;
-            });
+
     }
 
-    async init(request) {
+    async init() {
         let abort = new AbortController();
         let signal = abort.signal;
-        const response = await fetch(request, { signal });
+        const response = await fetch(this.Request);
         return response;
     }
 }

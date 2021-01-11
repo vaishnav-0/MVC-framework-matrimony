@@ -52,7 +52,24 @@
     <script src="assets/js/httpClient.js"></script>
     <script>
         const a = new HttpClient('https://jsonplaceholder.typicode.com', '/todos/1', 'GET', '', '');
-        console.log(a.request())
+        var req = a.request();
+        console.log(req.Request);
+        res = req.init()
+            .then(data => {
+                if (!data.ok) {
+                    throw new Error('network issue');
+                }
+                return data;
+            })
+            .catch(error => {
+                return `error ${error}`;
+            });
+        const r = () => {
+            res.then((a) => {
+                console.log(a);
+            });
+        };
+        r();
     </script>
 </body>
 
