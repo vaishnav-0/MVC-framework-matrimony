@@ -36,7 +36,8 @@ define("NAMESPACE_MAP",array(
     "Core" => CORE_PATH,
     "Psr" => DEP."Psr",
     "Matr\\Helper" => APP_PATH."Helper",
-    "Bulletproof" => DEP."samayo".DS."bulletproof".DS."src"
+    "Bulletproof" => DEP."samayo".DS."bulletproof".DS."src",
+    "Notihnio" => DEP."php-request-parser".DS."src"
 ));
 
 

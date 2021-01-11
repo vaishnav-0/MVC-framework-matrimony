@@ -1,12 +1,10 @@
 <?php
 namespace Matr\Model;
-class siblingModel{
-    public $con;
-    public $queryBuilder;
-    function __construct($conn)
+class siblingModel extends BaseModel{ 
+    function __construct()
     {
-        $this->con = $conn;
-        $this->queryBuilder = $conn->createQueryBuilder();
+        parent::__construct('siblings');
+
     }
     
     public function getSibling($id){

@@ -1,10 +1,14 @@
 <?php
-class userModel{
-    public $con;
-    function __construct($conn){
-        $this->con = $conn;
+namespace Matr\Model;
+
+class userModel extends BaseModel
+{
+    public function __construct()
+    {
+        parent::__construct('users');
     }
-    public static function init(){
+    public static function init()
+    {
         $schema = new \Doctrine\DBAL\Schema\Schema();
 
         $userTable = $schema->createTable("users");
@@ -15,13 +19,13 @@ class userModel{
         $userTable->setPrimaryKey(array("userId"));
     }
 
-    public function login($username,$password){
-        return $this->con->executeQuery('SELECT * FROM users WHERE username = ? AND password = ? ',array($username,$password))->rowCount();
+    public function login($username, $password)
+    {
+        return $this->get(['username' => $username, 'password' => $password])->rowCount();
     }
 
-    public function register($username,$password,$role){
-        return $this->con->executeStatement('INSERT INTO users (username, password, roleId) VALUES (?,?,?)', array($username,$password,$role));
+    public function register($username, $password, $role)
+    {
+        return $this->add(['username' => $username, 'password' => $password, 'roleId' => $role]);
     }
 }
-
-?>

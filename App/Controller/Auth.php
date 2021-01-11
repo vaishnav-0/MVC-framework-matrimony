@@ -8,36 +8,32 @@ class Auth extends BaseController{
     
     public function __construct($a,$b){
         parent::__construct($a,$b);
+        $this->userModel = new userModel();
+
     }
     public function login(){
-        $conn = Connection::GetCon();
-        $reqbody = $req->body;
-        $loginObj = new userModel($conn);
-        $login = $loginObj->login($reqbody->username,$reqbody->password);
-        if($login == 1){
-            session_start();
-            $res->json((object)["status"=>"Success"]);
+        $login = $this->userModel->login($this->reqBody->username,$this->reqBody->password);
+        if($login === 1){
+            $_SESSION['Auth'] = true;
+            return $this->response->json(['status' => 'Success']);
         }
         else {
-            $res->json((object)["status"=>"Failed"]);
+            return $this->response->json(['status' => 'Failed']);
         }
     }
 
-    public function logout(Request $req, Response $res){
+    public function logout(){
         session_unset();
-        session_destroy();
-        return;
+        return $this->response->json(['status' => 'Success']);
     }
-    public function register(Request $req, Response $res){
-        $conn = Connection::GetCon();
-        $reqbody = $req->body;
+    public function register(){
         $regObj = new userModel($conn);
-        $register = $regObj->register($reqbody->username,$reqbody->password,NULL);
+        $register = $regObj->register($this->reqBody->username,$this->reqBody->password,'1');
         if($register){
-            $res->json((object)["messages"=>"User Added"]);
+            return $this->response->json((object)["status" => "Success","messages"=>"User Added"]);
         }
         else {
-            $res->json((object)["messages"=>"Failed"]);
+            return $this->response->json((object)["status" => "Failed","messages"=>"Failed"]);
         }
     }
 

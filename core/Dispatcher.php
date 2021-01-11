@@ -9,9 +9,9 @@ class Dispatcher{
         $this->middlewares = $middlewares;
     }
 
-    public function dispatch():Response{
+    public function dispatch(Request $request):Response{
         $onion = new Onion($this->middlewares);
-        return $onion->peel(new Request,new Response,$this->core);
+        return $onion->peel($request,new Response,$this->core);
     }
 }
 

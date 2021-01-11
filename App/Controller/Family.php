@@ -1,79 +1,85 @@
 <?php
 namespace Matr\Controller;
+
 use Matr\Model\familyModel;
 use Matr\Model\contactModel;
 use Matr\Model\siblingModel;
-use Core\utils\functions;
 
-class Family extends BaseController{
+class Family extends BaseController
+{
     private $familyModel;
-    public function __construct($a,$b){
-        parent::__construct($a,$b);
-        $this->familyModel = new familyModel($this->con);
-
-        $this->contactModel = new contactModel($this->con);
-        $this->siblingModel = new siblingModel($this->con);
-
-
+    private $contactModel;
+    private $siblingModel;
+    public function __construct($a, $b)
+    {
+        parent::__construct($a, $b);
+        $this->familyModel = new familyModel();
+        $this->contactModel = new contactModel();
     }
 
-    public function get(){
+    public function get()
+    {
         $result = $this->familyModel->getFamily($this->reqBody->id);
-        return $this->cntrlRespond($result, true);
+        if (!$result) {
+            return $this->cntrlRespond(false);
+        }
+        return $this->cntrlRespond(['data' => $result]);
     }
 
-    public function edit(){
-        $result = $this->$familyModel->editFamily($this->reqBody->PId,
-                        array
-                        ("fname"=>$this->reqBody->fName,
+    public function edit()
+    {
+        $result = $this->familyModel->editFamily(
+            $this->reqBody->PId,
+            array("fName"=>$this->reqBody->fName,
                         "mName"=>$this->reqBody->mName,
-                        "fCId"=>$this->reqBody->fCId,
-                        "mCId"=>$this->reqBody->mCId,
                         "fOcc"=>$this->reqBody->fOcc,
-                        "mOcc"=>$this->reqBody->mOcc,
-                        )
+                        "mOcc"=>$this->reqBody->mOcc
+                )
         );
-        return $this->cntrlRespond($result);
+        if (!$result) {
+            return $this->cntrlRespond(false);
+        }
+    
+        return $this->cntrlRespond(['message' => 'Family updated']);
     }
     
-    public function add(){
-            ->addFamily(
-                        $this->reqBody->fName,
-                        $this->reqBody->mName,
-                        $this->reqBody->fCId,
-                        $this->reqBody->mCId,
-                        $this->reqBody->fOcc,
-                        $this->reqBody->mOcc
-                    );
-
-        // can be simplified by calling contact controller here :|
-        $mconId = $this->contactModel     
-            ->addContact(
-                        $this->reqBody->mmobile,
-                        $this->reqBody->mmail,
-                        $this->reqBody->mlandline
-                    );
-        $fconId = $this->contactModel     
-            ->addContact(
-                        $this->reqBody->fmobile,
-                        $this->reqBody->fmail,
-                        $this->reqBody->flandline
-                    );
-        $res = $this->familyModel->updateFamilyContact($famId,$fconId,$mconId);
-        if(res == 1){
-            return $this->cntrlRespond(true);
-        }
-        else
+    public function add()
+    {
+        $famId =  $this->familyModel->addFamily(
+            array("fname"=>$this->reqBody->fName,
+            "mName"=>$this->reqBody->mName,
+            "fCId"=>$fconId,
+            "mCId"=>$mconId,
+            "fOcc"=>$this->reqBody->fOcc,
+            "mOcc"=>$this->reqBody->mOcc
+            )
+        );
+        if (!$famId) {
             return $this->cntrlRespond(false);
+        }
+        // by calling controller
+        $mconId = $this->callController('Contact', 'add', array(
+              "mobile" => $this->reqBody->mmobile,
+              "mail" =>$this->reqBody->mmail,
+              "landline" =>$this->reqBody->mlandline
+          ))->data->id;
+        $fconId = $this->callController('Contact', 'add', array(
+              "mobile" => $this->reqBody->fmobile,
+              "mail" =>$this->reqBody->fmail,
+              "landline" =>$this->reqBody->flandline
+          ))->data->id;
+        $res = $this->familyModel->edit($famId, array('fCId' => $fconId, 'mCId' => $mconId));
+        return $this->cntrlRespond(['message' => 'Family added',
+                                    'data' => ['id' => $famId]]);
     }
 
-    public function delete(){
-        $result = $this->$familyModel->deleteFamily($this->$reqbody->id);
-        return $this->cntrlRespond($result);
-
-
+    public function delete()
+    {
+        $result = $this->familyModel->deleteFamily($this->reqBody->id);
+        if (!$result) {
+            return $this->cntrlRespond(false);
+        }
+        
+        return $this->cntrlRespond(['message' => 'Family deleted']);
     }
-
 }
-
-?>

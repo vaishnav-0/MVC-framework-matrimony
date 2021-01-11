@@ -1,50 +1,37 @@
 <?php
 namespace Matr\Model;
-class contactModel{
-    public $con;
-    public $queryBuilder;
-    function __construct($conn)
+
+class contactModel extends BaseModel
+{
+    public function __construct()
     {
-        $this->con = $conn;
-        $this->queryBuilder = $conn->createQueryBuilder();
+        parent::__construct('contact_details');
     }
     
-    public function getContact($id){
-        return $this->con->executeQuery($this->queryBuilder
-        ->select('*')
-        ->from('contact_details')
-        ->where('contact_id = ?'),array($id)
-        )->fetchAllAssociative();  
-    }
-
-    public function addContact($mob,$mail,$landline){
-        return $this->con->executeStatement($this->queryBuilder->insert('contact_details')->values(
-            array(
-                'mobile_no' => '?',
-                'mail_id' => '?',
-                'landline' => '?'
-            )
-        ), array($mob,$mail,$landline))->lastInsertId();
-    }
-
-    public function editContact($id,$mob,$mail,$landline){
-        return $this->con->executeStatement($this->queryBuilder
-            ->update('contact_details')
-            ->set('mobile_no',$mob )
-            ->set('mail_id', $mail)
-            ->set('landline',$landline)
-            ->where('contact_id' ,$id)
-        );
+    public function getContact($id)
+    {
+        return $this->get($id)?$this->get($id)->fetchAll():false;
 
     }
 
-    private function deleteContact($id){
-        return $this->con->executeStatement($this->queryBuilder
-            ->delete('contact_details')
-            ->where('contact_id = ?'),array($id)
-        );      
+    public function addContact(array $data)
+    {
+        if(!$data['mobile_no']){
+            return false;
+        }
+        return $this->add($data);
+
     }
 
+    public function editContact($id,array $changes)
+    {
+        return $this->edit($id,$changes);
+
+    }
+
+    public function deleteContact($id)
+    {
+        return $this->delete($id);
+
+    }
 }
-
-?>

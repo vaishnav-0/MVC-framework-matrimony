@@ -10,6 +10,7 @@ class main
     {
         include_once("../conf/Meta.php");
         include_once("Polyfills.php");
+        include_once("utils/functions.php");
         include_once("../conf/Routes.php");
         session_start();
     }
@@ -21,10 +22,10 @@ class main
         $loader->loadDep();         // requre composer's index.php which autoloads dependencies
     }
 
-    private static function Route()
+    private static function Route($router)
     {
         $req = new Request;
-        $router = \Conf\Routes::setRoutes(new Router);
+        $req = $req->withUrl(Request::getReqUrl())->withMethod(Request::getReqMethod())->withPath(Request::getReqPath())->withParsedBody(Request::getReqBody());
         return $router->match($req);
     }
     private static function respond(Response $res)
@@ -41,7 +42,8 @@ class main
     {
         self::init();
         self::autoload();   // can use autoloading after this
-        $resp = self::Route();
+        $router = \Conf\Routes::setRoutes(new Router);
+        $resp = self::Route($router);
         self::respond($resp);
     }
 }

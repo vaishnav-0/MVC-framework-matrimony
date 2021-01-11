@@ -15,9 +15,9 @@ class Response
     public function getProtocolVersion(){
         return $_SERVER["SERVER_PROTOCOL"];
     }
-    public function json(object $obj)
+    public function json($obj)
     {
-        $res = $this->withBody(json_encode($obj));
+        $res = $this->withBody(json_encode($obj, JSON_FORCE_OBJECT));
         $res->setHeader('Content-Type',['application/json']);
         return $res;
     }

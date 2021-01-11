@@ -1,15 +1,31 @@
 <?php
 namespace Matr\Model;
-class addressModel{
+class addressModel extends BaseModel{
     public $con;
     public $queryBuilder;
-    function __construct($conn)
+    function __construct()
     {
-        $this->con = $conn;
-        $this->queryBuilder = $conn->createQueryBuilder();
+        parent::construct('address');
     }
-    
     public function getAddress($id){
+        return $this->get($id)?$this->get($id)->fetchAll():false;
+    }
+
+    public function addAddress(array $data){
+        return $this->add($data);
+
+    }
+
+    public function editAddress($id, array $changes){
+        return $this->edit($id,$changes);
+
+
+    }
+
+    private function deleteAddress($id){
+        return $this->delete($id);
+    }
+ /*   public function getAddress($id){
         return $this->con->executeQuery($this->queryBuilder
         ->select('*')
         ->from('address')
@@ -50,6 +66,7 @@ class addressModel{
             ->where('a_id',$id)
         );      
     }
+    */
 
 }
 

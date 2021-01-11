@@ -5,15 +5,39 @@ use Matr\Model\dbModel\dbconn\dbmatrModel as Connection;
 
 abstract class tableModel
 {
-    protected $tablename;
+    protected $tableName;
     protected $columns = [];
     protected $con;
-    public function __construct()
+    protected $primaryKey;
+    public function __construct(string $tableName)
     {
-        //set table name here
+        $this->tableName = $tableName;
         $this->con = Connection::getCon();
-       $this->columns = DB_META[$this->tablename];
-    }                                   
+        $this->setColumns();
+        $this->setPrimaryKey();
+
+    }
+    protected function setPrimaryKey()
+    {
+        $res = $this->con->query("SHOW KEYS FROM ".$this->tableName." WHERE Key_name = 'PRIMARY'");
+        if ($res) {
+            $row_colname = $res->fetchAllAssociative();
+            $this->primaryKey = $row_colname[0]['Column_name'];
+        }
+    }
+    public function setColumns()
+    {
+        $res = $this->con->query("DESCRIBE ".$this->tableName);
+        if ($res) {
+            $cols = [];
+            $row_colname = $res->fetchAllAssociative();
+            foreach ($row_colname as $row) {
+                array_push($cols, $row['Field']);
+            }
+            $this->columns = $cols;
+        }
+    }
+        
     protected function checkCol($colNames) //checks if columns exist. (ARRAY)
     {
         $Exist = [];
@@ -36,31 +60,4 @@ abstract class tableModel
         }
         return false;
     }
-    public function get($params) // select from table
-    {
-        if (isset($params)) {
-            $attr = $params->attributes;
-            $cond = each($params->condition);
-            if ($attr) {
-                $colCheck = $this->checkCol($attr);
-                if (false !== $colCheck) {
-                    if (!$cond) {
-                        $queryBuilder = $this->con->createQueryBuilder();
-                        $query = $queryBuilder->select($attr)->from($this->tablename);
-                        return $this->con->fetchAllAssociative($query);
-                    } elseif ($cond) {
-                        $queryBuilder = $this->con->createQueryBuilder();
-                     //   $query = $queryBuilder->select($attr)->from($this->tablename)->where($cond[key]);
-                        return $this->con->fetchAllAssociative($query);
-                    }
-                }
-            }else{
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-    public function add(){}
 }
-// hello
