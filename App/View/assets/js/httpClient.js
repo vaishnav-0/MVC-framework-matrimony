@@ -10,9 +10,8 @@ class HttpClient {
     request() {
         const response = new Object();
         if (window.fetch) {
-            response = new Fetch();
-        }
-        else {
+            response = new Fetch(this.baseUrl = baseUrl, this.path = path, this.method = method, this.headers = headers, this.data = data);
+        } else {
             response = new XHR();
         }
         return JSON.parse(response);
@@ -20,11 +19,12 @@ class HttpClient {
 }
 
 class Fetch extends HttpClient {
-    constructor() {
+    constructor(baseUrl, path, method, headers, data) {
+        super(baseUrl, path, method, headers, data);
         this.Init = {
             method: this.method,
             headers: this.headers,
-            data : this.data
+            data: this.data
         };
         this.url = new URL(this.path, this.baseUrl);
         this.Request = new Request(this.url, this.Init);
@@ -62,11 +62,10 @@ class XHR extends HttpClient {
             let url = this.baseUrl + this.path;
             Req.open(method, url, data, true);
             Req.send();
-            Req.onreadystatechange = function () {
+            Req.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     return this.responseText;
-                }
-                else
+                } else
                     return new Error("something weird happend");
             }
         } catch (e) {

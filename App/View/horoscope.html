@@ -5,51 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horoscope</title>
-<link rel="stylesheet" href="./assets/css/horoscope.css"/>
-<style>
-    .panel{
-        display : flex;
-        justify-content: space-evenly;
-    }
-</style>
+    <link rel="stylesheet" href="./assets/css/horoscope.css" />
+    <style>
+        .panel {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
 </head>
 
 <body>
     <div class="panel">
         <!-- board 1 -->
         <div class="board">
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-    
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+
         </div>
-    <!-- board 2 -->
+        <!-- board 2 -->
         <div class="board">
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-            <input class="square"/>
-    
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+            <input class="square" />
+
         </div>
     </div>
-    
+    <script src="assets/js/httpClient.js"></script>
+    <script>
+        const a = new HttpClient('https://jsonplaceholder.typicode.com', '/todos/1', 'GET', '', '');
+        console.log(a.request())
+    </script>
 </body>
 
 </html>
