@@ -7,7 +7,7 @@ class HttpClient {
         this.data = data;
     }
 
-    async request() {
+    request() {
         const response = new Object();
         if (window.fetch) {
             response = new Fetch();
@@ -24,6 +24,7 @@ class Fetch extends HttpClient {
         this.Init = {
             method: this.method,
             headers: this.headers,
+            data : this.data
         };
         this.url = new URL(this.path, this.baseUrl);
         this.Request = new Request(this.url, this.Init);
@@ -38,6 +39,7 @@ class Fetch extends HttpClient {
                 return `error ${error}`;
             });
     }
+
     async init(request) {
         let abort = new AbortController();
         let signal = abort.signal;

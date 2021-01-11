@@ -63,12 +63,15 @@ class Family extends BaseController
               "mail" =>$this->reqBody->mmail,
               "landline" =>$this->reqBody->mlandline
           ))->data->id;
+
         $fconId = $this->callController('Contact', 'add', array(
               "mobile" => $this->reqBody->fmobile,
               "mail" =>$this->reqBody->fmail,
               "landline" =>$this->reqBody->flandline
           ))->data->id;
         $res = $this->familyModel->edit($famId, array('fCId' => $fconId, 'mCId' => $mconId));
+
+        
         return $this->cntrlRespond(['message' => 'Family added',
                                     'data' => ['id' => $famId]]);
     }
