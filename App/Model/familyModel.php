@@ -49,7 +49,6 @@ class familyModel{
             ->update('members')
             ->set('fCId', $contact_id)
             ->set('mCId', $mcontact_id)
-
             ->where('pId' ,$id)
         );
     }
