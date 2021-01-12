@@ -1,6 +1,7 @@
 <?php
 namespace Core\Routing;
 use Core\Request;
+use Core\Response;
 use Core\Dispatcher;
 class Router
 {
@@ -51,6 +52,11 @@ class Router
                 $this->currentRoute = $route;
 
                 return $this->handle($route, $request);
+            }
+            else{
+                $res = new Response;
+                $res= $res->withStatus('404');
+                return $res;
             }
         }
 

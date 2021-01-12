@@ -54,7 +54,7 @@
                         <div class="feildcont">
                             <div class="feildname"></div>
                             <div class="feildinp">
-                                <button onclick="login()">Submit</button>
+                                <button type="button" onclick="login()">Login</button>
                             </div>
                         </div>
 
@@ -74,13 +74,13 @@
     <script>
         // import HttpClient from './assets/js/HttpClient.js';
 
-        function login(){
+        function login(e) {
             const form = document.getElementById('login');
             const data = new URLSearchParams();
             for (const pair of new FormData(form)) {
                 data.append(pair[0], pair[1]);
             }
-            let client = new HttpClient('http://localhost', '/login', 'post', '', data);
+            let client = new HttpClient('http://localhost', 'matrimony/login', 'post', '', data);
             let request = client.request();
 
             request.init()
@@ -90,11 +90,11 @@
                     }
                     return data.json();
                 }).then((data) => {
+                    console.log(data.json());
                     if (data.status === "Success") {
                         // routing logic
                         console.log("success");
-                    }
-                    else {
+                    } else {
                         // incorrect credentials
                         alert(data)
                     }
@@ -103,9 +103,6 @@
                     return `error ${error}`;
                 });
         }
-
-
-
     </script>
 </body>
 
