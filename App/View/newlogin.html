@@ -74,15 +74,20 @@
     <script>
         // import HttpClient from './assets/js/HttpClient.js';
 
-        function login(e) {
+        function login() {
+
+
             const form = document.getElementById('login');
+
             const data = new URLSearchParams();
             for (const pair of new FormData(form)) {
                 data.append(pair[0], pair[1]);
             }
             let client = new HttpClient('http://localhost', 'matrimony/login', 'post', '', data);
-            let request = client.request();
+            let request = client.request().then((data) => {
+                console.log(data);;
 
+            });
             request.init()
                 .then(data => {
                     if (!data.ok) {
