@@ -54,7 +54,7 @@
                         <div class="feildcont">
                             <div class="feildname"></div>
                             <div class="feildinp">
-                                <button onclick="login()">Submit</button>
+                                <button onclick="login()" type="button">Submit</button>
                             </div>
                         </div>
 
@@ -75,11 +75,15 @@
         // import HttpClient from './assets/js/HttpClient.js';
 
         function login(){
+
+
             const form = document.getElementById('login');
+
             const data = new URLSearchParams();
             for (const pair of new FormData(form)) {
                 data.append(pair[0], pair[1]);
             }
+
             let client = new HttpClient('http://localhost', '/login', 'post', '', data);
             let request = client.request();
 

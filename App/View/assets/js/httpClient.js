@@ -10,52 +10,41 @@ class HttpClient {
     request() {
         const response = new Object();
         if (window.fetch) {
-            response = new Fetch(this.baseUrl = baseUrl, this.path = path, this.method = method, this.headers = headers, this.data = data);
+            let url = new URL(this.path, this.baseUrl);
+
+            let data = {
+                method: this.method,
+                headers: this.headers,
+                body: this.data
+            };
+
+            let Request = new Request(url, data);
+
+            response = this.fetch(Request)
+                .then(data => {
+                    if (!data.ok) {
+                        throw new Error('network issue');
+                    }
+                    return data;
+                })
+                .catch(error => {
+                    return `error ${error}`;
+                });
+
         } else {
-            response = new XHR();
+            response = xhr();
         }
         return JSON.parse(response);
     }
-}
 
-class Fetch extends HttpClient {
-    constructor(baseUrl, path, method, headers, data) {
-        super(baseUrl, path, method, headers, data);
-        this.Init = {
-            method: this.method,
-            headers: this.headers,
-            data: this.data
-        };
-        this.url = new URL(this.path, this.baseUrl);
-        this.Request = new Request(this.url, this.Init);
-        this.init(this.Request)
-            .then(data => {
-                if (!data.ok) {
-                    throw new Error('network issue');
-                }
-                return data;
-            })
-            .catch(error => {
-                return `error ${error}`;
-            });
-
-    }
-
-    async init(request) {
+    async fetch(request) {
         let abort = new AbortController();
         let signal = abort.signal;
         const response = await fetch(request, { signal });
         return response;
     }
-}
 
-class XHR extends HttpClient {
-    constructor() {
-        this.init;
-        console.log("1")
-    }
-
-    async init() {
+    async xhr() {
         try {
             Req = new XMLHttpRequest();
             let data = JSON.stringify(this.data);
@@ -64,7 +53,7 @@ class XHR extends HttpClient {
             let url = this.baseUrl + this.path;
             Req.open(method, url, data, true);
             Req.send();
-            Req.onreadystatechange = function() {
+            Req.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     return this.responseText;
                 } else
@@ -76,5 +65,7 @@ class XHR extends HttpClient {
         }
     }
 }
+
+
 
 // export default HttpClient;
