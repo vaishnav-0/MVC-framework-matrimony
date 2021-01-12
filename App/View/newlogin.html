@@ -36,40 +36,76 @@
                     <div class=formtitle>Login:</div>
                 </div>
             </div>
-            <div class="formbox">
-                <div class="logsubform">
-                    <div class="feildcont col-2">
-                        <div class="feildname">Name:</div>
-                        <div class="feildinp">
-                            <input type="text">
+            <form id="login">
+                <div class="formbox">
+                    <div class="logsubform">
+                        <div class="feildcont col-2">
+                            <div class="feildname">Name:</div>
+                            <div class="feildinp">
+                                <input type="text" name="username">
+                            </div>
                         </div>
-                    </div>
-                    <div class="feildcont col-2">
-                        <div class="feildname">Password:</div>
-                        <div class="feildinp">
-                            <input type="password">
+                        <div class="feildcont col-2">
+                            <div class="feildname">Password:</div>
+                            <div class="feildinp">
+                                <input type="password" name="password">
+                            </div>
                         </div>
-                    </div>
-                    <div class="feildcont">
-                        <div class="feildname"></div>
-                        <div class="feildinp">
-                            <button>Submit</button>
+                        <div class="feildcont">
+                            <div class="feildname"></div>
+                            <div class="feildinp">
+                                <button onclick="login()">Submit</button>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
+            </form>
 
-            </div>
         </div>
         <div id="svg" class="coupleVect">
             <object type="image/svg+xml" data="/matrimony/App/View/assets/img/undraw_love.svg" class="cvector">
-                 <!-- fallback image in CSS -->
-              </object>
+                <!-- fallback image in CSS -->
+            </object>
         </div>
     </div>
-
+    <script src="assets/js/httpClient.js"></script>
     <script>
-        var a = document.getElementById("svg");
+        // import HttpClient from './assets/js/HttpClient.js';
+
+        function login(){
+            const form = document.getElementById('login');
+            const data = new URLSearchParams();
+            for (const pair of new FormData(form)) {
+                data.append(pair[0], pair[1]);
+            }
+            let client = new HttpClient('http://localhost', '/login', 'post', '', data);
+            let request = client.request();
+
+            request.init()
+                .then(data => {
+                    if (!data.ok) {
+                        throw new Error('network issue');
+                    }
+                    return data.json();
+                }).then((data) => {
+                    if (data.status === "Success") {
+                        // routing logic
+                        console.log("success");
+                    }
+                    else {
+                        // incorrect credentials
+                        alert(data)
+                    }
+                })
+                .catch(error => {
+                    return `error ${error}`;
+                });
+        }
+
+
+
     </script>
 </body>
 
