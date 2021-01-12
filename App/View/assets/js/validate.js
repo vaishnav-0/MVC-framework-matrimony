@@ -1,9 +1,3 @@
-import { render } from './templating.js';
-import { compile } from './templating.js';
-const validationTemplate = `<span class="fa fa-exclamation-circle errIcon"></span><div class="errMsg hideMsg">{{ error }}</div>`;
-let hideTimeout;
-var c = compile(validationTemplate);
-
 function getValidRule(rule) {
     switch (rule) {
         case "email":
@@ -19,60 +13,35 @@ function getValidRule(rule) {
     }
 }
 
-function fade(node) {
-    node.classList.add("errmsg-fadeout");
-    hideTimeout = window.setTimeout(() => {
-        node.classList.add("hideMsg");
-    }, 2000); // see opacity transition
-}
+function validate(feild, errnode,valTemp) {         //input feild obj, error displaying 
 
-function show(node) {
-    node.classList.remove("errmsg-fadeout");
-    node.classList.remove("hideMsg");
-}
-
-function showAndFade(node) {
-    show(node.querySelector(".errMsg"));
-    window.setTimeout(() => {
-        fade(node.querySelector(".errMsg"));
-    }, 2000);
-}
-export function validate(feild, errnode) { //input feild obj, error displaying 
-
-    let valRes = approve.value(feild.value, getValidRule(feild.dataset.validate));
-    if (valRes.errors.length !== 0) {
-        let errmsg = errnode.querySelector(".errMsg");
-        if (errmsg) {
+    valRes = approve.value(feild.value, getValidRule(feild.dataset.validate));
+    if (valRes.errors.length) {
+        if (errnode.querySelector("#errMsg")) {
+            errnode.querySelector("#errMsg").classList.remove("errmsg-fadeout");
+            errmsg = errnode.querySelector("#errMsg");
             errmsg.textContent = '';
             valRes.each(function(error) {
                 errmsg.textContent += error;
             });
-            showAndFade(errnode);
+            window.setTimeout(() => {
+                errnode.querySelector("#errMsg").classList.add("errmsg-fadeout");
+            }, 4000);
         } else {
-            let data = {
-                "error": ""
+            valTemp = validationErr.content;
+            data = {
+                "errMsg": ""
             };
             valRes.each(function(error) {
-                data.error += error;
+                data.errMsg += error;
             });
-            let elm = new DOMParser().parseFromString(render(c, data), "text/html");
-            let a = elm.body.children;
-            for (let i = 0; i < a.length; i++) {
-                errnode.append(a[i].cloneNode(true));
-
-            }
-            errnode.querySelector('.errIcon').addEventListener('mouseover', (e) => {
-                window.clearTimeout(hideTimeout);
-                show(e.target.parentElement.querySelector('.errMsg'));
-            });
-            errnode.querySelector('.errIcon').addEventListener('mouseout', (e) => {
-                fade(e.target.parentElement.querySelector('.errMsg'));
-            });
-            showAndFade(errnode);
-
+            renderTemp(valTemp, data, errnode);
+            window.setTimeout(() => {
+                errnode.querySelector("#errMsg").classList.add("errmsg-fadeout");
+            }, 2000);
         }
     } else {
-        if (errnode.querySelector(".errMsg")) {
+        if (errnode.querySelector("#errMsg")) {
             errnode.textContent = '';
         }
     }

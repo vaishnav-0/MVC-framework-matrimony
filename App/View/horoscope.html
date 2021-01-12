@@ -59,13 +59,17 @@
                 if (!data.ok) {
                     throw new Error('network issue');
                 }
-                return data.json();
-            }).then(data => {
-                console.log(data);
+                return data;
             })
             .catch(error => {
                 return `error ${error}`;
             });
+        const r = () => {
+            res.then((a) => {
+                console.log(a);
+            });
+        };
+        r();
     </script>
 </body>
 
