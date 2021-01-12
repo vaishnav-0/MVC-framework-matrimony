@@ -13,7 +13,7 @@ function getValidRule(rule) {
     }
 }
 
-function validate(feild, errnode,valTemp) {         //input feild obj, error displaying 
+function validate(feild, errnode, valTemp) { //input feild obj, error displaying 
 
     valRes = approve.value(feild.value, getValidRule(feild.dataset.validate));
     if (valRes.errors.length) {

@@ -1,0 +1,35 @@
+.errIcon {
+    margin-left: 5px;
+    color: rgb(245, 0, 0);
+}
+
+.errMsg {
+    position: absolute;
+    left: 17px;
+    top: 10px;
+    padding: 4px 7px 4px 7px;
+    width: max-content;
+    margin-left: 16px;
+    background-color: rgb(255, 236, 70);
+    transition: all 2s ease;
+    opacity: 1;
+}
+
+.errMsg::after {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid rgb(255, 236, 70);
+    border-left: 10px solid transparent;
+}
+
+.errmsg-fadeout {
+    opacity: 0 !important;
+}
+
+.hideMsg {
+    display: none !important;
+}
