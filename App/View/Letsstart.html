@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/validate.css">
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <title>Matrimony</title>
 </head>
@@ -44,10 +45,6 @@
                         <div class="feildtitle">
                             <div class="feildname">Name:</div>
                             <div class="feilderror">
-                                <template id="validationErr"> 
-                                    <span class="fa fa-exclamation-circle"></span>
-                                    <div id="errMsg" class="errmsg"></div>
-                                </template>
                             </div>
                         </div>
                         <div class="feildinp">
@@ -352,6 +349,10 @@
             <img id="profilePic" src="assets/img/altProfile.jpeg">
         </div>
     </div>
+    <script type="module">
+        import {validate} from './assets/js/validate.js'; let formctnr = document.querySelectorAll(".formcontainer"); formctnr.forEach(value => { value.querySelectorAll("input,textarea").forEach(input => { input.addEventListener("focusout", (e) => { validate(e.target,
+        e.target.parentElement.parentElement.querySelector('.feilderror')) }); }); });
+    </script>
     <script src="assets/js/approve.min.js"></script>
 
     <script>
@@ -423,20 +424,15 @@
         });
 
         //Validation
-        function validate(e) {
-            let feild = e.target;
-            let errnode = feild.parentNode.parentNode.querySelector(".feilderror");
-            if (feild.dataset.validate) {
+        /*  function validate(e) {
+              let feild = e.target;
+              let errnode = feild.parentNode.parentNode.querySelector(".feilderror");
+              if (feild.dataset.validate) {
 
-            }
+              }
 
-        }
-        let formctnr = document.querySelectorAll(".formcontainer");
-        formctnr.forEach(value => {
-            value.querySelectorAll("input,textarea").forEach(input => {
-                input.addEventListener("focusout", validate);
-            });
-        });
+          }*/
+
         //Image displaying
         const inputElement = document.getElementById("profileUp");
         inputElement.addEventListener("change", handleFile, false);
