@@ -1,4 +1,24 @@
 .accordionHeadbtn {
+    position: relative;
+    border-radius: 0;
+    width: 100%;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordionHeadbtn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.accordionHeadbtn:focus {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.accordionHeadbtn {
     box-shadow: none;
     color: var(--inputbox-bg);
     background-color: var(--tranparent);
@@ -11,6 +31,13 @@
     transition: all .3s ease-in-out;
 }
 
+.accordionHeading::after {
+    content: "";
+    background: linear-gradient(#77B1B4, #77B1B4);
+    width: 100%;
+    height: 2px;
+}
+
 .activeAccordionHead {
     width: 20%;
 }
@@ -18,6 +45,8 @@
 .accordionTitle {
     margin-left: 4px;
     text-align: left;
+    font-size: 1.5rem;
+    font-weight: 300;
 }
 
 .accordionHeadcaret {

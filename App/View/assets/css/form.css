@@ -256,7 +256,10 @@ button {
     position: relative;
 }
 
-.profilePhoto {}
+.profilePhoto {
+    height: 100%;
+    padding-bottom: 10px;
+}
 
 #profileUp {
     display: none;
@@ -265,7 +268,7 @@ button {
 
 /*-------------------MODULES-----------------------*/
 
-.formcontainer>#submit {
+.formSubmitBtn {
     border: 0;
     background-color: var(--bluegreen);
     color: var(--bluegreenfont);
@@ -336,7 +339,7 @@ button {
 }
 
 #profilePic {
-    height: 100px;
+    height: 100%;
 }
 
 .formheadbtn {

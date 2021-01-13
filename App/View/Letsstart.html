@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/form.css">
     <link rel="stylesheet" href="assets/css/validate.css">
     <link rel="stylesheet" href="assets/css/horoscope.css">
+    <link rel="stylesheet" href="assets/css/accordion.css">
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <title>Matrimony</title>
 </head>
@@ -34,12 +35,7 @@
         </nav>
         <div class="formcontainer">
             <div class="accordion" data-target="p_details" data-title="Personal details">
-                <button class="formheadbtn" data-target="p_details">
-                <div class="formheading">
-                    <div class=formtitle> Personal details</div>
-                </div>
-                <div class="formheadcaret"><span class="fa fa-caret-right faicon"></span></div>
-            </button>
+
                 <div id="p_details" class="formbox">
                     <div class="subform">
 
@@ -52,7 +48,7 @@
                             <div class="fieldinp">
                                 <input type="file" id="profileUp">
                                 <div class="profilePhoto">
-                                    <img id="profilePic" src="assets/img/altProfile.jpeg"> </div>
+                                    <img id="profilePic" src="assets/img/altProfile.jpg"> </div>
                             </div>
                         </div>
                         <div class="fieldcont col-2">
@@ -202,14 +198,7 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion">
-
-                <button class="formheadbtn" data-target="fam_details">
-                <div class="formheading">
-                    <div class=formtitle> Family details</div>
-                </div>
-                <div class="formheadcaret"><span class="fa fa-caret-right faicon"></span></div>
-                            </button>
+            <div class="accordion" data-target="fam_details" data-title="Family details">
 
                 <div id="fam_details" class="formbox">
                     <div class="subform">
@@ -357,16 +346,7 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion">
-
-                <button class="formheadbtn" data-target="horo">
-                <div class="formheading">
-                    <div class=formtitle> Horoscope</div>
-                </div>
-                <div class="formheadcaret">
-                    <span class="fa fa-caret-right faicon"></span>
-                </div>
-                </button>
+            <div class="accordion" data-target="horo" data-title="Horoscope">
                 <div class="formbox" id="horo">
                     <div class="subform">
                         <div class="fieldcont col-2 row-4">
@@ -391,51 +371,52 @@
                             </div>
                         </div>
                     </div>
+                    <div class="subform">
+                        <div class="fieldcont col-2 row-4">
+                            <div class="keyboard" id="keyB">
+                                <button class="keyboardKey" value="ബൂ">ബൂ</button>
+                                <button class="keyboardKey" value="ച">ച</button>
+                                <button class="keyboardKey" value="കു">കു</button>
+                                <button class="keyboardKey" value="ഗു">ഗു</button>
+                                <button class="keyboardKey" value="മ">മ</button>
+                                <button class="keyboardKey" value="മാ">മാ</button>
+                                <button class="keyboardKey" value="ല">ല</button>
+                                <button class="keyboardKey" value="ര">ര</button>
+                                <button class="keyboardKey" value="സ">സ</button>
+                                <button class="keyboardKey" value="ശി">ശി</button>
+                                <button class="keyboardKey" value="ശു">ശു</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subform">
+                        <div class="fieldcont col-2 row-4">
+                            <div class="panel">
 
-                </div>
-                <div class="subform">
-                    <div class="fieldcont col-2 row-4">
-                        <div class="keyboard" id="keyB">
-                            <button class="keyboardKey" value="ബൂ">ബൂ</button>
-                            <button class="keyboardKey" value="ച">ച</button>
-                            <button class="keyboardKey" value="കു">കു</button>
-                            <button class="keyboardKey" value="ഗു">ഗു</button>
-                            <button class="keyboardKey" value="മ">മ</button>
-                            <button class="keyboardKey" value="മാ">മാ</button>
-                            <button class="keyboardKey" value="ല">ല</button>
-                            <button class="keyboardKey" value="ര">ര</button>
-                            <button class="keyboardKey" value="സ">സ</button>
-                            <button class="keyboardKey" value="ശി">ശി</button>
-                            <button class="keyboardKey" value="ശു">ശു</button>
+                                <form class="board" id="board2">
+                                    <input class="square" name="1" />
+                                    <input class="square" name="2" />
+                                    <input class="square" name="3" />
+                                    <input class="square" name="4" />
+                                    <input class="square" name="5" />
+                                    <input class="square" name="6" />
+                                    <input class="square" name="7" />
+                                    <input class="square" name="8" />
+                                    <input class="square" name="9" />
+                                    <input class="square" name="10" />
+                                    <input class="square" name="11" />
+                                    <input class="square" name="12" />
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="subform">
-                    <div class="fieldcont col-2 row-4">
-                        <div class="panel">
 
-                            <form class="board" id="board2">
-                                <input class="square" name="1" />
-                                <input class="square" name="2" />
-                                <input class="square" name="3" />
-                                <input class="square" name="4" />
-                                <input class="square" name="5" />
-                                <input class="square" name="6" />
-                                <input class="square" name="7" />
-                                <input class="square" name="8" />
-                                <input class="square" name="9" />
-                                <input class="square" name="10" />
-                                <input class="square" name="11" />
-                                <input class="square" name="12" />
 
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <button id="submit" class="formSubmitBtn">Add</button>
 
         </div>
-        <button id="submit">Add</button>
 
     </div>
     </div>
@@ -443,6 +424,9 @@
     <script type="module">
         import {validate} from './assets/js/validate.js'; let formctnr = document.querySelectorAll(".formcontainer"); formctnr.forEach(value => { value.querySelectorAll("input,textarea").forEach(input => { input.addEventListener("focusout", (e) => { validate(e.target,
         e.target.parentElement.parentElement.querySelector('.fielderror')) }); }); });
+    </script>
+    <script type="module">
+        import {bind, init} from './assets/js/accordion.js'; document.querySelectorAll('.accordion').forEach((elm) =>{ bind(elm); }); init();
     </script>
     <script src="assets/js/approve.min.js"></script>
 
@@ -538,7 +522,7 @@
 
           }*/
 
- 
+
 
         // board to json
         function addBoard() {
@@ -560,8 +544,6 @@
                 }
             });
         }
-
-        window.load = accButton[0].click();
     </script>
 </body>
 

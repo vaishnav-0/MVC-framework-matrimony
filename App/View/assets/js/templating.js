@@ -17,13 +17,13 @@ const compileToString = (template) => {
 }
 var parse = (template) => {
     let result = /{{(.*?)}}/g.exec(template);
-    const arr = [];
+    let arr = [];
     let firstPos;
 
     while (result) {
         firstPos = result.index;
         if (firstPos !== 0) {
-            arr.push(template.substring(0, firstPos).replaceAll(`"`, `\\"`));
+            arr.push(template.substring(0, firstPos));
             template = template.slice(firstPos);
         }
 
@@ -33,6 +33,9 @@ var parse = (template) => {
     }
 
     if (template) arr.push(template);
+    arr = arr.map((item) => {
+        return item.replaceAll(`"`, `\\"`);
+    });
     return arr;
 }
 
