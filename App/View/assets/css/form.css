@@ -153,8 +153,128 @@ button {
     visibility: hidden;
 }
 
+.formcontainer {
+    margin: 40px auto 0 auto;
+    max-width: 1185px;
+}
+
+.formheadbtn {
+    position: relative;
+    border-radius: 0;
+    width: 100%;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formheading {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.formtitle {
+    margin-left: 4px;
+    text-align: left;
+}
+
+.formheadcaret {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+.formbox {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    grid-gap: 1rem;
+    grid-auto-flow: dense;
+    height: 0;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+}
+
+.subform1 {}
+
+.subform2 {}
+
+.subform3 {}
+
+.subform {
+    margin: 10px 0 10px 0;
+    display: grid;
+    grid-template: repeat(6, 75px) /repeat(2, 1fr);
+    /*Customize row height(input feild height according to layout) here*/
+    column-gap: 15px;
+}
+
+.feildcont {
+    margin: 10px 0 10px 0;
+    justify-self: stretch;
+    min-width: 0;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.row-2 {
+    grid-row-end: span 2;
+}
+
+.row-3 {
+    grid-row-end: span 3;
+}
+
+.row-4 {
+    grid-row-end: span 4;
+}
+
+.row-2 .feildinp {
+    height: 100%;
+}
+
+.col-2 {
+    grid-column-end: span 2;
+}
+
+.feildtitle {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.feilderror {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.feildinp {
+    flex: 1 0;
+}
+
 
 /*-------------------MODULES-----------------------*/
+
+.formcontainer>#submit {
+    border: 0;
+    background-color: var(--bluegreen);
+    color: var(--bluegreenfont);
+    box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.25);
+    width: 100px;
+    border-radius: 20px;
+    padding: 5px 0 5px 0;
+    margin-top: 15px;
+}
+
+.formheading::after {
+    content: "";
+    background: linear-gradient(#77B1B4, #77B1B4);
+    width: 100%;
+    height: 2px;
+}
 
 .topnav {
     background-color: white;
@@ -175,8 +295,103 @@ button {
     text-decoration: none;
 }
 
+.formtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.feilderror span {
+    margin-left: 5px;
+    color: rgb(245, 0, 0);
+}
+
+.feilderror>.errmsg {
+    position: absolute;
+    left: 17px;
+    top: 10px;
+    padding: 4px 7px 4px 7px;
+    width: max-content;
+    margin-left: 16px;
+    background-color: rgb(255, 236, 70);
+    transition: all 3s ease;
+    opacity: 1;
+}
+
+.feilderror>.errmsg::after {
+    position: absolute;
+    left: -10px;
+    top: 0;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid rgb(255, 236, 70);
+    border-left: 10px solid transparent;
+}
+
+#profilePic {
+    height: 100px;
+}
+
+.formheadbtn {
+    box-shadow: none;
+    color: var(--inputbox-bg);
+    background-color: var(--tranparent);
+}
+
+.keyboard {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.keyboardKey {
+    border-radius: 0;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+}
+
 
 /*----------STATES----------------------*/
+
+.activeformhead {
+    height: ;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border: 1px solid #6b6a6a;
+}
+
+.formheadbtn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.formheadbtn:focus {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.errmsg-fadeout {
+    opacity: 0 !important;
+}
+
+@media screen and (max-width:1400px) {
+    .formcontainer {
+        margin: 40px auto 0 auto;
+        width: 85%;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .formcontainer {
+        width: 95%;
+    }
+}
 
 
 /*----------ANIMATIONS----------------------*/

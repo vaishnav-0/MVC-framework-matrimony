@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
     <title>Martrimony</title>
 </head>
 
@@ -14,20 +16,6 @@
         <nav class="topnav">
             <div class="brand">
                 <div class="brandname">XYX Matrimony</div>
-            </div>
-            <div class="navopt">
-                <span>
-                    <a href="#">Home</a>
-                </span>
-                <span>
-                    <a href="#">Members</a>
-                </span>
-                <span>
-                    <a href="#">Settings</a>
-                </span>
-                <span>
-                    <a href="#">About</a>
-                </span>
             </div>
         </nav>
         <div class="logformcontainer">
@@ -57,9 +45,7 @@
                                 <button type="button" onclick="login()">Login</button>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </form>
 
@@ -75,38 +61,22 @@
         // import HttpClient from './assets/js/HttpClient.js';
 
         function login() {
-
-
             const form = document.getElementById('login');
-
             const data = new URLSearchParams();
             for (const pair of new FormData(form)) {
                 data.append(pair[0], pair[1]);
             }
             let client = new HttpClient('http://localhost', 'matrimony/login', 'post', '', data);
             let request = client.request().then((data) => {
-                console.log(data);;
+                if (data.status === 'Success') {
+                    console.log('hurray');
+                    let cl = new HttpClient('http://localhost', 'matrimony/App/View/Letsstart.html', 'get', '', '');
+                    let res = client.request().then((data) => {
 
+                    });
+                }
             });
-            request.init()
-                .then(data => {
-                    if (!data.ok) {
-                        throw new Error('network issue');
-                    }
-                    return data.json();
-                }).then((data) => {
-                    console.log(data.json());
-                    if (data.status === "Success") {
-                        // routing logic
-                        console.log("success");
-                    } else {
-                        // incorrect credentials
-                        alert(data)
-                    }
-                })
-                .catch(error => {
-                    return `error ${error}`;
-                });
+
         }
     </script>
 </body>

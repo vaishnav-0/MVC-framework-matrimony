@@ -23,19 +23,21 @@ class HttpClient {
                     if (!data.ok) {
                         throw new Error('network issue');
                     }
-                    data.json().then((data) => {
-                        console.log(data);
-                        return data;
-                    });
+                    return data.json();
+                }).then((data) => {
+                    return data;
                 })
                 .catch(error => {
                     return `error ${error}`;
                 });
 
         } else {
-            response = xhr();
+            response = await this.xhr().then((data) => {
+                return JSON.parse(data);
+            }).catch(error => {
+                return `error ${error}`;
+            });
         }
-        console.log(response);
         return response;
     }
 
@@ -48,19 +50,26 @@ class HttpClient {
 
     async xhr() {
         try {
-            Req = new XMLHttpRequest();
-            let data = JSON.stringify(this.data);
+            let data = this.data.toString();
             let method = this.method;
             let headers = this.headers;
-            let url = this.baseUrl + this.path;
-            Req.open(method, url, data, true);
-            Req.send();
-            Req.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    return this.responseText;
-                } else
-                    return new Error("something weird happend");
-            }
+            let url = new URL(this.path, this.baseUrl);
+            let Req = new XMLHttpRequest();
+            Req.addEventListener('progress', (e) => {
+                console.log(`${e.type}: ${e.loaded} bytes transferred`);
+            });
+            return new Promise(function(resolve, reject) {
+
+
+                Req.open(method, url, true);
+                Req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                Req.send(data);
+                Req.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        resolve(this.responseText);
+                    }
+                }
+            });
         } catch (e) {
             console.log(`error: ${e}`);
             return new Error("something weird happend");
