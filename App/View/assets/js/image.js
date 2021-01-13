@@ -8,7 +8,7 @@ fileSelect.addEventListener("click", function (e) {
 const inputElement = document.getElementById("profileUp");
 inputElement.addEventListener("change", handleFile, false);
 
-export function handleFile() {
+function handleFile() {
     const file = this.files[0];
     if (file.type.startsWith('image/')) {
         const img = document.getElementById("profilePic");
