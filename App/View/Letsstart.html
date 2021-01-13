@@ -431,6 +431,7 @@
         </div>
     </div>
     <script type="module">
+        import { handleFile } from './assets/js/validate.js';
         import { validate } from './assets/js/validate.js';
         let formctnr = document.querySelectorAll(".formcontainer");
         formctnr.forEach(value => {
@@ -538,26 +539,6 @@
 
           }*/
 
-        //Image displaying
-        const fileSelect = document.querySelector(".profilePhoto"),
-            fileElem = document.querySelector("#profileUp");
-        fileSelect.addEventListener("click", function(e) {
-            if (fileElem) {
-                fileElem.click();
-            }
-        }, false);
-        const inputElement = document.getElementById("profileUp");
-        inputElement.addEventListener("change", handleFile, false);
-
-        function handleFile() {
-            const file = this.files[0];
-            if (file.type.startsWith('image/')) {
-                const img = document.getElementById("profilePic");
-                img.file = file;
-                const objectURL = window.URL.createObjectURL(file);
-                img.src = objectURL;
-            }
-        }
 
         // board to json
         function addBoard() {
@@ -570,8 +551,14 @@
 
         }
 
-        function submit(){
-            
+        function submit() {
+            let client = new HttpClient('http://localhost', 'matrimony/family', 'post', '', data);
+            client.request().then((data) => {
+                if (data.status === 'Success') {
+                    console.log('hurray');
+
+                }
+            });
         }
 
         window.load = accButton[0].click();
