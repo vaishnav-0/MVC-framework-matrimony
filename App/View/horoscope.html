@@ -17,59 +17,55 @@
 <body>
     <div class="panel">
         <!-- board 1 -->
-        <div class="board">
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
+        <form class="board" id="board1">
+            <input class="square" name="1" />
+            <input class="square" name="2" />
+            <input class="square" name="3" />
+            <input class="square" name="4" />
+            <input class="square" name="5" />
+            <input class="square" name="6" />
+            <input class="square" name="7" />
+            <input class="square" name="8" />
+            <input class="square" name="9" />
+            <input class="square" name="10" />
+            <input class="square" name="11" />
+            <input class="square" name="12" />
 
-        </div>
+        </form>
         <!-- board 2 -->
-        <div class="board">
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
-            <input class="square" />
+        <form class="board" id="board2">
+            <input class="square" name="1" />
+            <input class="square" name="2" />
+            <input class="square" name="3" />
+            <input class="square" name="4" />
+            <input class="square" name="5" />
+            <input class="square" name="6" />
+            <input class="square" name="7" />
+            <input class="square" name="8" />
+            <input class="square" name="9" />
+            <input class="square" name="10" />
+            <input class="square" name="11" />
+            <input class="square" name="12" />
 
-        </div>
+        </form>
+        <button type="button" onclick="addBoard()">test</button>
     </div>
     <script src="assets/js/httpClient.js"></script>
     <script>
-        const a = new HttpClient('https://jsonplaceholder.typicode.com', '/todos/1', 'GET', '', '');
-        var req = a.request();
-        res = req.init()
-            .then(data => {
-                if (!data.ok) {
-                    throw new Error('network issue');
-                }
-                return data.json();
-            })
-            .catch(error => {
-                return `error ${error}`;
-            });
 
-        const r = () => {
-            res.then((a) => {
-                console.log(a);
-            });
-        };
-        r()
+        function addBoard() {
+            let form1 = new FormData(document.getElementById('board1'));
+            let form2 = new FormData(document.getElementById('board2'));
+
+            let data = new Object();
+            data.board1 =  Object.fromEntries(form1);
+            data.board2 =  Object.fromEntries(form2);
+            data = JSON.stringify(data)
+
+            const a = new HttpClient('https://localhost', '/member', 'POST', '', '');
+        }
+
+
     </script>
 </body>
 
