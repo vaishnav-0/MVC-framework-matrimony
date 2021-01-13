@@ -359,7 +359,7 @@ button {
 /*----------STATES----------------------*/
 
 .activeformhead {
-    height: ;
+    width: 20%;
 }
 
 input:focus,
