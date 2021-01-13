@@ -1,0 +1,27 @@
+.accordionHeadbtn {
+    box-shadow: none;
+    color: var(--inputbox-bg);
+    background-color: var(--tranparent);
+}
+
+.accordionHeading {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.activeAccordionHead {
+    width: 20%;
+}
+
+.accordionTitle {
+    margin-left: 4px;
+    text-align: left;
+}
+
+.accordionHeadcaret {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}

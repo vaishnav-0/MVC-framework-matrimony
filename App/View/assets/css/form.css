@@ -208,11 +208,11 @@ button {
     margin: 10px 0 10px 0;
     display: grid;
     grid-template: repeat(6, 75px) /repeat(2, 1fr);
-    /*Customize row height(input feild height according to layout) here*/
+    /*Customize row height(input field height according to layout) here*/
     column-gap: 15px;
 }
 
-.feildcont {
+.fieldcont {
     margin: 10px 0 10px 0;
     justify-self: stretch;
     min-width: 0;
@@ -232,7 +232,7 @@ button {
     grid-row-end: span 4;
 }
 
-.row-2 .feildinp {
+.row-2 .fieldinp {
     height: 100%;
 }
 
@@ -240,19 +240,26 @@ button {
     grid-column-end: span 2;
 }
 
-.feildtitle {
+.fieldtitle {
     display: flex;
     flex-flow: row nowrap;
 }
 
-.feilderror {
+.fielderror {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-.feildinp {
+.fieldinp {
     flex: 1 0;
+    position: relative;
+}
+
+.profilePhoto {}
+
+#profileUp {
+    display: none;
 }
 
 
@@ -300,12 +307,12 @@ button {
     font-weight: 300;
 }
 
-.feilderror span {
+.fielderror span {
     margin-left: 5px;
     color: rgb(245, 0, 0);
 }
 
-.feilderror>.errmsg {
+.fielderror>.errmsg {
     position: absolute;
     left: 17px;
     top: 10px;
@@ -317,7 +324,7 @@ button {
     opacity: 1;
 }
 
-.feilderror>.errmsg::after {
+.fielderror>.errmsg::after {
     position: absolute;
     left: -10px;
     top: 0;

@@ -4,6 +4,7 @@
 }
 
 .errMsg {
+    z-index: 1000;
     position: absolute;
     left: 17px;
     top: 10px;

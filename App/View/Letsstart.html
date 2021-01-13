@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/form.css">
     <link rel="stylesheet" href="assets/css/validate.css">
-    <link rel="stylesheet" href="assets/css/horoscope.css" <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/horoscope.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
     <title>Matrimony</title>
 </head>
 
@@ -32,8 +33,8 @@
             </div>
         </nav>
         <div class="formcontainer">
-            <div class="accordion">
-                <button class="formheadbtn activeformbtn" data-target="p_details">
+            <div class="accordion" data-target="p_details">
+                <button class="formheadbtn" data-target="p_details">
                 <div class="formheading">
                     <div class=formtitle> Personal details</div>
                 </div>
@@ -41,31 +42,44 @@
             </button>
                 <div id="p_details" class="formbox">
                     <div class="subform">
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">
-                                <div class="feildname">Name:</div>
-                                <div class="feilderror">
+
+                        <div class="fieldcont col-2 row-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Photo:</div>
+                                <div class="fielderror">
                                 </div>
                             </div>
-                            <div class="feildinp">
+                            <div class="fieldinp">
+                                <input type="file" id="profileUp">
+                                <div class="profilePhoto">
+                                    <img id="profilePic" src="assets/img/altProfile.jpeg"> </div>
+                            </div>
+                        </div>
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Name:</div>
+                                <div class="fielderror">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
                                 <input type="text" name="name">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Age:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Age:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">Date:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">Date:</div>
+                            <div class="fieldinp">
                                 <input type="date">
                             </div>
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">Gender:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">Gender:</div>
+                            <div class="fieldinp">
                                 <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
@@ -76,9 +90,9 @@
                             </div>
 
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">Religion:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">Religion:</div>
+                            <div class="fieldinp">
                                 <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
@@ -89,9 +103,9 @@
                             </div>
 
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">Caste:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">Caste:</div>
+                            <div class="fieldinp">
                                 <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
@@ -102,90 +116,85 @@
                             </div>
 
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Name:</div>
-                            <div class="feildinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Name:</div>
-                            <div class="feildinp">
-                                <input type="text">
-                            </div>
-                        </div>
+
                     </div>
                     <div class="subform">
-                        <div class="feildcont col-2 row-2">
-                            <div class="feildtitle">Address:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2 row-2">
+                            <div class="fieldtitle">Address:</div>
+                            <div class="fieldinp">
                                 <textarea></textarea>
                             </div>
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">City/Town:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">City/Town:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">Pin Code:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">Pin Code:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">District:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">District:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">
-                                <div class="feildname"> Email: </div>
-                                <div class="feilderror"></div>
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname"> Email: </div>
+                                <div class="fielderror"></div>
 
                             </div>
-                            <div class="feildinp">
+                            <div class="fieldinp">
                                 <input type="text" data-validate="email">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Phone no:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Phone no:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
                     </div>
                     <div class="subform">
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Qualification:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Star:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Occupation:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Qualification:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Height:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Occupation:</div>
+                            <div class="fieldinp">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Height:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
 
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Physique:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Physique:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Complexion:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Complexion:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
@@ -195,7 +204,7 @@
             </div>
             <div class="accordion">
 
-                <button class="formheadbtn activeformbtn" data-target="fam_details">
+                <button class="formheadbtn" data-target="fam_details">
                 <div class="formheading">
                     <div class=formtitle> Family details</div>
                 </div>
@@ -204,27 +213,27 @@
 
                 <div id="fam_details" class="formbox">
                     <div class="subform">
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Father's name:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Father's name:</div>
+                            <div class="fieldinp">
                                 <input type="text" name="name">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Father's contact No.</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Father's contact No.</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Father's occupation</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Father's occupation</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">Gender:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">Gender:</div>
+                            <div class="fieldinp">
                                 <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
@@ -235,9 +244,9 @@
                             </div>
 
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">Religion:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">Religion:</div>
+                            <div class="fieldinp">
                                 <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
@@ -248,9 +257,9 @@
                             </div>
 
                         </div>
-                        <div class="feildcont">
-                            <div class="feildtitle">Caste:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont">
+                            <div class="fieldtitle">Caste:</div>
+                            <div class="fieldinp">
                                 <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
@@ -261,86 +270,86 @@
                             </div>
 
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Name:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Star:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Name:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Qualification:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
                     </div>
                     <div class="subform">
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Mother's name:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Mother's name:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Mother's contact No.</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Mother's contact No.</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Mother's occupation</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Mother's occupation</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">District:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">District:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Email:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Email:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Phone no:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Phone no:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
                     </div>
                     <div class="subform">
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Qualification:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Qualification:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Occupation:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Occupation:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Height:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Height:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
 
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Physique:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Physique:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
-                        <div class="feildcont col-2">
-                            <div class="feildtitle">Complexion:</div>
-                            <div class="feildinp">
+                        <div class="fieldcont col-2">
+                            <div class="fieldtitle">Complexion:</div>
+                            <div class="fieldinp">
                                 <input type="text">
                             </div>
                         </div>
@@ -350,7 +359,7 @@
             </div>
             <div class="accordion">
 
-                <button class="formheadbtn activeformbtn" data-target="horo">
+                <button class="formheadbtn" data-target="horo">
                 <div class="formheading">
                     <div class=formtitle> Horoscope</div>
                 </div>
@@ -360,7 +369,7 @@
                 </button>
                 <div class="formbox" id="horo">
                     <div class="subform">
-                        <div class="feildcont col-2 row-4">
+                        <div class="fieldcont col-2 row-4">
                             <div class="panel">
 
                                 <div class="board">
@@ -383,7 +392,7 @@
 
                     </div>
                     <div class="subform">
-                        <div class="feildcont col-2 row-4">
+                        <div class="fieldcont col-2 row-4">
                             <div class="keyboard" id="keyB">
                                 <button class="keyboardKey" value="ബൂ">ബൂ</button>
                                 <button class="keyboardKey" value="ച">ച</button>
@@ -400,7 +409,7 @@
                         </div>
                     </div>
                     <div class="subform">
-                        <div class="feildcont col-2 row-4">
+                        <div class="fieldcont col-2 row-4">
                             <div class="panel">
 
                                 <div class="board">
@@ -425,13 +434,12 @@
 
             </div>
             <button id="submit">Add</button>
-            <input type="file" id="profileUp">
-            <img id="profilePic" src="assets/img/altProfile.jpeg">
+
         </div>
     </div>
     <script type="module">
         import {validate} from './assets/js/validate.js'; let formctnr = document.querySelectorAll(".formcontainer"); formctnr.forEach(value => { value.querySelectorAll("input,textarea").forEach(input => { input.addEventListener("focusout", (e) => { validate(e.target,
-        e.target.parentElement.parentElement.querySelector('.feilderror')) }); }); });
+        e.target.parentElement.parentElement.querySelector('.fielderror')) }); }); });
     </script>
     <script src="assets/js/approve.min.js"></script>
 
@@ -519,15 +527,22 @@
 
         //Validation
         /*  function validate(e) {
-              let feild = e.target;
-              let errnode = feild.parentNode.parentNode.querySelector(".feilderror");
-              if (feild.dataset.validate) {
+              let field = e.target;
+              let errnode = field.parentNode.parentNode.querySelector(".fielderror");
+              if (field.dataset.validate) {
 
               }
 
           }*/
 
         //Image displaying
+        const fileSelect = document.querySelector(".profilePhoto"),
+            fileElem = document.querySelector("#profileUp");
+        fileSelect.addEventListener("click", function(e) {
+            if (fileElem) {
+                fileElem.click();
+            }
+        }, false);
         const inputElement = document.getElementById("profileUp");
         inputElement.addEventListener("change", handleFile, false);
 
