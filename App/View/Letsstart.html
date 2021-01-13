@@ -545,27 +545,22 @@
 
         function handleFile() {
             const file = this.files[0];
-            console.log(file);
             if (file.type.startsWith('image/')) {
                 const img = document.getElementById("profilePic");
                 img.file = file;
                 const objectURL = window.URL.createObjectURL(file);
                 img.src = objectURL;
             }
-
-
-
         }
 
         // board to json
         function addBoard() {
             let form1 = new FormData(document.getElementById('board1'));
             let form2 = new FormData(document.getElementById('board2'));
-
             let data = new Object();
             data.board1 = Object.fromEntries(form1);
             data.board2 = Object.fromEntries(form2);
-            data = JSON.stringify(data)
+            data = JSON.stringify(data);
 
         }
 
