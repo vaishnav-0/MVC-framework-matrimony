@@ -200,151 +200,49 @@
             </div>
             <div class="accordion" data-target="fam_details" data-title="Family details">
 
-                <div id="fam_details" class="formbox">
+                <form id="fam_details" class="formbox">
                     <div class="subform">
                         <div class="fieldcont col-2">
                             <div class="fieldtitle">Father's name:</div>
                             <div class="fieldinp">
-                                <input type="text" name="name">
+                                <input type="text" name="fName">
                             </div>
                         </div>
                         <div class="fieldcont col-2">
                             <div class="fieldtitle">Father's contact No.</div>
                             <div class="fieldinp">
-                                <input type="text">
+                                <input type="text" name="fmobile_no">
                             </div>
                         </div>
                         <div class="fieldcont col-2">
                             <div class="fieldtitle">Father's occupation</div>
                             <div class="fieldinp">
-                                <input type="text">
+                                <input type="text" name="fOcc">
                             </div>
                         </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">Gender:</div>
-                            <div class="fieldinp">
-                                <select name="cars" id="cars">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
-                            </select>
 
-                            </div>
-
-                        </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">Religion:</div>
-                            <div class="fieldinp">
-                                <select name="cars" id="cars">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
-                            </select>
-
-                            </div>
-
-                        </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">Caste:</div>
-                            <div class="fieldinp">
-                                <select name="cars" id="cars">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
-                            </select>
-
-                            </div>
-
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Star:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Qualification:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
                     </div>
                     <div class="subform">
                         <div class="fieldcont col-2">
                             <div class="fieldtitle">Mother's name:</div>
                             <div class="fieldinp">
-                                <input type="text">
+                                <input type="text" name="mName">
                             </div>
                         </div>
                         <div class="fieldcont col-2">
                             <div class="fieldtitle">Mother's contact No.</div>
                             <div class="fieldinp">
-                                <input type="text">
+                                <input type="text" name="mmobile_no">
                             </div>
                         </div>
                         <div class="fieldcont col-2">
                             <div class="fieldtitle">Mother's occupation</div>
                             <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">District:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Email:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Phone no:</div>
-                            <div class="fieldinp">
-                                <input type="text">
+                                <input type="text" name="mOcc">
                             </div>
                         </div>
                     </div>
-                    <div class="subform">
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Qualification:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Occupation:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Height:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Physique:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Complexion:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="accordion" data-target="horo" data-title="Horoscope">
                 <div class="formbox" id="horo">
@@ -523,17 +421,6 @@
           }*/
 
 
-
-        // board to json
-        function addBoard() {
-            let form1 = new FormData(document.getElementById('board1'));
-            let form2 = new FormData(document.getElementById('board2'));
-            let data = new Object();
-            data.board1 = Object.fromEntries(form1);
-            data.board2 = Object.fromEntries(form2);
-            data = JSON.stringify(data);
-
-        }
 
         function submit() {
             let client = new HttpClient('http://localhost', 'matrimony/family', 'post', '', data);
