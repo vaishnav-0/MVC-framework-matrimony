@@ -12,7 +12,7 @@ export function getHoroscope() {
 
 export const getFormData = (elementId, contentType) => {
     let element = document.getElementById(elementId);
-    let form = new FormData(elementId);
+    let form = new FormData(element);
     let data = null;
     switch (contentType) {
 
