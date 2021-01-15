@@ -6,6 +6,8 @@ use Matr\Controller\Auth;
 use Matr\Controller\Contact;
 use Matr\Controller\Member;
 use Matr\Controller\Family;
+use Matr\Controller\Sibling;
+use Matr\Controller\Address;
 use Matr\Controller\Dummy;
 use Matr\Middleware\Auth as MiddleAuth;
 
@@ -40,10 +42,22 @@ class Routes
         $router->post("contact", [Contact::class,"add"]);
         $router->patch("contact", [Contact::class,"edit"]);
         $router->delete("contact", [Contact::class,"delete"]);
+        // address routes
+        $router->get("address", [Address::class,"get"]);
+        $router->post("address", [Address::class,"add"]);
+        $router->patch("address", [Address::class,"edit"]);
+        $router->delete("address", [Address::class,"delete"]);
 
         //dummy
         $router->get("dummy", [Dummy::class,"dummy"]);
-
+        
+        // sibling route
+        $router->get("family/sibling", [Sibling::class,"getWFam"]);
+        $router->delete("family/sibling", [Sibling::class,"deleteWFam"]);
+        $router->get("sibling", [Sibling::class,"get"]);
+        $router->post("sibling", [Sibling::class,"add"]);
+        $router->patch("sibling", [Sibling::class,"edit"]);
+        $router->delete("sibling", [Sibling::class,"delete"]);
         return $router;
     }
 }
