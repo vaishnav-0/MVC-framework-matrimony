@@ -6,6 +6,7 @@ use Matr\Controller\Auth;
 use Matr\Controller\Contact;
 use Matr\Controller\Member;
 use Matr\Controller\Family;
+use Matr\Controller\Dummy;
 use Matr\Middleware\Auth as MiddleAuth;
 
 class Routes
@@ -38,7 +39,11 @@ class Routes
         $router->get("contact", [Contact::class,"get"]);
         $router->post("contact", [Contact::class,"add"]);
         $router->patch("contact", [Contact::class,"edit"]);
-        $router->delete("contact", [Contact::class,"delete"]);   
+        $router->delete("contact", [Contact::class,"delete"]);
+
+        //dummy
+        $router->get("dummy", [Dummy::class,"dummy"]);
+
         return $router;
     }
 }

@@ -34,282 +34,337 @@
             </div>
         </nav>
         <div class="formcontainer">
-            <div class="accordion" data-target="p_details" data-title="Personal details">
+            <div class="accordion" data-index="1" data-target="p_details" data-title="Personal details">
+                <div class="accordionContent" id="p_details">
 
-                <div id="p_details" class="formbox">
-                    <div class="subform">
+                    <div class="formbox">
+                        <div class="grid-6-2">
 
-                        <div class="fieldcont col-2 row-2">
-                            <div class="fieldtitle">
-                                <div class="fieldname">Photo:</div>
-                                <div class="fielderror">
+                            <div class="fieldcont col-2 row-2">
+                                <div class="fieldtitle">
+                                    <div class="fieldname">Photo:</div>
+                                    <div class="fielderror">
+                                    </div>
+                                </div>
+                                <div class="fieldinp">
+                                    <input type="file" id="profileUp">
+                                    <div class="profilePhoto">
+                                        <img id="profilePic" src="assets/img/altProfile.jpg"> </div>
                                 </div>
                             </div>
-                            <div class="fieldinp">
-                                <input type="file" id="profileUp">
-                                <div class="profilePhoto">
-                                    <img id="profilePic" src="assets/img/altProfile.jpg"> </div>
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">
-                                <div class="fieldname">Name:</div>
-                                <div class="fielderror">
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">
+                                    <div class="fieldname">Name:</div>
+                                    <div class="fielderror">
+                                    </div>
+                                </div>
+                                <div class="fieldinp">
+                                    <input type="text" name="name">
                                 </div>
                             </div>
-                            <div class="fieldinp">
-                                <input type="text" name="name">
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Age:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Age:</div>
-                            <div class="fieldinp">
-                                <input type="text">
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Date:</div>
+                                <div class="fieldinp">
+                                    <input type="date">
+                                </div>
                             </div>
-                        </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">Date:</div>
-                            <div class="fieldinp">
-                                <input type="date">
-                            </div>
-                        </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">Gender:</div>
-                            <div class="fieldinp">
-                                <select name="cars" id="cars">
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Gender:</div>
+                                <div class="fieldinp">
+                                    <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
                                 <option value="mercedes">Mercedes</option>
                                 <option value="audi">Audi</option>
                             </select>
 
-                            </div>
+                                </div>
 
-                        </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">Religion:</div>
-                            <div class="fieldinp">
-                                <select name="cars" id="cars">
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Religion:</div>
+                                <div class="fieldinp">
+                                    <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
                                 <option value="mercedes">Mercedes</option>
                                 <option value="audi">Audi</option>
                             </select>
 
-                            </div>
+                                </div>
 
-                        </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">Caste:</div>
-                            <div class="fieldinp">
-                                <select name="cars" id="cars">
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Caste:</div>
+                                <div class="fieldinp">
+                                    <select name="cars" id="cars">
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
                                 <option value="mercedes">Mercedes</option>
                                 <option value="audi">Audi</option>
                             </select>
 
+                                </div>
+
                             </div>
 
                         </div>
+                        <div class="grid-6-2">
+                            <div class="fieldcont col-2 row-2">
+                                <div class="fieldtitle">Address:</div>
+                                <div class="fieldinp">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">City/Town:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Pin Code:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">District:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">
+                                    <div class="fieldname"> Email: </div>
+                                    <div class="fielderror"></div>
 
-                    </div>
-                    <div class="subform">
-                        <div class="fieldcont col-2 row-2">
-                            <div class="fieldtitle">Address:</div>
-                            <div class="fieldinp">
-                                <textarea></textarea>
+                                </div>
+                                <div class="fieldinp">
+                                    <input type="text" data-validate="email">
+                                </div>
+                            </div>
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Phone no:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
                             </div>
                         </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">City/Town:</div>
-                            <div class="fieldinp">
-                                <input type="text">
+                        <div class="grid-6-2">
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Star:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="fieldcont">
-                            <div class="fieldtitle">Pin Code:</div>
-                            <div class="fieldinp">
-                                <input type="text">
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Qualification:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">District:</div>
-                            <div class="fieldinp">
-                                <input type="text">
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Occupation:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">
-                                <div class="fieldname"> Email: </div>
-                                <div class="fielderror"></div>
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Height:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
+                            </div>
 
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Physique:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
                             </div>
-                            <div class="fieldinp">
-                                <input type="text" data-validate="email">
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Complexion:</div>
+                                <div class="fieldinp">
+                                    <input type="text">
+                                </div>
                             </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Phone no:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="subform">
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Star:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Qualification:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Occupation:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Height:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
 
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Physique:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
                         </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Complexion:</div>
-                            <div class="fieldinp">
-                                <input type="text">
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
-            <div class="accordion" data-target="fam_details" data-title="Family details">
+            <div class="accordion" data-index="2" data-target="fam_details" data-title="Family details">
 
-                <form id="fam_details" class="formbox">
-                    <div class="subform">
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Father's name:</div>
-                            <div class="fieldinp">
-                                <input type="text" name="fName">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Father's contact No.</div>
-                            <div class="fieldinp">
-                                <input type="text" name="fmobile_no">
-                            </div>
-                        </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Father's occupation</div>
-                            <div class="fieldinp">
-                                <input type="text" name="fOcc">
-                            </div>
-                        </div>
+                <div class="accordionContent" id="fam_details">
+                    <form class="formbox">
+                        <div class="grid-6-2">
 
-                    </div>
-                    <div class="subform">
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Mother's name:</div>
-                            <div class="fieldinp">
-                                <input type="text" name="mName">
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Father's name:</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="fName">
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Father's contact No.</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="fmobile_no">
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Father's landline:</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="fName">
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Father's email:</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="fmobile_no">
+                                </div>
+                            </div>
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Father's occupation</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="fOcc">
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Mother's name:</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="mName">
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Mother's contact No.</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="mmobile_no">
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Mother's landline:</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="mName">
+                                </div>
+                            </div>
+                            <div class="fieldcont">
+                                <div class="fieldtitle">Mother's email.</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="mmobile_no">
+                                </div>
+                            </div>
+                            <div class="fieldcont col-2">
+                                <div class="fieldtitle">Mother's occupation</div>
+                                <div class="fieldinp">
+                                    <input type="text" name="mOcc">
+                                </div>
                             </div>
                         </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Mother's contact No.</div>
-                            <div class="fieldinp">
-                                <input type="text" name="mmobile_no">
+                        <div class="accordion" data-index="21" data-target="sib_details" data-title="Siblings">
+                            <div class="accordionContent" id="sib_details">
+
+                                <div class="grid-6-2">
+
+                                    <div class="fieldcont col-2">
+                                        <div class="fieldtitle">Mother's name:</div>
+                                        <div class="fieldinp">
+                                            <input type="text" name="mName">
+                                        </div>
+                                    </div>
+                                    <div class="fieldcont col-2">
+                                        <div class="fieldtitle">Mother's contact No.</div>
+                                        <div class="fieldinp">
+                                            <input type="text" name="mmobile_no">
+                                        </div>
+                                    </div>
+                                    <div class="fieldcont col-2">
+                                        <div class="fieldtitle">Mother's occupation</div>
+                                        <div class="fieldinp">
+                                            <input type="text" name="mOcc">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="fieldcont col-2">
-                            <div class="fieldtitle">Mother's occupation</div>
-                            <div class="fieldinp">
-                                <input type="text" name="mOcc">
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+
             </div>
-            <div class="accordion" data-target="horo" data-title="Horoscope">
-                <div class="formbox" id="horo">
-                    <div class="subform">
-                        <div class="fieldcont col-2 row-4">
-                            <div class="panel">
+            <div class="accordion" data-index="3" data-target="horo" data-title="Horoscope">
+                <div class="accordionContent" id="horo">
 
-                                <!-- board 1 -->
-                                <form class="board" id="board1">
-                                    <input class="square" name="1" />
-                                    <input class="square" name="2" />
-                                    <input class="square" name="3" />
-                                    <input class="square" name="4" />
-                                    <input class="square" name="5" />
-                                    <input class="square" name="6" />
-                                    <input class="square" name="7" />
-                                    <input class="square" name="8" />
-                                    <input class="square" name="9" />
-                                    <input class="square" name="10" />
-                                    <input class="square" name="11" />
-                                    <input class="square" name="12" />
+                    <div class="formbox">
+                        <div class="grid-6-2">
+                            <div class="fieldcont col-2 row-4">
+                                <div class="panel">
 
-                                </form>
+                                    <!-- board 1 -->
+                                    <form class="board" id="board1">
+                                        <input class="square" name="1" />
+                                        <input class="square" name="2" />
+                                        <input class="square" name="3" />
+                                        <input class="square" name="4" />
+                                        <input class="square" name="5" />
+                                        <input class="square" name="6" />
+                                        <input class="square" name="7" />
+                                        <input class="square" name="8" />
+                                        <input class="square" name="9" />
+                                        <input class="square" name="10" />
+                                        <input class="square" name="11" />
+                                        <input class="square" name="12" />
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="subform">
-                        <div class="fieldcont col-2 row-4">
-                            <div class="keyboard" id="keyB">
-                                <button class="keyboardKey" value="ബൂ">ബൂ</button>
-                                <button class="keyboardKey" value="ച">ച</button>
-                                <button class="keyboardKey" value="കു">കു</button>
-                                <button class="keyboardKey" value="ഗു">ഗു</button>
-                                <button class="keyboardKey" value="മ">മ</button>
-                                <button class="keyboardKey" value="മാ">മാ</button>
-                                <button class="keyboardKey" value="ല">ല</button>
-                                <button class="keyboardKey" value="ര">ര</button>
-                                <button class="keyboardKey" value="സ">സ</button>
-                                <button class="keyboardKey" value="ശി">ശി</button>
-                                <button class="keyboardKey" value="ശു">ശു</button>
+                        <div class="grid-6-2">
+                            <div class="fieldcont col-2 row-4">
+                                <div class="keyboard" id="keyB">
+                                    <button class="keyboardKey" value="ബൂ">ബൂ</button>
+                                    <button class="keyboardKey" value="ച">ച</button>
+                                    <button class="keyboardKey" value="കു">കു</button>
+                                    <button class="keyboardKey" value="ഗു">ഗു</button>
+                                    <button class="keyboardKey" value="മ">മ</button>
+                                    <button class="keyboardKey" value="മാ">മാ</button>
+                                    <button class="keyboardKey" value="ല">ല</button>
+                                    <button class="keyboardKey" value="ര">ര</button>
+                                    <button class="keyboardKey" value="സ">സ</button>
+                                    <button class="keyboardKey" value="ശി">ശി</button>
+                                    <button class="keyboardKey" value="ശു">ശു</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="subform">
-                        <div class="fieldcont col-2 row-4">
-                            <div class="panel">
+                        <div class="grid-6-2">
+                            <div class="fieldcont col-2 row-4">
+                                <div class="panel">
 
-                                <form class="board" id="board2">
-                                    <input class="square" name="1" />
-                                    <input class="square" name="2" />
-                                    <input class="square" name="3" />
-                                    <input class="square" name="4" />
-                                    <input class="square" name="5" />
-                                    <input class="square" name="6" />
-                                    <input class="square" name="7" />
-                                    <input class="square" name="8" />
-                                    <input class="square" name="9" />
-                                    <input class="square" name="10" />
-                                    <input class="square" name="11" />
-                                    <input class="square" name="12" />
+                                    <form class="board" id="board2">
+                                        <input class="square" name="1" />
+                                        <input class="square" name="2" />
+                                        <input class="square" name="3" />
+                                        <input class="square" name="4" />
+                                        <input class="square" name="5" />
+                                        <input class="square" name="6" />
+                                        <input class="square" name="7" />
+                                        <input class="square" name="8" />
+                                        <input class="square" name="9" />
+                                        <input class="square" name="10" />
+                                        <input class="square" name="11" />
+                                        <input class="square" name="12" />
 
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
 
             </div>
             <button id="submit" class="formSubmitBtn">Add</button>
@@ -354,7 +409,7 @@
         }
 
         //Accordion
-        function accordionctrl(e) {
+        /*  function accordionctrl(e) {
             let currPress = e.currentTarget;
             let heading = currPress.querySelector(".formheading");
             heading.classList.toggle("activeformhead");
@@ -409,7 +464,7 @@
 
 
         });
-
+*/
         //Validation
         /*  function validate(e) {
               let field = e.target;

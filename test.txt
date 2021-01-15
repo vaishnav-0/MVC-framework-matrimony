@@ -1,1 +1,34 @@
 test
+ if (e.key === settings.down) {
+
+            if (activehead === -1 || activehead === currIndex.length - 1) {
+                elm[currIndex.index[0]].focus();
+            } else {
+                elm[currIndex.index[activehead + 1]].focus();
+            }
+        }
+        if (e.key === settings.up) {
+            if (activehead === -1 || activehead === 0) {
+                elm[currIndex.index[currIndex.length - 1]].focus();
+            } else {
+                elm[currIndex.index[activehead - 1]].focus();
+
+            }
+        }
+        if (e.key === settings.inside) {
+
+            if (currIndex.sub[activehead].hasOwnProperty('sub')) {
+                currIndex.branch.push(activehead);
+                setCurrIndex();
+                elm[currIndex.index[0]].focus();
+            }
+        }
+        if (e.key === settings.outside) {
+
+            if (currIndex.branch.length > 1) {
+                let lastBranch = currIndex.branch[currIndex.branch.length - 1];
+                currIndex.branch.pop();
+                setCurrIndex();
+                elm[currIndex.index[lastBranch]].focus();
+            }
+        }
