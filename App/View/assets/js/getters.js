@@ -16,11 +16,11 @@ export default (elementId, contentType) => {
     let data = null;
     switch (contentType) {
 
-        case "multipart/form-data": data = form;
+        case "multipart": data = form;
             break;
-        case "application/json": data = JSON.stringify(Object.fromEntries(form));
+        case "json": data = JSON.stringify(Object.fromEntries(form));
             break;
-        case "application/x-www-form-urlencoded": data = new URLSearchParams(form);
+        case "urlencoded": data = new URLSearchParams(form);
             break;
 
     }
