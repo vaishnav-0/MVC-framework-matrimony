@@ -7,7 +7,7 @@ class addCaste
     public function __construct(){
         $con = Connection::getCon();
         $query = <<<QUERY
-        INSERT INTO `caste_religion`(`caste`, `religion`) VALUES ("hindu","Aiyyer"),
+        INSERT INTO `caste_religion`(`religion`,`caste`) VALUES ("hindu","Aiyyer"),
         ("hindu","Ambalavasi"),
         ("hindu","Araya"),
         ("hindu","Brahmin"),
