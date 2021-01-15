@@ -196,11 +196,12 @@ button {
     transition: all .3s ease-in-out;
 }
 
-.grid-auto-4 {
+.grid-auto-3 {
     display: grid;
     grid-template-columns: 80px 50px 80px;
-    grid-gap: 1rem;
-    grid-auto-flow: dense;
+    grid-auto-rows: 75px;
+    grid-auto-flow: row;
+    column-gap: 15px;
 }
 
 .subform1 {}
@@ -386,6 +387,10 @@ button {
     margin-left: 5px;
     width: 30px;
     height: max-content;
+}
+
+#sibDet {
+    margin-top: 15px;
 }
 
 

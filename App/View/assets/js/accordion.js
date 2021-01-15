@@ -14,15 +14,10 @@ currIndex.branch = []
 
 index = { 0: { 'elm': null } };
 
-function traverse(o, func) {
-    for (var i in o) {
-        func.apply(this, [i, o[i]]);
-        if (o[i] !== null && typeof(o[i]) == "object") {
-            //going one step down in the object tree!!
-            traverse(o[i], func);
-        }
-    }
-}
+// Options for the observer (which mutations to observe)
+const mutConfig = { attributes: true, childList: true, subtree: true };
+
+
 
 function accordionctrl(e) {
     let currPress = e.currentTarget;
@@ -38,13 +33,29 @@ function accordionctrl(e) {
 
     } else {
         heading.style.width = w + "px";
-        target.style.height = target.scrollHeight + "px";
+        setToScrollHeight(target);
         iconspan.classList.replace("fa-caret-right", "fa-caret-down");
 
     }
 
 }
 
+function setToScrollHeight(elm) {
+    elm.style.height = elm.scrollHeight + "px";
+
+}
+const mutationCallback = function(mutationsList, observer) {
+    // Use traditional 'for loops' for IE 11
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            if (observer.target.style.height !== '') {
+                setToScrollHeight(observer.target);
+            }
+        } else if (mutation.type === 'attributes') {
+            //console.log('The ' + mutation.attributeName + ' attribute was modified.');
+        }
+    }
+};
 
 
 function addAccordionEvent(elm) {
@@ -163,6 +174,7 @@ function turntoNumeric(obj) {
 }
 export function bind(container) {
     let target = container.dataset.target,
+        targetElm = document.getElementById(target),
         title = container.dataset.title,
         indx = container.dataset.index,
         data = { 'target': target, 'title': title, 'index': indx },
@@ -171,6 +183,10 @@ export function bind(container) {
     for (let i = 0; i < a.length; i++) {
         container.insertBefore(a[i].cloneNode(true), container.firstChild);
     }
+    let observer = new MutationObserver(mutationCallback);
+    observer.target = targetElm;
+    // Start observing the target node for configured mutations
+    observer.observe(targetElm, mutConfig);
 }
 
 export function init() {
