@@ -168,7 +168,6 @@ export function bind(container) {
         data = { 'target': target, 'title': title, 'index': indx },
         template = new DOMParser().parseFromString(render(c, data), "text/html"),
         a = template.body.children;
-
     for (let i = 0; i < a.length; i++) {
         container.insertBefore(a[i].cloneNode(true), container.firstChild);
     }
