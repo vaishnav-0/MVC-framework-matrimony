@@ -2,19 +2,15 @@
 namespace Matr\Controller;
 
 use Matr\Model\familyModel;
-use Matr\Model\contactModel;
-use Matr\Model\siblingModel;
 
 class Family extends BaseController
 {
     private $familyModel;
-    private $contactModel;
-    private $siblingModel;
+
     public function __construct($a, $b)
     {
         parent::__construct($a, $b);
         $this->familyModel = new familyModel();
-        $this->contactModel = new contactModel();
     }
 
     public function get()
