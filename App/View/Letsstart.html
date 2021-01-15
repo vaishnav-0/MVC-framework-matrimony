@@ -404,22 +404,46 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            <button id="submit" class="formSubmitBtn">Add</button>
 
         </div>
 
+        <button id="submit" class="formSubmitBtn">Add</button>
+    </div>
+
     </div>
     </div>
+
+
     <script src="assets/js/image.js"></script>
+
     <script type="module">
-        import {validate} from './assets/js/validate.js'; let formctnr = document.querySelectorAll(".formcontainer"); formctnr.forEach(value => { value.querySelectorAll("input,textarea").forEach(input => { input.addEventListener("focusout", (e) => { validate(e.target,
-        e.target.parentElement.parentElement.querySelector('.fielderror')) }); }); });
+        import { validate } from './assets/js/validate.js';
+
+        let formctnr = document.querySelectorAll(".formcontainer");
+
+        formctnr.forEach((value) => {
+            value.querySelectorAll("input,textarea")
+                .forEach((input) => {
+                    input.addEventListener("focusout",
+                        (e) => {
+                            validate(e.target,
+                                e.target.parentElement.parentElement.querySelector('.fielderror'))
+                        });
+                });
+        });
     </script>
+
     <script type="module">
-        import {bind, init} from './assets/js/accordion.js'; document.querySelectorAll('.accordion').forEach((elm) =>{ bind(elm); }); init();
+        import { bind, init } from './assets/js/accordion.js';
+        
+        document.querySelectorAll('.accordion')
+            .forEach((elm) => {
+                bind(elm);
+            });
+        init();
     </script>
+
     <script src="assets/js/approve.min.js"></script>
 
     <script>

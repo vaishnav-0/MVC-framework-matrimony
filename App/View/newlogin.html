@@ -57,23 +57,18 @@
         </div>
     </div>
     <script src="assets/js/httpClient.js"></script>
-    <script>
+    <script type="module">
         // import HttpClient from './assets/js/HttpClient.js';
+        import getFormData from './assets/js/getters.js'
 
         function login() {
             const form = document.getElementById('login');
-            const data = new URLSearchParams();
-            for (const pair of new FormData(form)) {
-                data.append(pair[0], pair[1]);
-            }
+            let data = getFormData(form,'application/x-www-form-urlencoded');
             let client = new HttpClient('http://localhost', 'matrimony/login', 'post', '', data);
             let request = client.request().then((data) => {
                 if (data.status === 'Success') {
                     console.log('hurray');
-                    let cl = new HttpClient('http://localhost', 'matrimony/App/View/Letsstart.html', 'get', '', '');
-                    let res = client.request().then((data) => {
-
-                    });
+                  
                 }
             });
 
