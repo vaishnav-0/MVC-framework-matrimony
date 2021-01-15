@@ -14,6 +14,12 @@ function getValidRule(rule) {
                 email: true
             }
             break;
+        case "required":
+            return{
+                title: "required",
+                stop: true,
+                required: true,
+            }
 
 
     }
@@ -41,6 +47,9 @@ export function validate(feild, errnode) { //input feild obj, error displaying
 
     let valRes = approve.value(feild.value, getValidRule(feild.dataset.validate));
     if (valRes.errors.length !== 0) {
+        let data = {
+            "error": ""
+        };
         let errmsg = errnode.querySelector(".errMsg");
         if (errmsg) {
             errmsg.textContent = '';
@@ -49,9 +58,7 @@ export function validate(feild, errnode) { //input feild obj, error displaying
             });
             showAndFade(errnode);
         } else {
-            let data = {
-                "error": ""
-            };
+            
             valRes.each(function(error) {
                 data.error += error;
             });
@@ -71,9 +78,13 @@ export function validate(feild, errnode) { //input feild obj, error displaying
             showAndFade(errnode);
 
         }
+        feild.title = data.error;
+        feild.classList.add('err-input');
     } else {
         if (errnode.querySelector(".errMsg")) {
             errnode.textContent = '';
+            feild.classList.remove('err-input');
+            feild.removeAttribute('title');
         }
     }
 

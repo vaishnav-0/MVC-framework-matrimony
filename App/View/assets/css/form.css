@@ -193,19 +193,18 @@ button {
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     grid-gap: 1rem;
     grid-auto-flow: dense;
-    transition: all .3s ease-in-out;
 }
 
-.grid-auto-3 {
+.grid-auto-3fluid {
     display: grid;
-    grid-template-columns: 80px 50px 80px;
+    grid-template-columns: repeat(3,max-content);
     grid-auto-rows: 75px;
     grid-auto-flow: row;
     column-gap: 15px;
 }
-.grid-auto-1 {
+.grid-auto-1fluid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: max-content;
     grid-auto-rows: 75px;
     grid-auto-flow: row;
     column-gap: 15px;
@@ -242,7 +241,13 @@ button {
     display: flex;
     flex-flow: row nowrap;
 }
-
+.flex-row-reverse {
+    margin: 10px 0 10px 0;
+    justify-self: stretch;
+    min-width: 0;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+}
 .row-2 {
     grid-row-end: span 2;
 }
@@ -280,6 +285,7 @@ button {
 }
 
 .profilePhoto {
+    width: max-content;
     height: 100%;
     padding-bottom: 10px;
 }
@@ -398,13 +404,18 @@ button {
     margin-top: 15px;
 }
 
-
+.form-m-age{
+    width: 50px;
+}
 /*----------STATES----------------------*/
 
 .activeformhead {
     width: 20%;
 }
-
+button:active {
+    box-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 0.25);
+    transform: translate(1px,1px);
+  }
 input:focus,
 select:focus,
 textarea:focus {

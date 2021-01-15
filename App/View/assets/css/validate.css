@@ -34,3 +34,7 @@
 .hideMsg {
     display: none !important;
 }
+
+.err-input{
+    border: 1px solid red;
+}

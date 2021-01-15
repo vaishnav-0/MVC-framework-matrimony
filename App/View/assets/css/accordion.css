@@ -10,7 +10,11 @@
     align-items: center;
     height: auto !important;
 }
+.accordionHeadbtn:active{
+    box-shadow: none;
+    transform: none;
 
+}
 .accordionHeadbtn:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
@@ -53,6 +57,7 @@
 }
 
 .accordionContent {
+    transition: all .3s ease-in-out;
     height: 0;
     overflow: hidden !important;
 }

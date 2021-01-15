@@ -60,13 +60,13 @@
                                     </div>
                                 </div>
                                 <div class="fieldinp">
-                                    <input type="text" name="name">
+                                    <input type="text" name="name" data-validate="required">
                                 </div>
                             </div>
                             <div class="flex-col col-2">
                                 <div class="fieldtitle">Age:</div>
                                 <div class="fieldinp">
-                                    <input type="text">
+                                    <input type="text" readonly>
                                 </div>
                             </div>
                             <div class="flex-col">
@@ -126,7 +126,7 @@
                             <div class="flex-col">
                                 <div class="fieldtitle">City/Town:</div>
                                 <div class="fieldinp">
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                             </div>
                             <div class="flex-col">
@@ -198,6 +198,9 @@
                             </div>
 
                         </div>
+                    </div>
+                    <div class="flex-row-reverse">
+                        <button id="submit" class="formSubmitBtn">Add</button>
                     </div>
                 </div>
             </div>
@@ -276,7 +279,7 @@
                                 <div class="fieldtitle">Add sibling:</div>
                                 <button type="button" class="add-sib-btn" id="sibAdd">+</button>
                             </div>
-                            <div class="grid-auto-1" id="sibDet"></div>
+                            <div class="grid-auto-1fluid" id="sibDet"></div>
 
                         </div>
                     </div>
@@ -294,18 +297,18 @@
 
                                 <!-- board 1 -->
                                 <form class="board" id="board1">
-                                    <input class="square" name="1" />
-                                    <input class="square" name="2" />
-                                    <input class="square" name="3" />
-                                    <input class="square" name="4" />
-                                    <input class="square" name="5" />
-                                    <input class="square" name="6" />
-                                    <input class="square" name="7" />
-                                    <input class="square" name="8" />
-                                    <input class="square" name="9" />
-                                    <input class="square" name="10" />
-                                    <input class="square" name="11" />
-                                    <input class="square" name="12" />
+                                    <textarea class="square" name="1"></textarea>
+                                    <textarea class="square" name="2"></textarea>
+                                    <textarea class="square" name="3"></textarea>
+                                    <textarea class="square" name="4"></textarea>
+                                    <textarea class="square" name="5"></textarea>
+                                    <textarea class="square" name="6"></textarea>
+                                    <textarea class="square" name="7"></textarea>
+                                    <textarea class="square" name="8"></textarea>
+                                    <textarea class="square" name="9"></textarea>
+                                    <textarea class="square" name="10"></textarea>
+                                    <textarea class="square" name="11"></textarea>
+                                    <textarea class="square" name="12"></textarea>
 
                                 </form>
                             </div>
@@ -333,18 +336,18 @@
                             <div class="panel">
 
                                 <form class="board" id="board2">
-                                    <input class="square" name="1" />
-                                    <input class="square" name="2" />
-                                    <input class="square" name="3" />
-                                    <input class="square" name="4" />
-                                    <input class="square" name="5" />
-                                    <input class="square" name="6" />
-                                    <input class="square" name="7" />
-                                    <input class="square" name="8" />
-                                    <input class="square" name="9" />
-                                    <input class="square" name="10" />
-                                    <input class="square" name="11" />
-                                    <input class="square" name="12" />
+                                    <textarea class="square" name="1"></textarea>
+                                    <textarea class="square" name="2"></textarea>
+                                    <textarea class="square" name="3"></textarea>
+                                    <textarea class="square" name="4"></textarea>
+                                    <textarea class="square" name="5"></textarea>
+                                    <textarea class="square" name="6"></textarea>
+                                    <textarea class="square" name="7"></textarea>
+                                    <textarea class="square" name="8"></textarea>
+                                    <textarea class="square" name="9"></textarea>
+                                    <textarea class="square" name="10"></textarea>
+                                    <textarea class="square" name="11"></textarea>
+                                    <textarea class="square" name="12"></textarea>
 
                                 </form>
                             </div>
@@ -408,7 +411,7 @@
             let sibAcc = document.getElementById('sib_details');
 
             let Template = `
-            <form class="grid-auto-3" id= "sibling${index}">
+            <form class="grid-auto-3fluid" id= "sibling${index}">
             <div class="flex-col">
                 <div class="fieldtitle">Gender:</div>
                 <div class="fieldinp"><select name="gender">
@@ -418,10 +421,10 @@
                     <option value="audi">Audi</option></select>
                     </div>
                     </div>
-                    <div class="flex-col">
+                    <div class="flex-col form-m-age">
                         <div class="fieldtitle">Age:</div>
                         <div class="fieldinp">
-                            <input type="number">
+                            <input name="age" type="number">
                             </div></div>
                     <div class="flex-col">
                     <div class="fieldtitle">Married:</div>
