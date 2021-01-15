@@ -276,7 +276,7 @@
                                 <div class="fieldtitle">Add sibling:</div>
                                 <button type="button" class="add-sib-btn" id="sibAdd">+</button>
                             </div>
-                            <div class="grid-auto-3" id="sibDet"></div>
+                            <div class="grid-auto-1" id="sibDet"></div>
 
                         </div>
                     </div>
@@ -390,7 +390,7 @@
 
     <script type="module">
         // init
-        import serialize from './assets/js/getters.js'
+        import serialize from './assets/js/getters.js';
         var index = 0;
         var siblingdata = new Object();
 
@@ -408,7 +408,7 @@
             let sibAcc = document.getElementById('sib_details');
 
             let Template = `
-            <form id= "sibling${index}">
+            <form class="flex-row" id= "sibling${index}">
             <div class="flex-col">
                 <div class="fieldtitle">Gender:</div>
                 <div class="fieldinp"><select name="gender">
@@ -464,85 +464,7 @@
 
         }
 
-        //Simple templating for form validation
-        function renderTemp(elmtmp, data, parent) {
-            elm = elmtmp.cloneNode(true);
-            for (const pr in data) {
-                subelm = elm.getElementById(pr);
-                subelm.append(document.createTextNode(data[pr]));
-            }
-            parent.append(elm);
-        }
-
-        //Accordion
-        /*  function accordionctrl(e) {
-            let currPress = e.currentTarget;
-            let heading = currPress.querySelector(".formheading");
-            heading.classList.toggle("activeformhead");
-            let iconspan = currPress.querySelector(".faicon");
-            let target = document.getElementById(currPress.dataset.target);
-            if (target.clientHeight) {
-                target.style.height = 0;
-                iconspan.classList.replace("fa-caret-down", "fa-caret-right");
-
-            } else {
-                target.style.height = target.scrollHeight + "px";
-                iconspan.classList.replace("fa-caret-right", "fa-caret-down");
-
-            }
-
-        }
-
-        let accButton = document.querySelectorAll(".formheadbtn");
-        accButton.forEach(element => {
-            element.addEventListener("click", accordionctrl);
-
-        });
-        let activehead = -1;
-        accButton.forEach(element => {
-            element.addEventListener("focus", e => {
-                activehead = Array.prototype.indexOf.call(accButton, e.target);
-            });
-        });
-        accButton.forEach(element => {
-            element.addEventListener("blur", e => {
-                activehead = -1;
-            });
-        });
-        document.addEventListener("keydown", e => {
-            switch (e.key) {
-                case "ArrowDown":
-                    if (activehead === -1 || activehead === accButton.length - 1) {
-                        accButton[0].focus();
-                    } else {
-                        accButton[activehead + 1].focus();
-                    }
-                    break;
-                case "ArrowUp":
-                    if (activehead === -1 || activehead === 0) {
-                        accButton[accButton.length - 1].focus();
-                    } else {
-                        accButton[activehead - 1].focus();
-
-                    }
-                    break;
-            }
-
-
-        });
-*/
-        //Validation
-        /*  function validate(e) {
-              let field = e.target;
-              let errnode = field.parentNode.parentNode.querySelector(".fielderror");
-              if (field.dataset.validate) {
-
-              }
-
-          }*/
-
-
-
+    
         function submit() {
             let client = new HttpClient('http://localhost', 'matrimony/family', 'post', '', data);
             client.request().then((data) => {
@@ -552,6 +474,7 @@
                 }
             });
         }
+        console.log(index);
     </script>
 </body>
 

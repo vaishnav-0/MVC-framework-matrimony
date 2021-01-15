@@ -3,7 +3,7 @@ namespace Matr\Controller;
 
 use Matr\Model\addressModel;
 
-class Contact extends BaseController
+class Address extends BaseController
 {
     private $addressModel;
     public function __construct($a, $b)

@@ -203,7 +203,13 @@ button {
     grid-auto-flow: row;
     column-gap: 15px;
 }
-
+.grid-auto-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 75px;
+    grid-auto-flow: row;
+    column-gap: 15px;
+}
 .subform1 {}
 
 .subform2 {}
@@ -390,7 +396,7 @@ button {
 }
 
 #sibDet {
-    margin-top: 15px;
+    margin-top: 0px;
 }
 
 
