@@ -53,13 +53,12 @@ class Router
 
                 return $this->handle($route, $request);
             }
-            else{
-                $res = new Response;
-                $res= $res->withStatus('404');
-                return $res;
-            }
+            
+            
         }
-
+        $res = new Response;
+        $res= $res->withStatus('404');
+        return $res;
       
     }
     protected function handle($route, $request)

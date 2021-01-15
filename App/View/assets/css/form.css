@@ -193,8 +193,6 @@ button {
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     grid-gap: 1rem;
     grid-auto-flow: dense;
-    height: 0;
-    overflow: hidden;
     transition: all .3s ease-in-out;
 }
 
@@ -204,10 +202,11 @@ button {
 
 .subform3 {}
 
-.subform {
+.grid-6-2 {
     margin: 10px 0 10px 0;
     display: grid;
     grid-template: repeat(6, 75px) /repeat(2, 1fr);
+    grid-auto-columns: 75px;
     /*Customize row height(input field height according to layout) here*/
     column-gap: 15px;
 }
