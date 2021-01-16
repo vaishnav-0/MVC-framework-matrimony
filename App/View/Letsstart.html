@@ -34,9 +34,9 @@
             </div>
         </nav>
         <div class="formcontainer">
-            <div class="accordion" data-index="1" data-target="p_details" data-title="Personal details">
+            <div class="accordion" id="Acc1" data-index="1" data-target="p_details" data-title="Personal details">
                 <div class="accordionContent" id="p_details">
-                    <form name="member" data-next="">
+                    <form name="member" data-next="Acc2">
                         <div class="grid-auto-autofit-min330">
                             <div class="grid-auto-2">
 
@@ -261,7 +261,7 @@
                     </form>
                 </div>
             </div>
-            <div class="accordion" data-isdisabled="true" data-index="2" data-target="fam_details"
+            <div class="accordion" id="Acc2" data-isdisabled="true" data-index="2" data-target="fam_details"
                 data-title="Family details">
 
                 <div class="accordionContent" id="fam_details">
@@ -349,7 +349,7 @@
             </div>
 
         </div>
-        <div class="accordion" data-index="3" data-target="horo" data-title="Horoscope">
+        <div class="accordion" id="Acc3" data-index="3" data-target="horo" data-title="Horoscope">
             <div class="accordionContent" id="horo">
 
                 <div class="grid-auto-autofit-min330">
@@ -604,7 +604,7 @@
         })();
         //after form submit
         document.addEventListener('validForm', (e) => {
-            console.log(e.target);
+            console.log(e.target.dataset.next);
         });
 
         function submit() {
