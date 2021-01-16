@@ -5,24 +5,26 @@
 //data-title : heading for accordion 
 //data-isdisabled : for disabling accordion
 //accordion container sample <div class="accordion" data-index="2-1" data-target="p_details" data-title="Personal details" data-isdisabled="true">
-import { render,compile,renderToDOM } from './templating.js';
-let Temp = `<button type="button" class="accordionHeadbtn" data-index="{{index}}" data-target="{{target}}"><div class="accordionHeading"><div class=accordionTitle> {{title}}</div></div><div class="accordionHeadcaret"><span class="fa fa-caret-right faicon"></span></div></button>`,
+import { render, compile, renderToDOM } from './templating.js';
+let Temp = `<button type="button" class="accordionHeadbtn {{ disClass }}" data-index="{{index}}" data-target="{{target}}"><div class="accordionHeading"><div class=accordionTitle> {{title}}</div></div><div class="accordionHeadcaret"><span class="fa fa-caret-right faicon"></span></div></button>`,
     activehead = -1,
     index = new Object(),
     currIndex = new Object(),
     c = compile(Temp),
     settings = { keys: { 'up': 'ArrowUp', 'down': 'ArrowDown', 'inside': 'ArrowRight', 'outside': 'ArrowLeft' }, open: true };
-currIndex.branch = []
+currIndex.branch = [];
 
 index = { 0: { 'elm': null } };
 
 // Options for the observer (which mutations to observe)
-const mutConfig = { attributes: true, childList: true, subtree: true };
+const AccContentmutConfig = { attributes: true, childList: true, subtree: true };
+const AccContainermutConfig = { attributes: true};
+
 
 
 
 function accordionctrl(e) {
-    if(e.currentTarget.parentElement.dataset.isdisabled){
+    if (e.currentTarget.parentElement.dataset.isdisabled) {
         return;
     }
     let currPress = e.currentTarget;
@@ -49,7 +51,7 @@ function setToScrollHeight(elm) {
     elm.style.height = elm.scrollHeight + "px";
 
 }
-const mutationCallback = function(mutationsList, observer) {
+const AccContentModed = function (mutationsList, observer) {
     // Use traditional 'for loops' for IE 11
     for (const mutation of mutationsList) {
         if (mutation.type === 'childList') {
@@ -61,7 +63,20 @@ const mutationCallback = function(mutationsList, observer) {
         }
     }
 };
+const AccContainerModed = function (mutationsList, observer) {
+    // Use traditional 'for loops' for IE 11
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'attributes') {
+            if(!mutation.target.getAttribute('data-isdisabled')){
+                mutation.target.querySelector('.accordionHeadbtn').classList.remove('accordionDisableBtn');
+            }
+            else{
+                mutation.target.querySelector('.accordionHeadbtn').classList.add('accordionDisableBtn');
 
+            }
+        }
+    }
+};
 
 function addAccordionEvent(elm) {
     document.addEventListener("keydown", e => {
@@ -82,7 +97,7 @@ function addAccordionEvent(elm) {
                 }
                 break;
             case settings.keys.inside:
-                if(elm[currIndex.index[activehead]].parentElement.dataset.isdisabled){
+                if (elm[currIndex.index[activehead]].parentElement.dataset.isdisabled) {
                     break;
                 }
                 if (!elm[currIndex.index[activehead]].querySelector('.activeformhead')) {
@@ -185,12 +200,14 @@ export function bind(container) {
         targetElm = document.getElementById(target),
         title = container.dataset.title,
         indx = container.dataset.index,
-        data = { 'target': target, 'title': title, 'index': indx };
-        renderToDOM(render(c, data), container, true);
-    let observer = new MutationObserver(mutationCallback);
-    observer.target = targetElm;
-    // Start observing the target node for configured mutations
-    observer.observe(targetElm, mutConfig);
+        disabled = container.dataset.isdisabled ? 'accordionDisableBtn' : '',
+        data = { 'target': target, 'title': title, 'index': indx, 'disClass': disabled };
+    renderToDOM(render(c, data), container, true);
+    let observer1 = new MutationObserver(AccContentModed);
+    observer1.target = targetElm;
+    observer1.observe(targetElm, AccContentmutConfig);
+    let observer2 = new MutationObserver(AccContainerModed);
+    observer2.observe(container, AccContainermutConfig);
 }
 
 export function init() {
