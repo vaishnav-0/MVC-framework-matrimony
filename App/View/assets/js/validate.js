@@ -40,7 +40,6 @@ function submitCheck(e){
             }
         }  
     });
-    console.log(check);
     if(check){
         e.target.dispatchEvent(validForm);
     }
