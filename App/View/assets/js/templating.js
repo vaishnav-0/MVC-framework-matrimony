@@ -53,9 +53,15 @@ export function render(template, data) {
     }
     return template(data);
 }
-export function renderToDOM(template, node) {
+export function renderToDOM(template, node, before = false) { // before will append template as first child
     let temp = new DOMParser().parseFromString(template, "text/html"),
     a = temp.body.children;
+    if(before){
+        for (let i = 0; i < a.length; i++) {
+            node.insertBefore(a[i].cloneNode(true), node.firstChild);
+        }
+        return;
+    }
     for (let i = 0; i < a.length; i++) {
         node.appendChild(a[i].cloneNode(true));
     }}
