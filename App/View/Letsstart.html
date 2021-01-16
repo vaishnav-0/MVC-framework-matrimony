@@ -122,7 +122,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <select name="caste_rel_id" data-validate="required">
+                                        <select name="caste_id" data-validate="required">
                                             <option value="">-</option>
                                         </select>
 
@@ -587,7 +587,7 @@
 // religion and caste fetching
         (function () {
             let relNode = document.getElementsByName('religion')[0],
-                casteNode = document.getElementsByName('caste_rel_id')[0],
+                casteNode = document.getElementsByName('caste_id')[0],
                 temp = `<option value="{{value}}">{{valuesh}}</option>`,
                 c = compile(temp),
                 dat = [],

@@ -44,7 +44,7 @@ class Member extends BaseController
                 'join_date' => $this->reqBody->join_date,
                 'name'  => $this->reqBody->name,
                 'dob'	 => $this->reqBody->dob,
-                'caste_rel_id'	 => $this->reqBody->caste_rel_id,
+                'caste_rel_id'	 => $this->reqBody->caste_id,
                 'height'	 => $this->reqBody->height,
                 'physique' => $this->reqBody->physique,
                 'gender'	 => $this->reqBody->gender,
