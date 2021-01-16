@@ -185,12 +185,8 @@ export function bind(container) {
         targetElm = document.getElementById(target),
         title = container.dataset.title,
         indx = container.dataset.index,
-        data = { 'target': target, 'title': title, 'index': indx },
-        template = new DOMParser().parseFromString(render(c, data), "text/html"),
-        a = template.body.children;
-    for (let i = 0; i < a.length; i++) {
-        container.insertBefore(a[i].cloneNode(true), container.firstChild);
-    }
+        data = { 'target': target, 'title': title, 'index': indx };
+        renderToDOM(render(c, data), container, true);
     let observer = new MutationObserver(mutationCallback);
     observer.target = targetElm;
     // Start observing the target node for configured mutations
