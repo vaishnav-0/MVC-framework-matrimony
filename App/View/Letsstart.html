@@ -604,7 +604,7 @@
         })();
         //after form submit
         document.addEventListener('validForm', (e) => {
-            console.log(e.target.dataset.next);
+            document.getElementById(e.target.dataset.next).removeAttribute('data-isdisabled');
         });
 
         function submit() {
