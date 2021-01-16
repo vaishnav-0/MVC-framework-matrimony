@@ -5,8 +5,7 @@
 //data-title : heading for accordion 
 //data-isdisabled : for disabling accordion
 //accordion container sample <div class="accordion" data-index="2-1" data-target="p_details" data-title="Personal details" data-isdisabled="true">
-import { render } from './templating.js';
-import { compile } from './templating.js';
+import { render,compile,renderToDOM } from './templating.js';
 let Temp = `<button type="button" class="accordionHeadbtn" data-index="{{index}}" data-target="{{target}}"><div class="accordionHeading"><div class=accordionTitle> {{title}}</div></div><div class="accordionHeadcaret"><span class="fa fa-caret-right faicon"></span></div></button>`,
     activehead = -1,
     index = new Object(),
