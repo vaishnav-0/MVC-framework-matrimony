@@ -1,6 +1,6 @@
 <?php
 namespace Matr\Controller;
-use Core\data\addCaste;
+use Core\data\test;
 class Dummy extends BaseController
 {
 
@@ -10,7 +10,7 @@ class Dummy extends BaseController
     }
 
     public function dummy(){
-        $c = new addCaste();
-        return $this->response->json(["status"=>"success"]);
+        $c = new test();
+        return $this->response->json(["data"=>$c->result]);
     }
 }

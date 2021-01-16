@@ -44,5 +44,18 @@ export function compile(template) {
 }
 
 export function render(template, data) {
+    if(Array.isArray(data)){
+        let tmp = '';
+        data.forEach(value => {
+            tmp += template(value);
+        });
+        return tmp;
+    }
     return template(data);
 }
+export function renderToDOM(template, node) {
+    let temp = new DOMParser().parseFromString(template, "text/html"),
+    a = temp.body.children;
+    for (let i = 0; i < a.length; i++) {
+        node.appendChild(a[i].cloneNode(true));
+    }}

@@ -1,4 +1,4 @@
-class HttpClient {
+export default class HttpClient {
     constructor(baseUrl, path, method, headers, data) {
         this.baseUrl = baseUrl;
         this.path = path;

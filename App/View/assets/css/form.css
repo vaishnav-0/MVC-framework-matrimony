@@ -273,7 +273,7 @@ button {
     flex-flow: row nowrap;
 }
 
-.fielderror {
+.errorField {
     position: relative;
     display: flex;
     align-items: center;
@@ -338,33 +338,7 @@ button {
     font-weight: 300;
 }
 
-.fielderror span {
-    margin-left: 5px;
-    color: rgb(245, 0, 0);
-}
 
-.fielderror>.errmsg {
-    position: absolute;
-    left: 17px;
-    top: 10px;
-    padding: 4px 7px 4px 7px;
-    width: max-content;
-    margin-left: 16px;
-    background-color: rgb(255, 236, 70);
-    transition: all 3s ease;
-    opacity: 1;
-}
-
-.fielderror>.errmsg::after {
-    position: absolute;
-    left: -10px;
-    top: 0;
-    content: "";
-    width: 0;
-    height: 0;
-    border-top: 10px solid rgb(255, 236, 70);
-    border-left: 10px solid transparent;
-}
 
 #profilePic {
     height: 100%;

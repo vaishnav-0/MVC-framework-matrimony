@@ -8,6 +8,7 @@ use Matr\Controller\Member;
 use Matr\Controller\Family;
 use Matr\Controller\Sibling;
 use Matr\Controller\Address;
+use Matr\Controller\Religion;
 use Matr\Controller\Dummy;
 use Matr\Middleware\Auth as MiddleAuth;
 
@@ -58,6 +59,12 @@ class Routes
         $router->post("sibling", [Sibling::class,"add"]);
         $router->patch("sibling", [Sibling::class,"edit"]);
         $router->delete("sibling", [Sibling::class,"delete"]);
+
+        //religion routes
+        $router->get("religion/all", [Religion::class,"getAllReligion"]);
+        $router->get("religion/caste", [Religion::class,"getAllCaste"]);
+
+
         return $router;
     }
 }

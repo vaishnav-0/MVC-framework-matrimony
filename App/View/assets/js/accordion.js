@@ -1,7 +1,10 @@
 //pass accordion container to bind function, add accordion content inside accordion container, set data-target of accordion container to id of accordion content
-//data-target - id of accordion content
-//data-title - heading for accordion 
-//accordion container sample <div class="accordion" data-target="p_details" data-title="Personal details">
+//accordion container element contain these attributes
+//data-target : id of accordion content
+//data-index : order for navigation(not required to be in consecutive numeric order). To use nested navigation use this attribute in the form (grandparent-parent-child)
+//data-title : heading for accordion 
+//data-isdisabled : for disabling accordion
+//accordion container sample <div class="accordion" data-index="2-1" data-target="p_details" data-title="Personal details" data-isdisabled="true">
 import { render } from './templating.js';
 import { compile } from './templating.js';
 let Temp = `<button type="button" class="accordionHeadbtn" data-index="{{index}}" data-target="{{target}}"><div class="accordionHeading"><div class=accordionTitle> {{title}}</div></div><div class="accordionHeadcaret"><span class="fa fa-caret-right faicon"></span></div></button>`,
@@ -20,6 +23,9 @@ const mutConfig = { attributes: true, childList: true, subtree: true };
 
 
 function accordionctrl(e) {
+    if(e.currentTarget.parentElement.dataset.isdisabled){
+        return;
+    }
     let currPress = e.currentTarget;
     let heading = currPress.querySelector(".accordionHeading");
     let w = currPress.querySelector(".accordionTitle").offsetWidth;
@@ -77,6 +83,9 @@ function addAccordionEvent(elm) {
                 }
                 break;
             case settings.keys.inside:
+                if(elm[currIndex.index[activehead]].parentElement.dataset.isdisabled){
+                    break;
+                }
                 if (!elm[currIndex.index[activehead]].querySelector('.activeformhead')) {
                     elm[currIndex.index[activehead]].click();
 
@@ -132,7 +141,7 @@ function setIndex(elm) {
     let indx, indArr, keys, ind;
     elm.forEach(element => {
         indx = element.dataset.index;
-        indArr = indx.split('');
+        indArr = indx.split('-');
         indArr = indArr.map(a => {
             return parseInt(a);
         });

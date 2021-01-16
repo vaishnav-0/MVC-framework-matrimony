@@ -1,29 +1,12 @@
-import { render } from './templating.js';
-import { compile } from './templating.js';
+import { render,compile,renderToDOM } from './templating.js';
 const validationTemplate = `<span class="fa fa-exclamation-circle errIcon"></span><div class="errMsg hideMsg">{{ error }}</div>`;
 let hideTimeout;
-var c = compile(validationTemplate);
+var c = compile(validationTemplate),init=false;
+const validForm = new CustomEvent('validForm', {
+    bubbles: true,
+    detail: { }
+  });
 
-function getValidRule(rule) {
-    switch (rule) {
-        case "email":
-            return {
-                title: "email",
-                stop: true,
-                required: true,
-                email: true
-            }
-            break;
-        case "required":
-            return{
-                title: "required",
-                stop: true,
-                required: true,
-            }
-
-
-    }
-}
 
 function fade(node) {
     node.classList.add("errmsg-fadeout");
@@ -43,9 +26,27 @@ function showAndFade(node) {
         fade(node.querySelector(".errMsg"));
     }, 2000);
 }
-export function validate(feild, errnode) { //input feild obj, error displaying 
 
-    let valRes = approve.value(feild.value, getValidRule(feild.dataset.validate));
+function submitCheck(e){
+    let check = true;
+    e.preventDefault();
+    e.target.querySelectorAll('input,textarea,select').forEach(elm =>{
+        elm.focus();
+        elm.blur();
+        if(check){
+            if(elm.dataset.validfail){
+                check = false
+            }
+        }  
+    });
+    console.log(check);
+    if(check){
+        e.target.dispatchEvent(validForm);
+    }
+}
+function validate(feild, errnode, rule) { //input feild obj, error displaying 
+
+    let valRes = approve.value(feild.value, rule);
     if (valRes.errors.length !== 0) {
         let data = {
             "error": ""
@@ -62,12 +63,7 @@ export function validate(feild, errnode) { //input feild obj, error displaying
             valRes.each(function(error) {
                 data.error += error;
             });
-            let elm = new DOMParser().parseFromString(render(c, data), "text/html");
-            let a = elm.body.children;
-            for (let i = 0; i < a.length; i++) {
-                errnode.append(a[i].cloneNode(true));
-
-            }
+            renderToDOM(render(c, data),errnode);
             errnode.querySelector('.errIcon').addEventListener('mouseover', (e) => {
                 window.clearTimeout(hideTimeout);
                 show(e.target.parentElement.querySelector('.errMsg'));
@@ -79,13 +75,35 @@ export function validate(feild, errnode) { //input feild obj, error displaying
 
         }
         feild.title = data.error;
+        feild.setAttribute('data-validfail','true');
         feild.classList.add('err-input');
     } else {
         if (errnode.querySelector(".errMsg")) {
             errnode.textContent = '';
             feild.classList.remove('err-input');
             feild.removeAttribute('title');
+            feild.removeAttribute('data-validfail');
+
         }
+    }
+    
+    
+
+}
+export function bind(node,errTarget, rule){
+    if(!init){
+        init = true;
+        document.addEventListener('submit', submitCheck);
+        document.querySelectorAll('form').forEach(elm =>{
+            elm.setAttribute('novalidate','');
+        })
+        
+    }
+    if(Object.getPrototypeOf(Object.getPrototypeOf(node)).constructor.name === 'HTMLElement')
+    {
+        node.addEventListener("focusout", (e) => {
+            validate(e.target, errTarget,rule);
+        });
     }
 
 }

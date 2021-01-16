@@ -16,16 +16,29 @@ class BaseModel extends tableModel
     {
         return $this->con->createQueryBuilder();
     }
-    public function get() //If no id given - will return all rows. Primary key is taken as id if none specified. Also compatible with multiple id([id1=>value1,....]).
+    public function get()  
     {
+        //If no argument given - will return all rows.
+        //First argument should be the value/s to be bound to where. Can be of form (id)-bind to primary key,([id1:value,id2:value ...]) or ([])- select all
+        //Second is the columns to be selected. Can be of the form ([col1,col2 ...]) or ([col1:alias,col2:alias ...]) to use alias column name 
+        //Third parameter is whether to use DISTINCT clause or not. Should be a boolean
         $args = func_get_args();
         $id = $args[0];
+        $columns = $args[1];
+        $distinct = $args[2];
         $query = $this->getQueryBuilder()->select('*')->from($this->tableName);
-        if (count($args) === 0) {
-            if (!$exec = $query->execute()) {
-                return false;
+        if(isset($columns)){
+            $query = $this->getQueryBuilder();
+            if(\isAssoc($columns)){
+                foreach($columns as $key => $value){
+                    $query->addSelect($key.' AS '.$value);
+                }
+            }else{
+                foreach($columns as $value){
+                    $query = $query->addSelect($value);
+                }
             }
-            return $exec;
+            $query = $query->from($this->tableName);
         }
         if (is_string($id) || is_numeric($id)) {
             $query = $this->bindWhere($query, [$this->primaryKey => $id]);
@@ -35,13 +48,18 @@ class BaseModel extends tableModel
             return $exec;
         }
         if (is_array($id)) {
-            $query = $this->bindWhere($query, $id);
-            if (!$exec = $query->execute()) {
-                return false;
+            if(count($id) !== 0){
+                $query = $this->bindWhere($query, $id);
             }
-            return $exec;
+            
         }
-        return false;
+        if($distinct === true){
+            $query->distinct();
+        }
+        if (!$exec = $query->execute()) {
+            return false;
+        }
+        return $exec;
     }
     public function add(array $data)
     {
