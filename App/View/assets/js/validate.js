@@ -1,4 +1,5 @@
 import { render,compile,renderToDOM } from './templating.js';
+import approve from './approve_module.min.js';
 const validationTemplate = `<span class="fa fa-exclamation-circle errIcon"></span><div class="errMsg hideMsg">{{ error }}</div>`;
 let hideTimeout;
 var c = compile(validationTemplate),init=false;
