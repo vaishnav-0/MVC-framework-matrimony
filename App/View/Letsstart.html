@@ -259,8 +259,6 @@
                             <button id="submit" class="formSubmitBtn">Add</button>
                         </div>
                     </form>
-
-
                 </div>
             </div>
             <div class="accordion" data-isdisabled="true" data-index="2" data-target="fam_details"
@@ -431,18 +429,6 @@
 
 
     <script src="assets/js/image.js"></script>
-
-    <script type="module">
-        /* import { bind } from './assets/js/validate.js';
-         let formctnr = document.querySelectorAll(".formcontainer");
-         formctnr.forEach((value) => {
-             value.querySelectorAll("input,textarea").forEach((elm) =>{
-                 bind(elm, elm.parentElement.parentElement.querySelector('.errorField'))
-
-             });
-         }); */
-    </script>
-
     <script type="module">
         import { bind, init } from './assets/js/accordion.js';
         document.querySelectorAll('.accordion').forEach((elm) => {
@@ -450,11 +436,10 @@
         });
         init();
     </script>
-
-    <script src="assets/js/approve.min.js"></script>
-
     <script type="module">
         // init
+
+
         function getValidRule(rule) {
                     switch (rule) {
                         case "phone":
@@ -584,7 +569,7 @@
             active.value += val;
 
         }
-// religion and caste fetching
+        // religion and caste fetching
         (function () {
             let relNode = document.getElementsByName('religion')[0],
                 casteNode = document.getElementsByName('caste_id')[0],
@@ -617,10 +602,11 @@
                 });
             }
         })();
-
+        //after form submit
         document.addEventListener('validForm', (e) => {
             console.log(e.target);
         });
+
         function submit() {
             let client = new HttpClient('http://localhost', 'matrimony/family', 'post', '', data);
             client.request().then((data) => {
