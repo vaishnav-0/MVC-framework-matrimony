@@ -15,10 +15,10 @@ class Auth extends BaseController{
         $login = $this->userModel->login($this->reqBody->username,$this->reqBody->password);
         if($login === 1){
             $_SESSION['Auth'] = true;
-            return $this->response->json(['status' => 'Success']);
+            return $this->response->json(['status' => 'success']);
         }
         else {
-            return $this->response->json(['status' => 'Failed']);
+            return $this->response->json(['status' => 'failed']);
         }
     }
 

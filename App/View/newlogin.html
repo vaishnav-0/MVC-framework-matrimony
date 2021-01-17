@@ -40,7 +40,6 @@
                             </div>
                         </div>
                         <div class="feildcont">
-                            <div class="feildname"></div>
                             <div class="feildinp">
                                 <button type="button" onclick="login()">Login</button>
                             </div>
@@ -56,24 +55,27 @@
             </object>
         </div>
     </div>
-    <script src="assets/js/httpClient.js"></script>
+    <script src="assets/js/sweetalert.min.js"></script>
     <script type="module">
-        // import HttpClient from './assets/js/HttpClient.js';
+        import HttpClient from './assets/js/httpClient.js';
         import getFormData from './assets/js/getters.js'
 
-        function login() {
-            const form = document.getElementById('login');
-            let data = getFormData(form,'application/x-www-form-urlencoded');
+        window.login = function () {
+            let data = getFormData(document.getElementById('login'), 'application/x-www-form-urlencoded');
             let client = new HttpClient('http://localhost', 'matrimony/login', 'post', '', data);
             let request = client.request().then((data) => {
-                if (data.status === 'Success') {
-                    console.log('hurray');
-                  
+                if (data.status === 'success') {
+                    window.location.href = "/matrimony/App/View/Home.html";
+                }
+                else {
+                    swal("Failed", "Login failed", "error");
+
                 }
             });
 
         }
     </script>
+    </body>
 </body>
 
 </html>

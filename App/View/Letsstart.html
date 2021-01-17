@@ -36,7 +36,7 @@
         <div class="formcontainer">
             <div class="accordion" id="accord1" data-index="1" data-target="p_details" data-title="Personal details">
                 <div class="accordionContent" id="p_details">
-                    <form name="member" data-next="accord2">
+                    <form name="member" data-next="accord2-accord3" id="memberData">
                         <div class="grid-auto-autofit-min330">
                             <div class="grid-auto-2">
 
@@ -63,14 +63,24 @@
                                         <input type="text" name="name" data-validate="required">
                                     </div>
                                 </div>
-                                <div class="flex-col col-2">
+                                <div class="flex-col">
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Join Date:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
+                                    <div class="fieldinp">
+                                        <input type="date" name="join_date">
+                                    </div>
+                                </div>
+                                <div class="flex-col">
                                     <div class="fieldtitle">
                                         <div class="fieldname">Age:</div>
                                         <div class="errorField">
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="text" readonly>
+                                        <input type="text" readonly id="memage">
                                     </div>
                                 </div>
                                 <div class="flex-col">
@@ -80,7 +90,8 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="date" name="dob" data-validate="required">
+                                        <input type="date" name="dob" data-validate="required"
+                                            onchange="showAge(event);">
                                     </div>
                                 </div>
                                 <div class="flex-col">
@@ -107,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <select name="religion" data-validate="required">
+                                        <select id="religion" data-validate="required">
                                             <option value="">-</option>
 
                                         </select>
@@ -139,13 +150,37 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <textarea></textarea>
+                                        <textarea name="addr" data-validate="required"></textarea>
                                     </div>
                                 </div>
                                 <div class="flex-col">
-                                    <div class="fieldtitle">City/Town:</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">District:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text">
+                                        <input type="text" name="dist" data-validate="required">
+                                    </div>
+                                </div>
+                                <div class="flex-col">
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">City/Town:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
+                                    <div class="fieldinp">
+                                        <input type="text" name="city" data-validate="required">
+                                    </div>
+                                </div>
+                                <div class="flex-col">
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Landmark:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
+                                    <div class="fieldinp">
+                                        <input type="text" name="landmark">
                                     </div>
                                 </div>
                                 <div class="flex-col">
@@ -155,27 +190,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="flex-col col-2">
-                                    <div class="fieldtitle">
-                                        <div class="fieldname">District:</div>
-                                        <div class="errorField">
-                                        </div>
-                                    </div>
-                                    <div class="fieldinp">
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="flex-col col-2">
-                                    <div class="fieldtitle">
-                                        <div class="fieldname"> Email: </div>
-                                        <div class="errorField"></div>
-
-                                    </div>
-                                    <div class="fieldinp">
-                                        <input type="text">
+                                        <input type="text" name="pin" data-validate="pin">
                                     </div>
                                 </div>
                                 <div class="flex-col col-2">
@@ -184,11 +199,33 @@
                                         <div class="errorField">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="fieldinp">
-                                        <input type="text" data-validate="phone">
+                                        <input name="mobile" type="text" data-validate="phone">
                                     </div>
                                 </div>
+                                <div class="flex-col">
+                                    <div class="fieldtitle">
+                                        <div class="fieldname"> Email: </div>
+                                        <div class="errorField"></div>
+
+                                    </div>
+                                    <div class="fieldinp">
+                                        <input type="text" name="mail" data-validate="email">
+                                    </div>
+                                </div>
+                                <div class="flex-col">
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Landline:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
+
+                                    <div class="fieldinp">
+                                        <input name="landline" type="text" data-validate="number">
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="grid-auto-2">
                                 <div class="flex-col col-2">
@@ -198,7 +235,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="text">
+                                        <input name="star" type="text">
                                     </div>
                                 </div>
                                 <div class="flex-col col-2">
@@ -208,7 +245,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="text">
+                                        <input name="qualification" type="text">
                                     </div>
                                 </div>
                                 <div class="flex-col col-2">
@@ -218,7 +255,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="text">
+                                        <input name="occupation" type="text">
                                     </div>
                                 </div>
                                 <div class="flex-col col-2">
@@ -228,7 +265,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="text">
+                                        <input name="height" type="text">
                                     </div>
                                 </div>
 
@@ -239,7 +276,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="text">
+                                        <input name="physique" type="text">
                                     </div>
                                 </div>
                                 <div class="flex-col col-2">
@@ -249,99 +286,151 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <input type="text">
+                                        <input name="complexion" type="text">
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                         <div class="flex-row-reverse">
-                            <button id="submit" class="formSubmitBtn">Add</button>
+                            <button class="formSubmitBtn">Add</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="accordion" id="accord2" data-isdisabled="true" data-index="2" data-target="fam_details"
-                data-title="Family details">
+            <div class="accordion" id="accord2" data-index="2" data-target="fam_details" data-title="Family details"
+                data-isdisabled="true">
 
                 <div class="accordionContent" id="fam_details">
                     <div class="grid-auto-autofit-min330">
-                        <form id="familyData">
+                        <form id="familyData" data-next="accord21">
                             <div class="grid-auto-2">
 
                                 <div class="flex-col">
-                                    <div class="fieldtitle">Father's name:</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Father's name:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text" name="fName">
+                                        <input type="text" name="fName" data-validate="required">
                                     </div>
                                 </div>
                                 <div class="flex-col">
-                                    <div class="fieldtitle">Father's contact No.</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Father's contact no:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text" name="fmobile_no">
+                                        <input type="text" name="fmobile" data-validate="phoneNotReq">
                                     </div>
                                 </div>
                                 <div class="flex-col">
-                                    <div class="fieldtitle">Father's landline:</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Father's landline:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text" name="fName">
+                                        <input type="text" name="flandline" data-validate="phoneNotReq">
                                     </div>
                                 </div>
                                 <div class="flex-col">
-                                    <div class="fieldtitle">Father's email:</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Father's email:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text" name="fmobile_no">
+                                        <input type="text" name="fmail" data-validate="email">
                                     </div>
                                 </div>
                                 <div class="flex-col col-2">
-                                    <div class="fieldtitle">Father's occupation</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Father's occupation:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
                                         <input type="text" name="fOcc">
                                     </div>
                                 </div>
                                 <div class="flex-col">
-                                    <div class="fieldtitle">Mother's name:</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Mother's name:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text" name="mName">
+                                        <input type="text" name="mName" data-validate="required">
                                     </div>
                                 </div>
                                 <div class="flex-col">
-                                    <div class="fieldtitle">Mother's contact No.</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Mother's contact no:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text" name="mmobile_no">
+                                        <input type="text" name="mmobile" data-validate="phoneNotReq">
                                     </div>
                                 </div>
                                 <div class="flex-col">
-                                    <div class="fieldtitle">Mother's landline:</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Mother's landline:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text" name="mName">
+                                        <input type="text" name="mlandline" data-validate="phoneNotReq">
                                     </div>
                                 </div>
                                 <div class="flex-col">
-                                    <div class="fieldtitle">Mother's email.</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Mother's email:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
-                                        <input type="text" name="mmobile_no">
+                                        <input type="text" name="mmail" data-validate="email">
                                     </div>
                                 </div>
                                 <div class="flex-col col-2">
-                                    <div class="fieldtitle">Mother's occupation</div>
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Mother's occupation:
+
+                                        </div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
                                     <div class="fieldinp">
                                         <input type="text" name="mOcc">
                                     </div>
                                 </div>
+                                <div class="flex-row-reverse">
+                                    <button class="formSubmitBtn">Add</button>
+                                </div>
                         </form>
                     </div>
-                    <div class="accordion" data-index="2-1" data-target="sib_details" data-title="Siblings">
+                    <div class="accordion" id="accord21" data-index="2-1" data-target="sib_details"
+                        data-title="Siblings" data-isdisabled="true">
                         <div class="accordionContent" id="sib_details">
-                            <div class="flex-row">
-                                <div class="fieldtitle">
+                            <form id="SiblingData">
+                                <div class="flex-row">
+                                    <div class="fieldtitle">
                                         <div class="fieldname">Add sibling:</div>
                                         <div class="errorField">
                                         </div>
                                     </div>
-                                <button type="button" class="add-sib-btn" id="sibAdd">+</button>
-                            </div>
-                            <div class="grid-auto-1fluid" id="sibDet"></div>
+                                    <button type="button" class="add-sib-btn" id="sibAdd">+</button>
+                                </div>
+                                <div class="grid-auto-1fluid" id="sibDet"></div>
+                                <div class="flex-row-reverse">
+                                    <button class="formSubmitBtn">Add</button>
+                                </div>
+                            </form>
+
 
                         </div>
                     </div>
@@ -349,9 +438,9 @@
             </div>
 
         </div>
-        <div class="accordion" id="accord3" data-index="3" data-target="horo" data-title="Horoscope">
+        <div class="accordion" id="accord3" data-index="3" data-target="horo" data-title="Horoscope"
+            data-isdisabled="true">
             <div class="accordionContent" id="horo">
-
                 <div class="grid-auto-autofit-min330">
                     <div class="grid-auto-2">
                         <div class="flex-col col-2 row-4">
@@ -415,6 +504,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="flex-row-reverse">
+                        <button type="button" onclick="addHoro()" formSubmitBtn">Add</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -427,7 +519,7 @@
     </div>
     </div>
 
-
+    <script src="assets/js/sweetalert.min.js"></script>
     <script src="assets/js/image.js"></script>
     <script type="module">
         import { bind, init } from './assets/js/accordion.js';
@@ -441,38 +533,81 @@
 
 
         function getValidRule(rule) {
-                    switch (rule) {
-                        case "phone":
-                            return {
-                                title:"Phone no",
-                                stop: true,
-                                required:true,
-                                numeric: true
-                            }
-                            break;
-                        case "email":
-                            return {
-                                title: "email",
-                                stop: true,
-                                required: true,
-                                email: true
-                            }
-                            break;
-                        case "required":
-                            return {
-                                title: "This feild",
-                                stop: true,
-                                required: true,
-                            }
-
-
+            switch (rule) {
+                case "phone":
+                    return {
+                        title: "Phone no",
+                        stop: true,
+                        required: true,
+                        numeric: true
                     }
-                }
+                    break;
+                case "phoneNotReq":
+                    return {
+                        title: "Phone no",
+                        ignoreNull: true,
+                        numeric: true
+                    }
+                    break;
+                case "number":
+                    return {
+                        title: "This feild",
+                        numeric: true,
+                        ignoreNull: true
+                    }
+                case "pin":
+                    return {
+                        title: "PIN",
+                        stop: true,
+                        required: true,
+                        numeric: true,
+                        length: {
+                            len: 6
+                        }
+                    }
+                    break;
+                case "email":
+                    return {
+                        title: "email",
+                        ignoreNull: true,
+                        email: true
+                    }
+                    break;
+                case "required":
+                    return {
+                        title: "This feild",
+                        stop: true,
+                        required: true,
+                    }
+
+
+            }
+        }
         import('./assets/js/validate.js')
             .then(module => {
-                
+                const dynamicInput = function (mutationsList, observer) {
+                    for (const mutation of mutationsList) {
+                        if (mutation.type === 'childList') {
+                            mutation.addedNodes.forEach(val => {
+                                if (Object.getPrototypeOf(val).constructor.name !== 'Text') {
+                                    let fields = val.querySelectorAll("input,textarea,select");
+                                    if (fields.length) {
+                                        fields.forEach(elm => {
+                                            module.bind(elm, elm.parentElement.parentElement.querySelector('.errorField'), getValidRule(elm.dataset.validate));
+                                        });
+                                    }
+                                }
+
+                            });
+                        }
+                    }
+                };
+                const dynamicInputConf = { childList: true, subtree: true };
+                let observer = new MutationObserver(dynamicInput);
                 let formctnr = document.querySelectorAll(".formcontainer");
                 formctnr.forEach((value) => {
+                    observer.target = value;
+                    observer.observe(value, dynamicInputConf);
                     value.querySelectorAll("input,textarea,select").forEach((elm) => {
                         if (elm.dataset.validate) {
                             module.bind(elm, elm.parentElement.parentElement.querySelector('.errorField'), getValidRule(elm.dataset.validate));
@@ -480,20 +615,18 @@
                         }
 
 
+                    });
                 });
-            });
             })
-            .catch (err => {
-            console.log(err.message);
-        });
+            .catch(err => {
+                console.log(err.message);
+            });
         import { render, compile, renderToDOM } from './assets/js/templating.js';
         import HttpClient from './assets/js/httpClient.js';
         import serialize from './assets/js/getters.js';
-        var index = 0;
-        var siblingdata = new Object();
 
         (function () {
-            addSibling();
+            addSiblingField();
         })();
 
 
@@ -501,59 +634,59 @@
         document.getElementById('sibAdd').addEventListener('click', siblingData);
 
 
-        function addSibling() {
+        function addSiblingField() {
             let sibNode = document.getElementById('sibDet');
             let sibAcc = document.getElementById('sib_details');
 
             let Template = `
-            <form class="grid-auto-3fluid" id= "sibling${index}">
-            <div class="flex-col">
-                <div class="fieldtitle">
-                                        <div class="fieldname">Gender:</div>
-                                        <div class="errorField">
-                                        </div>
-                                    </div>
-                <div class="fieldinp"><select name="gender">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option></select>
-                    </div>
-                    </div>
-                    <div class="flex-col form-m-age">
-                        <div class="fieldtitle">
-                                        <div class="fieldname">Age:</div>
-                                        <div class="errorField">
-                                        </div>
-                                    </div>
-                        <div class="fieldinp">
-                            <input name="age" type="number">
-                            </div></div>
-                    <div class="flex-col">
+            <div class="grid-auto-3fluid"">
+                <div class="flex-col">
                     <div class="fieldtitle">
-                                        <div class="fieldname">Married:</div>
-                                        <div class="errorField">
-                                        </div>
-                                    </div>
-                    <div class="fieldinp">
-                        <select name="married">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option></select>
-                            </div>
+                        <div class="fieldname">Gender:</div>
+                            <div class="errorField"></div>
                     </div>
-                </form>    
+                    <div class="fieldinp">
+                        <select name="gender" data-validate="required">
+                            <option value="">-</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-col form-m-age">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Age:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <input name="age" type="number" data-validate="required">
+                    </div>
+                </div>
+                <div class="flex-col">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Married:</div>
+                        <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="married" data-validate="required">
+                            <option value="">-</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                </div>    
                     `;
             renderToDOM(Template, sibNode);
         }
 
         function siblingData() {
-            let form = `sibling${index}`;
+            /*let form = `sibling${index}`;
             const formdata = serialize(form, 'json');
             siblingdata[index] = formdata;
-
-            index++;
-            addSibling();
-            console.log(siblingdata)
+*/
+            addSiblingField();
         }
 
         //keyboard
@@ -571,7 +704,7 @@
         }
         // religion and caste fetching
         (function () {
-            let relNode = document.getElementsByName('religion')[0],
+            let relNode = document.getElementById('religion'),
                 casteNode = document.getElementsByName('caste_id')[0],
                 temp = `<option value="{{value}}">{{valuesh}}</option>`,
                 c = compile(temp),
@@ -603,22 +736,150 @@
             }
         })();
         //after form submit
-        document.addEventListener('validForm', (e) => {
-            document.getElementById(e.target.dataset.next).removeAttribute('data-isdisabled');
-        });
+        function disableForm(form) {
+            form.querySelector('.formSubmitBtn').disabled = true;
+            form.querySelectorAll('input,textarea,select').forEach(e => {
+                e.disabled = true;
+                e.removeAttribute('name');
+            });
+        }
+        function disableRestr(next) {
+            let rem = next.split('-');
+            rem.forEach((val) => {
+                document.getElementById(val).removeAttribute('data-isdisabled');
 
+            })
+
+        }
+        document.addEventListener('validForm', (e) => {
+            if (e.target.id === 'memberData') {
+                addMember(e.target);
+            }
+            if (e.target.id === 'familyData') {
+                addFamily(e.target);
+            }
+            if (e.target.id === 'SiblingData') {
+                addSibling(e.target);
+            }
+        });
+        function addMember(form) {
+            sendRequest('matrimony/member', 'POST', 'multipart/form-data', form).then((data) => {
+                sendRequest('matrimony/member/?id=' + data.data.id, 'GET').then((d) => {
+                    disableRestr(form.dataset.next);
+                    window.memberData = d.data[0];
+                    disableForm(form);
+                    swal("Success", "Member added", "success");
+                });
+            });
+        }
+        function addFamily(form) {
+            sendRequest('matrimony/family', 'POST', 'multipart/form-data', form).then((data) => {
+                sendRequest('matrimony/member/', 'PATCH', 'multipart/form-data', null, { 'id': memberData.id, 'family': data.data.id }).then((d) => {
+                    disableRestr(form.dataset.next);
+                    disableForm(form);
+                    swal("Success", "Data added", "success");
+                    sendRequest('matrimony/family/?id=' + data.data.id, 'GET').then((dat) => {
+                        disableRestr(form.dataset.next);
+                        window.familyData = dat.data[0];
+                    });
+                });
+            });
+        }
+        function addSibling(form) {
+            let d = new Object(),
+                gender,
+                age,
+                mar,
+                len = form.querySelectorAll('input[name="age"]').length;
+            d.id = familyData.pId;
+            d.data = new Object();
+            for (let i = 0; i < len; i++) {
+                d.data[i] = new Object();
+                d.data[i].sex = form.querySelectorAll('select[name="gender"]')[i].value;
+                d.data[i].age = form.querySelectorAll('input[name="age"]')[i].value;
+                d.data[i].mar = form.querySelectorAll('select[name="married"]')[i].value;
+            }
+            sendRequest('matrimony/sibling/add', 'POST', 'application/json', false, d).then((data) => {
+                disableForm(form);
+                swal("Success", "Data added", "success");
+                form.querySelector('.formSubmitBtn').disabled = false;
+                console.log(JSON.stringify(data));
+
+            });
+        }
+        async function sendRequest(endpoint, method, contentType = false, form = false, addition = false) {
+            let client, data;
+            if (method === 'get' || method === 'GET') {
+                client = new HttpClient('http://localhost', endpoint, 'GET', '');
+            } else {
+                data = serialize(form, contentType, addition);
+                if (contentType === 'application/json') {
+                    client = new HttpClient('http://localhost', endpoint, method, { 'Content-Type': contentType }, data);
+                } else {
+                    client = new HttpClient('http://localhost', endpoint, method, null, data);
+
+                }
+            }
+            return new Promise(function (resolve, reject) {
+                client.request().then((data) => {
+                    if (data.status === 'success') {
+                        resolve(data);
+                    } else {
+                        swal("Failed", 'Something happened', "error");
+
+                    }
+                }).catch(error => {
+                    swal("Failed", error.message, "error");
+                });
+            });
+
+        }
+        window.addHoro = function () {
+            let form1 = document.getElementById('board1'),
+                form2 = document.getElementById('board2'),
+                formData1 = new FormData(form1),
+                formData2 = new FormData(form2),
+                data = new Object();
+            data.board1 = Object.fromEntries(formData1);
+            data.board2 = Object.fromEntries(formData2);
+            data = JSON.stringify(data);
+            console.log(data);
+            sendRequest('matrimony/member/', 'PATCH', 'multipart/form-data', null, { 'id': memberData.id, 'horo': data }).then((d) => {
+                disableForm(form1);
+                disableForm(form2);
+                swal("Success", "Data added", "success");
+            });
+        }
+        window.showAge = function (e) {
+            let today = new Date(),
+                DOB = new Date(e.target.value),
+                targetElm = document.getElementById('memage'),
+                nowMonth = parseInt(today.getMonth()),
+                nowYear = parseInt(today.getFullYear()),
+                DOBMonth = DOB.getMonth(),
+                DOBYear = DOB.getUTCFullYear(), age;
+            if (DOBMonth <= nowMonth) {
+                age = nowYear - DOBYear;
+            } else {
+                age = nowYear - DOBYear - 1;
+            }
+            targetElm.value = age;
+
+        }
         function submit() {
-            let client = new HttpClient('http://localhost', 'matrimony/family', 'post', '', data);
+            let client = new HttpClient('http://localhost', 'matrimony/family', 'POST', '', data);
             client.request().then((data) => {
                 if (data.status === 'Success') {
                     console.log('hurray');
 
                 }
+            }).catch(error => {
+                consolr.log(`error ${error}`);
             });
         }
-        console.log(index);
     </script>
     <script>
+
 
     </script>
 </body>

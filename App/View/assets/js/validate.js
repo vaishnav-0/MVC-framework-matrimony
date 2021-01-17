@@ -45,8 +45,8 @@ function submitCheck(e){
     }
 }
 function validate(feild, errnode, rule) { //input feild obj, error displaying 
-
-    let valRes = approve.value(feild.value, rule);
+    if(errnode){
+        let valRes = approve.value(feild.value, rule);
     if (valRes.errors.length !== 0) {
         let data = {
             "error": ""
@@ -86,6 +86,8 @@ function validate(feild, errnode, rule) { //input feild obj, error displaying
 
         }
     }
+    }
+    
     
     
 

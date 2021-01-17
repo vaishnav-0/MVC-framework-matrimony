@@ -15,6 +15,7 @@ class RequestParser
      * @var bool
      */
     private static $isMultipart = false;
+    private static $isJSON = false;
 
     /**
      * Parses request
@@ -30,6 +31,7 @@ class RequestParser
         if (array_key_exists("CONTENT_TYPE", $_SERVER)) {
             $contentType = strtolower($_SERVER["CONTENT_TYPE"]);
             self::$isMultipart = preg_match('/^multipart\/form-data/', $contentType) ? true : false;
+            self::$isJSON = preg_match('/^application\/json/', $contentType) ? true : false;
         }
 
         //handle multipart requests
@@ -41,6 +43,15 @@ class RequestParser
             }
             return $dataset;
         }
+        if (self::$isJSON) {
+            $dataJSON =  json_decode(file_get_contents('php://input'));
+            if (!is_null($dataJSON)) {
+                $dataset->params = $dataJSON;
+            }
+            return $dataset;
+        }
+
+
 
         //handle other requests
         if ($method == "POST") {

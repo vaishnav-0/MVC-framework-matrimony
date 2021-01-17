@@ -4,7 +4,11 @@
        return array_filter($array, function ($value) {
            if ($value) {
                return true;
-           }
+           } elseif("0" === $value) {
+               return true;
+           }elseif(0 === $value) {
+            return true;
+        }
            return false;
        });
    }
@@ -16,6 +20,8 @@
       }
       function isAssoc(array $arr)
       {
-          if (array() === $arr) return false;
+          if (array() === $arr) {
+              return false;
+          }
           return array_keys($arr) !== range(0, count($arr) - 1);
       }

@@ -10,17 +10,33 @@
 //     return data;
 // }
 
-export default (elementId, contentType) => {
-    let element = document.getElementById(elementId);
-    let form = new FormData(element);
+export default (form, contentType, addition) => {
+    let formData;
+    if (form) {
+        formData = new FormData(form);
+    } else {
+        formData = new FormData();
+    }
+    if (addition) {
+        if (contentType !== 'application/json') {
+            for (const [key, value] of Object.entries(addition)) {
+                formData.append(key, value);
+            }
+        }
+    }
     let data = null;
     switch (contentType) {
 
-        case "multipart": data = form;
+        case "multipart/form-data": data = formData;
             break;
-        case "json": data = JSON.stringify(Object.fromEntries(form));
+        case "application/json":
+            if(addition){
+                data = JSON.stringify(Object.assign(Object.fromEntries(formData), addition));
+                break;
+            }
+            data = JSON.stringify(Object.fromEntries(formData));
             break;
-        case "urlencoded": data = new URLSearchParams(form);
+        case "application/x-www-form-urlencoded": data = new URLSearchParams(formData);
             break;
 
     }

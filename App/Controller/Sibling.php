@@ -3,7 +3,6 @@ namespace Matr\Controller;
 
 use Matr\Model\siblingModel;
 
-
 class Sibling extends BaseController
 {
     private $siblingModel;
@@ -47,10 +46,31 @@ class Sibling extends BaseController
         return $this->cntrlRespond(['message' => 'Sibling updated']);
     }
     
+    public function addBulk()
+    {
+        $sibIns = [];
+        if ($this->reqBody->data && $this->reqBody->id) {
+            $data = $this->reqBody->data;
+            $this->reqBody->pId = $this->reqBody->id;
+            foreach ($data as $key => $value) {
+                $this->reqBody->name = $value->name;
+                $this->reqBody->age = $value->age;
+                $this->reqBody->sex = $value->sex;
+                $this->reqBody->mar = $value->mar;
+                $res = json_decode($this->add()->getBody());
+                if($res->status === 'success'){
+                    $sibIns[$key] = $res->data;
+                }
+            }
+            return $this->cntrlRespond(['message' => 'Siblings added',
+                                    'data' => $sibIns]);
+        } else {
+            return $this->cntrlRespond(false);
+        }
+    }
     public function add()
     {
-        if(!$this->reqBody->pId){
-            echo "asdf";
+        if (!$this->reqBody->pId) {
             return $this->cntrlRespond(false);
         }
         //print_r($this->reqBody);

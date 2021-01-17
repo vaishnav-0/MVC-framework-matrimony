@@ -5,7 +5,7 @@ class addressModel extends BaseModel{
     public $queryBuilder;
     function __construct()
     {
-        parent::construct('address');
+        parent::__construct('address');
     }
     public function getAddress($id){
         return $this->get($id)?$this->get($id)->fetchAll():false;
@@ -22,7 +22,7 @@ class addressModel extends BaseModel{
 
     }
 
-    private function deleteAddress($id){
+    public function deleteAddress($id){
         return $this->delete($id);
     }
  /*   public function getAddress($id){

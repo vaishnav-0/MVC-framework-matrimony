@@ -3,7 +3,12 @@ export default class HttpClient {
         this.baseUrl = baseUrl;
         this.path = path;
         this.method = method;
-        this.headers = headers;
+        if(headers){
+            this.headers = new Headers(headers);
+        }else{
+            this.headers = new Headers();
+
+        }
         this.data = data;
     }
 
@@ -14,7 +19,8 @@ export default class HttpClient {
 
             let data = {
                 method: this.method,
-                body: this.data
+                body: this.data,
+                headers: this.headers
             };
 
             let Req = new Request(url, data);
@@ -28,14 +34,15 @@ export default class HttpClient {
                     return data;
                 })
                 .catch(error => {
-                    return `error ${error}`;
+                    console.log(`error ${error}`);
+                    throw new Error('Something went wrong');
                 });
 
         } else {
             response = await this.xhr().then((data) => {
                 return JSON.parse(data);
             }).catch(error => {
-                return `error ${error}`;
+                console.log(`error ${error}`);
             });
         }
         return response;
@@ -67,12 +74,13 @@ export default class HttpClient {
                 Req.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
                         resolve(this.responseText);
+                    }else{
+                        throw new Error('network issue');
                     }
                 }
             });
         } catch (e) {
             console.log(`error: ${e}`);
-            return new Error("something weird happend");
         }
     }
 }

@@ -33,8 +33,9 @@ class Member extends BaseController
     }
 
     public function edit()
-    {
-        if (isset($_FILES['photo'])) {
+    {   
+        $image = 'default.jpg'; 
+        if ($_FILES['photo']['error'] === 0) {
             $imageUploader = new imageUploader;
             $image = $imageUploader->addImage($_FILES['photo'], $this->reqBody->name);
         }
@@ -55,28 +56,31 @@ class Member extends BaseController
                 'contact_id' => $this->reqBody->contact,
                 'a_id' => $this->reqBody->address,
                 'family_id' => $this->reqBody->family,
+                'star' => $this->reqBody->star,
                 'horoscope' => $this->reqBody->horo
             )
         );
         if (!$result) {
             return $this->cntrlRespond(false);
         }
-
-
+        
         return $this->cntrlRespond(['message' => 'Member updated']);
     }
     
     public function add()
     {
-        $imageUploader = new imageUploader;
-        $image = $imageUploader->addImage($_FILES['photo'], $this->reqBody->name);
+        $image = 'default.jpg'; 
+        if ($_FILES['photo']['error'] === 0) {
+            $imageUploader = new imageUploader;
+            $image = $imageUploader->addImage($_FILES['photo'], $this->reqBody->name);
+        }
         $memId = $this->memberModel
             ->addMember(
                 array(
                     'join_date' => $this->reqBody->join_date?$this->reqBody->join_date:date('Y-m-d'),
                     'name'  => $this->reqBody->name,
                     'dob'	 => $this->reqBody->dob,
-                    'caste_rel_id'	 => $this->reqBody->caste_rel_id,
+                    'caste_rel_id'	 => $this->reqBody->caste_id,
                     'height'	 => $this->reqBody->height,
                     'physique' => $this->reqBody->physique,
                     'gender'	 => $this->reqBody->gender,
@@ -85,8 +89,8 @@ class Member extends BaseController
                     'photo'	 => $image,
                     'complexion'	 => $this->reqBody->complexion,
                     'contact_id' => $this->reqBody->contact,
-                    'a_id' => $this->reqBody->address,
                     'family_id' => $this->reqBody->family,
+                    'star' => $this->reqBody->star,
                     'horoscope' => $this->reqBody->horo
                 )
             );
@@ -94,7 +98,34 @@ class Member extends BaseController
             return $this->cntrlRespond(false);
         }
         
-
+        $aId = $this->callController('Address', 'add', array(
+            'addr' => $this->reqBody->addr,
+            'city'	 => $this->reqBody->city,
+            'dist'	 => $this->reqBody->dist,
+            'pin'	 => $this->reqBody->pin,
+            'landmark'	 => $this->reqBody->landmark,
+            ))->data->id;
+        if ($aId) {
+            $this->memberModel->editMember(
+                $memId,
+                array(
+                'a_id' => $aId
+            )
+            );
+        }
+        $memconId = $this->callController('Contact', 'add', array(
+            "mobile" => $this->reqBody->mobile,
+            "mail" =>$this->reqBody->mail,
+            "landline" =>$this->reqBody->landline
+        ))->data->id;
+        if($memconId){
+            $this->memberModel->editMember(
+                $memId,
+                array(
+                'contact_id' => $memconId
+            )
+            );
+        }
         return $this->cntrlRespond(['message' => 'Member added',
         'data' => ['id' => $memId]]);
     }

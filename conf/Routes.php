@@ -57,6 +57,7 @@ class Routes
         $router->delete("family/sibling", [Sibling::class,"deleteWFam"]);
         $router->get("sibling", [Sibling::class,"get"]);
         $router->post("sibling", [Sibling::class,"add"]);
+        $router->post("sibling/add", [Sibling::class,"addBulk"]);
         $router->patch("sibling", [Sibling::class,"edit"]);
         $router->delete("sibling", [Sibling::class,"delete"]);
 

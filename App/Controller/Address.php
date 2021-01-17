@@ -9,7 +9,7 @@ class Address extends BaseController
     public function __construct($a, $b)
     {
         parent::__construct($a, $b);
-        $this->addressModelModel = new addressModel();
+        $this->addressModel = new addressModel();
     }
 
     // this is purely experimental
@@ -29,7 +29,6 @@ class Address extends BaseController
             $this->reqBody->id,
             array(
                 'address' => $this->reqBody->addr,	
-                'locality'  => $this->reqBody->loc,	
                 'city'	 => $this->reqBody->city,
                 'district'	 => $this->reqBody->dist,
                 'pin'	 => $this->reqBody->pin,
@@ -48,7 +47,6 @@ class Address extends BaseController
         $result = $this->addressModel->addAddress(
             array(
                 'address' => $this->reqBody->addr,	
-                'locality'  => $this->reqBody->loc,	
                 'city'	 => $this->reqBody->city,
                 'district'	 => $this->reqBody->dist,
                 'pin'	 => $this->reqBody->pin,

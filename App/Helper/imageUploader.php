@@ -7,7 +7,7 @@ class imageUploader
     {
         $image = new \Bulletproof\Image($image);
         $image->setLocation(UPLOADED_IMAGE_PATH);
-        $image->setName(uniqid(strtoupper(substr($name,0,4))."_",true));              
+        $image->setName(uniqid(strtoupper(substr($name,0,4))."_"));              
         $image->getMime();  // bulletproof is strange
         $image->getFullPath();
         
