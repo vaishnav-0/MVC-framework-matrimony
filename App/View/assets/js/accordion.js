@@ -11,14 +11,14 @@ let Temp = `<button type="button" class="accordionHeadbtn {{ disClass }}" data-i
     index = new Object(),
     currIndex = new Object(),
     c = compile(Temp),
-    settings = { keys: { 'up': 'ArrowUp', 'down': 'ArrowDown', 'inside': 'ArrowRight', 'outside': 'ArrowLeft' }, open: true };
+    settings = { keys: { 'up': 'ArrowUp', 'down': 'ArrowDown', 'inside': 'ArrowRight', 'outside': 'ArrowLeft' }, open: false };
 currIndex.branch = [];
 
 index = { 0: { 'elm': null } };
 
 // Options for the observer (which mutations to observe)
 const AccContentmutConfig = { attributes: true, childList: true, subtree: true };
-const AccContainermutConfig = { attributes: true};
+const AccContainermutConfig = { attributes: true };
 
 
 
@@ -67,10 +67,10 @@ const AccContainerModed = function (mutationsList, observer) {
     // Use traditional 'for loops' for IE 11
     for (const mutation of mutationsList) {
         if (mutation.type === 'attributes') {
-            if(!mutation.target.getAttribute('data-isdisabled')){
+            if (!mutation.target.getAttribute('data-isdisabled')) {
                 mutation.target.querySelector('.accordionHeadbtn').classList.remove('accordionDisableBtn');
             }
-            else{
+            else {
                 mutation.target.querySelector('.accordionHeadbtn').classList.add('accordionDisableBtn');
 
             }
@@ -210,7 +210,15 @@ export function bind(container) {
     observer2.observe(container, AccContainermutConfig);
 }
 
-export function init() {
+export function init(setting = false) {
+    if (setting) {
+        Object.keys(setting).forEach(key => {
+            if (settings.hasOwnProperty(key)) {
+                settings[key] = setting[key];
+            }
+        });
+    }
+
     let elm = document.querySelectorAll(".accordionHeadbtn");
     setIndex(elm);
     addAccordionEvent(elm);
@@ -218,7 +226,9 @@ export function init() {
     setCurrIndex();
     if (settings.open === true) {
         setTimeout(() => {
-            elm[0].click();
-        }, 100);
+            elm.forEach(e => {
+                e.click();
+            })
+        }, 200);
     }
 }

@@ -64,6 +64,8 @@ class Routes
         //religion routes
         $router->get("religion/all", [Religion::class,"getAllReligion"]);
         $router->get("religion/caste", [Religion::class,"getAllCaste"]);
+        $router->get("religion/", [Religion::class,"getRelAndCaste"]);
+
 
 
         return $router;

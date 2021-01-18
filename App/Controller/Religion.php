@@ -12,7 +12,13 @@ class Religion extends BaseController
         parent::__construct($a, $b);
         $this->religionModel = new religionModel();
     }
-
+    public function getRelAndCaste(){
+        $result = $this->religionModel->getReligion($this->reqBody->id);
+        if (!$result) {
+            return $this->cntrlRespond(false);
+        }
+        return $this->cntrlRespond(['data' => $result]);
+    }
     public function getAllReligion()
     {
         $result = $this->religionModel->getAllReligion();

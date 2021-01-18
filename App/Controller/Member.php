@@ -60,6 +60,20 @@ class Member extends BaseController
                 'horoscope' => $this->reqBody->horo
             )
         );
+        $memconId = $this->callController('Contact', 'edit', array(
+            "id" => $this->reqBody->id,
+            "mobile" => $this->reqBody->mobile,
+            "mail" =>$this->reqBody->mail,
+            "landline" =>$this->reqBody->landline
+        ));
+        $aId = $this->callController('Address', 'edit', array(
+            "id" => $this->reqBody->id,
+            'addr' => $this->reqBody->addr,
+            'city'	 => $this->reqBody->city,
+            'dist'	 => $this->reqBody->dist,
+            'pin'	 => $this->reqBody->pin,
+            'landmark'	 => $this->reqBody->landmark,
+            ));
         if (!$result) {
             return $this->cntrlRespond(false);
         }

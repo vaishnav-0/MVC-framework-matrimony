@@ -118,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div class="fieldinp">
-                                        <select id="religion" data-validate="required">
+                                        <select id="religion" name="religion" data-validate="required">
                                             <option value="">-</option>
 
                                         </select>
@@ -289,18 +289,13 @@
                                         <input name="complexion" type="text">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        <div class="flex-row-reverse">
-                            <button class="formSubmitBtn">Add</button>
-                        </div>
+
                     </form>
                 </div>
             </div>
-            <div class="accordion" id="accord2" data-index="2" data-target="fam_details" data-title="Family details"
-                data-isdisabled="true">
-
+            <div class="accordion" id="accord2" data-index="2" data-target="fam_details" data-title="Family details">
                 <div class="accordionContent" id="fam_details">
                     <div class="grid-auto-autofit-min330">
                         <form id="familyData" data-next="accord21">
@@ -408,27 +403,14 @@
                                         <input type="text" name="mOcc">
                                     </div>
                                 </div>
-                                <div class="flex-row-reverse">
-                                    <button class="formSubmitBtn">Add</button>
-                                </div>
+
                         </form>
                     </div>
                     <div class="accordion" id="accord21" data-index="2-1" data-target="sib_details"
-                        data-title="Siblings" data-isdisabled="true">
+                        data-title="Siblings">
                         <div class="accordionContent" id="sib_details">
                             <form id="SiblingData">
-                                <div class="flex-row">
-                                    <div class="fieldtitle">
-                                        <div class="fieldname">Add sibling:</div>
-                                        <div class="errorField">
-                                        </div>
-                                    </div>
-                                    <button type="button" class="add-sib-btn" id="sibAdd">+</button>
-                                </div>
                                 <div class="grid-auto-1fluid" id="sibDet"></div>
-                                <div class="flex-row-reverse">
-                                    <button class="formSubmitBtn">Add</button>
-                                </div>
                             </form>
 
 
@@ -438,7 +420,7 @@
             </div>
 
         </div>
-        <div class="accordion" id="accord3" data-index="3" data-target="horo" data-title="Horoscope" data-isdisabled="true">
+        <div class="accordion" id="accord3" data-index="3" data-target="horo" data-title="Horoscope">
             <div class="accordionContent" id="horo">
                 <form id="HoroscopeData">
                     <div class="grid-auto-autofit-min330">
@@ -466,21 +448,7 @@
                             </div>
                         </div>
                         <div class="grid-auto-2">
-                            <div class="flex-col col-2 row-4">
-                                <div class="keyboard" id="keyB">
-                                    <button type="button" class="keyboardKey" value="ബൂ">ബൂ</button>
-                                    <button type="button" class="keyboardKey" value="ച">ച</button>
-                                    <button type="button" class="keyboardKey" value="കു">കു</button>
-                                    <button type="button" class="keyboardKey" value="ഗു">ഗു</button>
-                                    <button type="button" class="keyboardKey" value="മ">മ</button>
-                                    <button type="button" class="keyboardKey" value="മാ">മാ</button>
-                                    <button type="button" class="keyboardKey" value="ല">ല</button>
-                                    <button type="button" class="keyboardKey" value="ര">ര</button>
-                                    <button type="button" class="keyboardKey" value="സ">സ</button>
-                                    <button type="button" class="keyboardKey" value="ശി">ശി</button>
-                                    <button type="button" class="keyboardKey" value="ശു">ശു</button>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="grid-auto-2">
                             <div class="flex-col col-2 row-4">
@@ -506,9 +474,7 @@
                         </div>
 
                     </div>
-                    <div class="flex-row-reverse">
-                        <button class="formSubmitBtn">Add</button>
-                    </div>
+
                 </form>
 
             </div>
@@ -528,118 +494,21 @@
         document.querySelectorAll('.accordion').forEach((elm) => {
             bind(elm);
         });
-        init({"open": true});
+        init({ "open": true });
     </script>
     <script type="module">
         // init
-
-
-        function getValidRule(rule) {
-            switch (rule) {
-                case "phone":
-                    return {
-                        title: "Phone no",
-                        stop: true,
-                        required: true,
-                        numeric: true
-                    }
-                    break;
-                case "phoneNotReq":
-                    return {
-                        title: "Phone no",
-                        ignoreNull: true,
-                        numeric: true
-                    }
-                    break;
-                case "number":
-                    return {
-                        title: "This feild",
-                        numeric: true,
-                        ignoreNull: true
-                    }
-                case "pin":
-                    return {
-                        title: "PIN",
-                        stop: true,
-                        required: true,
-                        numeric: true,
-                        length: {
-                            len: 6
-                        }
-                    }
-                    break;
-                case "email":
-                    return {
-                        title: "email",
-                        ignoreNull: true,
-                        email: true
-                    }
-                    break;
-                case "required":
-                    return {
-                        title: "This feild",
-                        stop: true,
-                        required: true,
-                    }
-
-
-            }
-        }
-        import('./assets/js/validate.js')
-            .then(module => {
-                const dynamicInput = function (mutationsList, observer) {
-                    for (const mutation of mutationsList) {
-                        if (mutation.type === 'childList') {
-                            mutation.addedNodes.forEach(val => {
-                                if (Object.getPrototypeOf(val).constructor.name !== 'Text') {
-                                    let fields = val.querySelectorAll("input,textarea,select");
-                                    if (fields.length) {
-                                        fields.forEach(elm => {
-                                            module.bind(elm, elm.parentElement.parentElement.querySelector('.errorField'), getValidRule(elm.dataset.validate));
-                                        });
-                                    }
-                                }
-
-                            });
-                        }
-                    }
-                };
-                const dynamicInputConf = { childList: true, subtree: true };
-                let observer = new MutationObserver(dynamicInput);
-                let formctnr = document.querySelectorAll(".formcontainer");
-                formctnr.forEach((value) => {
-                    observer.target = value;
-                    observer.observe(value, dynamicInputConf);
-                    value.querySelectorAll("input,textarea,select").forEach((elm) => {
-                        if (elm.dataset.validate) {
-                            module.bind(elm, elm.parentElement.parentElement.querySelector('.errorField'), getValidRule(elm.dataset.validate));
-
-                        }
-
-
-                    });
-                });
-            })
-            .catch(err => {
-                console.log(err.message);
-            });
+        let memId = 59, memberData;
         import { render, compile, renderToDOM } from './assets/js/templating.js';
         import HttpClient from './assets/js/httpClient.js';
         import serialize from './assets/js/getters.js';
 
-        (function () {
-            addSiblingField();
-        })();
 
-        //sibling add
-        document.getElementById('sibAdd').addEventListener('click', siblingData);
-
-
-        function addSiblingField() {
+        function addSiblingData(sibData) {
             let sibNode = document.getElementById('sibDet');
             let sibAcc = document.getElementById('sib_details');
-
-            let Template = `
+            for (const [key, val] of Object.entries(sibData)) {
+                let Template = `
             <div class="grid-auto-3fluid"">
                 <div class="flex-col">
                     <div class="fieldtitle">
@@ -648,7 +517,7 @@
                     </div>
                     <div class="fieldinp">
                         <select name="gender" data-validate="required">
-                            <option value="">-</option>
+                            <option value="">${val.sex}</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
@@ -661,7 +530,7 @@
                             <div class="errorField"></div>
                     </div>
                     <div class="fieldinp">
-                        <input name="age" type="number" data-validate="required">
+                        <input name="age" type="number" value="${val.age}" data-validate="required">
                     </div>
                 </div>
                 <div class="flex-col">
@@ -671,7 +540,7 @@
                     </div>
                     <div class="fieldinp">
                         <select name="married" data-validate="required">
-                            <option value="">-</option>
+                            <option value="">${val.marital_status}</option>
                             <option value="1">Yes</option>
                             <option value="0">No</option>
                         </select>
@@ -679,34 +548,166 @@
                 </div>
                 </div>    
                     `;
-            renderToDOM(Template, sibNode);
+                renderToDOM(Template, sibNode);
+            }
+            disableForm(document.getElementById('SiblingData'));
+
         }
 
-        function siblingData() {
-            /*let form = `sibling${index}`;
-            const formdata = serialize(form, 'json');
-            siblingdata[index] = formdata;
-*/
-            addSiblingField();
+
+
+        function disableForm(form) {
+            form.querySelectorAll('input,textarea,select').forEach(e => {
+                e.disabled = true;
+            });
         }
 
-        //keyboard
-        document.querySelectorAll(".keyboardKey").forEach(el => {
-            el.addEventListener('mousedown', insertKey);
+        function populate() {
+            return new Promise((resolve, reject) => {
+                sendRequest('matrimony/member/?id=' + memId, 'GET').then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData = dat.data[0];
+                        let h;
+                        if (h = JSON.parse(memberData.horoscope)) {
+                            memberData.horoscope = h;
+                        }
+                        return sendRequest('matrimony/address/?id=' + memberData.a_id, 'GET');
+                    } else {
+                        return new Error('Member not found')
+                    }
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.address = dat.data[0];
+                    }
+                    return sendRequest('matrimony/contact/?id=' + memberData.contact_id, 'GET');
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.contact = dat.data[0];
+                    }
+                    return sendRequest('matrimony/family/?id=' + memberData.family_id, 'GET');
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.family = dat.data[0];
+                    }
+                    return sendRequest('matrimony/contact/?id=' + memberData.family.fCId, 'GET');
+
+
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.family.fCon = dat.data[0];
+                    }
+                    return sendRequest('matrimony/contact/?id=' + memberData.family.mCId, 'GET');
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.family.mCon = dat.data[0];
+                    }
+                    return sendRequest('matrimony/family/sibling/?id=' + memberData.family.pId, 'GET');
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.siblings = dat.data;
+                    }
+                    return sendRequest('http://localhost/matrimony/religion/?id=' + memberData.caste_rel_id, 'GET');
+
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.religion = dat.data[0];
+                    }
+                    resolve(memberData);
+                }).catch(err => {
+                    throw new Error(err.message)
+                });
+            });
+
+        }
+        populate().then(data => {
+            console.log(data);
+            let dataMap = {
+                "photo": data.photo,
+                "name": data.name,
+                "join_date": data.join_date,
+                "dob": data.dob,
+                "gender": data.gender,
+                "religion": data.religion.religion,
+                "caste_id": data.religion.caste,
+                "addr": data.address.address,
+                "dist": data.address.district,
+                "city": data.address.city,
+                "landmark": data.address.landmark,
+                "pin": data.address.pin,
+                "mobile": data.contact.mobile_no,
+                "mail": data.contact.mail_id,
+                "landline": data.contact.landline,
+                "star": data.star,
+                "qualification": data.qualification,
+                "occupation": data.occupation,
+                "height": data.height,
+                "physique": data.physique,
+                "complexion": data.complexion,
+                "fName": data.family.fName,
+                "fmobile": data.family.fCon.mobile_no,
+                "flandline": data.family.fCon.landline,
+                "fmail": data.family.fCon.mail_id,
+                "fOcc": data.family.fOcc,
+                "mName": data.family.mName,
+                "mmobile": data.family.mCon.mobile_no,
+                "mlandline": data.family.mCon.landline,
+                "mmail": data.family.mCon.mail_id,
+                "mOcc": data.family.mOcc,
+                "siblings": data.siblings,
+                "a1": data.horoscope.board1.a1,
+                "a2": data.horoscope.board1.a2,
+                "a3": data.horoscope.board1.a3,
+                "a4": data.horoscope.board1.a4,
+                "a5": data.horoscope.board1.a5,
+                "a6": data.horoscope.board1.a6,
+                "a7": data.horoscope.board1.a7,
+                "a8": data.horoscope.board1.a8,
+                "a9": data.horoscope.board1.a9,
+                "a10": data.horoscope.board1.a10,
+                "a11": data.horoscope.board1.a11,
+                "a12": data.horoscope.board1.a12,
+                "b1": data.horoscope.board2.b1,
+                "b2": data.horoscope.board2.b2,
+                "b3": data.horoscope.board2.b3,
+                "b4": data.horoscope.board2.b4,
+                "b5": data.horoscope.board2.b5,
+                "b6": data.horoscope.board2.b6,
+                "b7": data.horoscope.board2.b7,
+                "b8": data.horoscope.board2.b8,
+                "b9": data.horoscope.board2.b9,
+                "b10": data.horoscope.board2.b10,
+                "b11": data.horoscope.board2.b11,
+                "b12": data.horoscope.board2.b12
+            }
+            addData(dataMap);
+            if (data.siblings) {
+                addSiblingData(data.siblings);
+            }
+        }).catch(err => {
+            swal("Failed", err.message, "error");
         });
+        function addData(data) {
+            document.querySelectorAll('form').forEach(form => {
+                form.querySelectorAll('input,select,textarea').forEach(inp => {
+                    if (inp.type !== 'file') {
+                        for (const [key, val] of Object.entries(data)) {
+                            if (inp.name === key) {
+                                inp.value = val;
+                            }
+                        }
+                    } else {
+                        document.getElementById('profilePic').src = 'http://localhost/matrimony/public/uploads/images/' + data.photo;
+                    }
 
-        function insertKey(e) {
-            e.preventDefault();
-            let key = e.target,
-                val = key.value,
-                active = document.activeElement;
-            active.value += val;
+                });
+                disableForm(form);
+            });
+            addReligion();
 
         }
         // religion and caste fetching
-        (function () {
+        function addReligion() {
             let relNode = document.getElementById('religion'),
-                casteNode = document.getElementsByName('caste_id')[0],
                 temp = `<option value="{{value}}">{{valuesh}}</option>`,
                 c = compile(temp),
                 dat = [],
@@ -717,6 +718,15 @@
                     dat.push({ 'value': retData[val].religion, 'valuesh': retData[val].religion });
                 });
                 renderToDOM(render(c, dat), relNode);
+                var selectOptions = relNode.options;
+                for (var opt, j = 0; opt = selectOptions[j]; j++) {
+                    if (opt.value == memberData.religion.religion) {
+                        relNode.selectedIndex = j;
+                        break;
+                    }
+                }
+                loadCaste(relNode.options[relNode.selectedIndex].value);
+
             });
             relNode.addEventListener('change', (e) => {
                 if (e.target.selectedIndex) {
@@ -724,6 +734,10 @@
                 }
             });
             function loadCaste(rel) {
+                let casteNode = document.getElementsByName('caste_id')[0],
+                    temp = `<option value="{{value}}">{{valuesh}}</option>`,
+                    c = compile(temp),
+                    dat = [];
                 dat = [];
                 casteNode.textContent = '';
                 client = new HttpClient('http://localhost', 'matrimony/religion/caste/?rel=' + rel, 'get', '');
@@ -733,101 +747,18 @@
                         dat.push({ 'value': retData[val].id, 'valuesh': retData[val].caste });
                     });
                     renderToDOM(render(c, dat), casteNode);
+                    var selectOptions = casteNode.options;
+                    for (var opt, j = 0; opt = selectOptions[j]; j++) {
+                        if (opt.value == memberData.caste_rel_id) {
+                            casteNode.selectedIndex = j;
+                            break;
+                        }
+                    }
                 });
             }
-        })();
+        };
         //after form submit
-        function disableForm(form) {
-            form.querySelector('.formSubmitBtn').disabled = true;
-            form.querySelectorAll('input,textarea,select').forEach(e => {
-                e.disabled = true;
-                e.removeAttribute('name');
-            });
-        }
-        function disableRestr(next) {
-            let rem = next.split('-');
-            rem.forEach((val) => {
-                document.getElementById(val).removeAttribute('data-isdisabled');
-
-            })
-
-        }
-        document.addEventListener('validForm', (e) => {
-            if (e.target.id === 'memberData') {
-                addMember(e.target);
-            }
-            else if (e.target.id === 'familyData') {
-                addFamily(e.target);
-            }
-            else if (e.target.id === 'SiblingData') {
-                addSibling(e.target);
-            }
-            else if (e.target.id === 'HoroscopeData') {
-                addHoro(e.target);
-            }
-
-        });
-        function addMember(form) {
-            sendRequest('matrimony/member', 'POST', 'multipart/form-data', form).then((data) => {
-                sendRequest('matrimony/member/?id=' + data.data.id, 'GET').then((d) => {
-                    disableRestr(form.dataset.next);
-                    window.memberData = d.data[0];
-                    disableForm(form);
-                    swal("Success", "Member added", "success");
-                });
-            });
-        }
-        function addFamily(form) {
-            sendRequest('matrimony/family', 'POST', 'multipart/form-data', form).then((data) => {
-                sendRequest('matrimony/member/', 'PATCH', 'multipart/form-data', null, { 'id': memberData.id, 'family': data.data.id }).then((d) => {
-                    disableRestr(form.dataset.next);
-                    disableForm(form);
-                    swal("Success", "Data added", "success");
-                    sendRequest('matrimony/family/?id=' + data.data.id, 'GET').then((dat) => {
-                        disableRestr(form.dataset.next);
-                        window.familyData = dat.data[0];
-                    });
-                });
-            });
-        }
-        function addSibling(form) {
-            let d = new Object(),
-                gender,
-                age,
-                mar,
-                len = form.querySelectorAll('input[name="age"]').length;
-            d.id = familyData.pId;
-            d.data = new Object();
-            for (let i = 0; i < len; i++) {
-                d.data[i] = new Object();
-                d.data[i].sex = form.querySelectorAll('select[name="gender"]')[i].value;
-                d.data[i].age = form.querySelectorAll('input[name="age"]')[i].value;
-                d.data[i].mar = form.querySelectorAll('select[name="married"]')[i].value;
-            }
-            sendRequest('matrimony/sibling/add', 'POST', 'application/json', false, d).then((data) => {
-                disableForm(form);
-                swal("Success", "Data added", "success");
-                form.querySelector('.formSubmitBtn').disabled = false;
-                console.log(JSON.stringify(data));
-
-            });
-        }
-        function addHoro(form) {
-            let boards = form.querySelectorAll('#board1,#board2'),
-                formData = new FormData(),
-                data = new Object();
-            boards.forEach((board) => {
-                data[board.id] = new Object();
-                board.querySelectorAll('textarea').forEach((inp) => {
-                    data[board.id][inp.name] = inp.value;
-                });
-            });
-            data = JSON.stringify(data);
-            sendRequest('matrimony/member/', 'PATCH', 'multipart/form-data', null, { 'id': memberData.id, 'horo': data }).then((d) => {
-                disableForm(form);
-                swal("Success", "Data added", "success");
-            });
-        }
+       
         async function sendRequest(endpoint, method, contentType = false, form = false, addition = false) {
             let client, data;
             if (method === 'get' || method === 'GET') {
@@ -843,12 +774,18 @@
             }
             return new Promise(function (resolve, reject) {
                 client.request().then((data) => {
-                    if (data.status === 'success') {
+                    if (method === 'GET' || method === 'get') {
+
                         resolve(data);
                     } else {
-                        swal("Failed", 'Something happened', "error");
+                        if (data.status === 'success') {
+                            resolve(data);
+                        } else {
+                            swal("Failed", 'Something happened', "error");
 
+                        }
                     }
+
                 }).catch(error => {
                     swal("Failed", error.message, "error");
                 });
@@ -856,18 +793,6 @@
 
         }
 
-
-        function submit() {
-            let client = new HttpClient('http://localhost', 'matrimony/family', 'POST', '', data);
-            client.request().then((data) => {
-                if (data.status === 'Success') {
-                    console.log('hurray');
-
-                }
-            }).catch(error => {
-                consolr.log(`error ${error}`);
-            });
-        }
     </script>
     <script>
         function showAge(e) {

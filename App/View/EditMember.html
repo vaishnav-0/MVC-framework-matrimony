@@ -298,8 +298,7 @@
                     </form>
                 </div>
             </div>
-            <div class="accordion" id="accord2" data-index="2" data-target="fam_details" data-title="Family details"
-                data-isdisabled="true">
+            <div class="accordion" id="accord2" data-index="2" data-target="fam_details" data-title="Family details">
 
                 <div class="accordionContent" id="fam_details">
                     <div class="grid-auto-autofit-min330">
@@ -414,7 +413,7 @@
                         </form>
                     </div>
                     <div class="accordion" id="accord21" data-index="2-1" data-target="sib_details"
-                        data-title="Siblings" data-isdisabled="true">
+                        data-title="Siblings">
                         <div class="accordionContent" id="sib_details">
                             <form id="SiblingData">
                                 <div class="flex-row">
@@ -423,7 +422,6 @@
                                         <div class="errorField">
                                         </div>
                                     </div>
-                                    <button type="button" class="add-sib-btn" id="sibAdd">+</button>
                                 </div>
                                 <div class="grid-auto-1fluid" id="sibDet"></div>
                                 <div class="flex-row-reverse">
@@ -438,7 +436,7 @@
             </div>
 
         </div>
-        <div class="accordion" id="accord3" data-index="3" data-target="horo" data-title="Horoscope" data-isdisabled="true">
+        <div class="accordion" id="accord3" data-index="3" data-target="horo" data-title="Horoscope">
             <div class="accordionContent" id="horo">
                 <form id="HoroscopeData">
                     <div class="grid-auto-autofit-min330">
@@ -737,60 +735,46 @@
             }
         })();
         //after form submit
-        function disableForm(form) {
-            form.querySelector('.formSubmitBtn').disabled = true;
-            form.querySelectorAll('input,textarea,select').forEach(e => {
-                e.disabled = true;
-                e.removeAttribute('name');
-            });
-        }
-        function disableRestr(next) {
-            let rem = next.split('-');
-            rem.forEach((val) => {
-                document.getElementById(val).removeAttribute('data-isdisabled');
-
-            })
-
-        }
         document.addEventListener('validForm', (e) => {
             if (e.target.id === 'memberData') {
                 addMember(e.target);
             }
             else if (e.target.id === 'familyData') {
-                addFamily(e.target);
+                editFamily(e.target);
             }
             else if (e.target.id === 'SiblingData') {
-                addSibling(e.target);
+                editSibling(e.target);
             }
             else if (e.target.id === 'HoroscopeData') {
-                addHoro(e.target);
+                editHoro(e.target);
             }
 
         });
-        function addMember(form) {
-            sendRequest('matrimony/member', 'POST', 'multipart/form-data', form).then((data) => {
-                sendRequest('matrimony/member/?id=' + data.data.id, 'GET').then((d) => {
-                    disableRestr(form.dataset.next);
+        function updateMemberData(){
+            sendRequest('matrimony/member/?id=' + memberData.id, 'GET').then((d) => {
                     window.memberData = d.data[0];
-                    disableForm(form);
-                    swal("Success", "Member added", "success");
+                    swal("Success", "Data updated", "success");
                 });
-            });
         }
-        function addFamily(form) {
-            sendRequest('matrimony/family', 'POST', 'multipart/form-data', form).then((data) => {
-                sendRequest('matrimony/member/', 'PATCH', 'multipart/form-data', null, { 'id': memberData.id, 'family': data.data.id }).then((d) => {
-                    disableRestr(form.dataset.next);
-                    disableForm(form);
-                    swal("Success", "Data added", "success");
+        function updateFamilyData(){
                     sendRequest('matrimony/family/?id=' + data.data.id, 'GET').then((dat) => {
-                        disableRestr(form.dataset.next);
-                        window.familyData = dat.data[0];
+                        window.memberData.family = dat.data[0];
+                        swal("Success", "Data updated", "success");
                     });
+        }
+        function editMember(form) {
+            sendRequest('matrimony/member', 'PATCH', 'multipart/form-data', form, { 'id': memberData.id}).then((data) => {
+                updateMemberData();
+            });
+        }
+        function editFamily(form) {
+            sendRequest('matrimony/family', 'PATCH', 'multipart/form-data', form, { 'id': memberData.id}).then((data) => {
+                sendRequest('matrimony/member/', 'PATCH', 'multipart/form-data', null, { 'id': memberData.id, 'family': memberData.family.pId }).then((d) => {
+                    updateFamilyData();
                 });
             });
         }
-        function addSibling(form) {
+        function editSibling(form) {
             let d = new Object(),
                 gender,
                 age,
@@ -805,14 +789,12 @@
                 d.data[i].mar = form.querySelectorAll('select[name="married"]')[i].value;
             }
             sendRequest('matrimony/sibling/add', 'POST', 'application/json', false, d).then((data) => {
-                disableForm(form);
                 swal("Success", "Data added", "success");
-                form.querySelector('.formSubmitBtn').disabled = false;
                 console.log(JSON.stringify(data));
 
             });
         }
-        function addHoro(form) {
+        function editHoro(form) {
             let boards = form.querySelectorAll('#board1,#board2'),
                 formData = new FormData(),
                 data = new Object();

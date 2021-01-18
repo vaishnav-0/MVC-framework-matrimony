@@ -12,8 +12,11 @@
 
 export default (form, contentType, addition) => {
     let formData;
-    if (form) {
+    if (form instanceof HTMLFormElement) {
         formData = new FormData(form);
+    }
+    else if(form instanceof FormData){
+        formData = form;
     } else {
         formData = new FormData();
     }
