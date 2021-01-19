@@ -7,24 +7,17 @@
     <title>Matrimony -- Members</title>
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
     <link href="assets/css/style.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+    <script src="assets/js/DataTables/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
 
     <!-- datatables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/js/DataTables/datatables.min.css">
+    <script type="text/javascript" charset="utf8" src="assets/js/DataTables/datatables.min.js"></script>
 
 
 </head>
@@ -74,9 +67,13 @@
                                             <td class="center"><?php echo htmlentities($result->BookPrice);?></td>
                                             <td class="center">
 
-                                                <a href=""><button class="btn btn-primary"><i class="fas fa-edit "></i></button></a>
-                                                <a href="" onclick="return confirm('Are you sure you want to delete?')";>  <button class="btn btn-danger"><i class="fas fa-trash"></i> </button></a>
-                                                <a href=""><button class="btn btn-warning"><i class="fas fa-print"></i></button></a>
+                                                <a href=""><button class="btn btn-primary"><i
+                                                            class="fas fa-edit "></i></button></a>
+                                                <a href="" onclick="return confirm('Are you sure you want to delete?')"
+                                                    ;> <button class="btn btn-danger"><i class="fas fa-trash"></i>
+                                                    </button></a>
+                                                <a href=""><button class="btn btn-warning"><i
+                                                            class="fas fa-print"></i></button></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -92,6 +89,284 @@
 
         </div>
     </div>
+    <script type="module">
+        import { bind, init } from './assets/js/accordion.js';
+        document.querySelectorAll('.accordion').forEach((elm) => {
+            bind(elm);
+        });
+        init({ "open": true });
+    </script>
+    <script type="module">
+        // init
+        let memId = 59, memberData;
+        import { render, compile, renderToDOM } from './assets/js/templating.js';
+        import HttpClient from './assets/js/httpClient.js';
+        import serialize from './assets/js/getters.js';
+
+
+
+
+
+
+        function disableForm(form) {
+            form.querySelectorAll('input,textarea,select').forEach(e => {
+                e.disabled = true;
+            });
+        }
+
+        function populate() {
+            return new Promise((resolve, reject) => {
+                sendRequest('matrimony/member/details/?id=' + memId, 'GET').then((dat) => {
+                    if (dat.status === 'success') {
+                        resolve(dat.data);
+                    }
+                    else {
+                        reject('Member not found');
+                    }
+                });
+            });
+        }
+        populate().then(data => {
+            console.log(data);
+
+            let dataMap = {
+                "photo": data.photo,
+                "name": data.name,
+                "join_date": data.join_date,
+                "dob": data.dob,
+                "gender": data.gender,
+                "religion": data.religion.religion,
+                "caste_id": data.religion.caste,
+                "addr": data.address.address,
+                "dist": data.address.district,
+                "city": data.address.city,
+                "landmark": data.address.landmark,
+                "pin": data.address.pin,
+                "mobile": data.contact.mobile_no,
+                "mail": data.contact.mail_id,
+                "landline": data.contact.landline,
+                "star": data.star,
+                "qualification": data.qualification,
+                "occupation": data.occupation,
+                "height": data.height,
+                "physique": data.physique,
+                "complexion": data.complexion
+            }
+            if (data.horoscope) {
+                Object.assign(dataMap, {
+                    "a1": data.horoscope.board1.a1,
+                    "a2": data.horoscope.board1.a2,
+                    "a3": data.horoscope.board1.a3,
+                    "a4": data.horoscope.board1.a4,
+                    "a5": data.horoscope.board1.a5,
+                    "a6": data.horoscope.board1.a6,
+                    "a7": data.horoscope.board1.a7,
+                    "a8": data.horoscope.board1.a8,
+                    "a9": data.horoscope.board1.a9,
+                    "a10": data.horoscope.board1.a10,
+                    "a11": data.horoscope.board1.a11,
+                    "a12": data.horoscope.board1.a12,
+                    "b1": data.horoscope.board2.b1,
+                    "b2": data.horoscope.board2.b2,
+                    "b3": data.horoscope.board2.b3,
+                    "b4": data.horoscope.board2.b4,
+                    "b5": data.horoscope.board2.b5,
+                    "b6": data.horoscope.board2.b6,
+                    "b7": data.horoscope.board2.b7,
+                    "b8": data.horoscope.board2.b8,
+                    "b9": data.horoscope.board2.b9,
+                    "b10": data.horoscope.board2.b10,
+                    "b11": data.horoscope.board2.b11,
+                    "b12": data.horoscope.board2.b12
+                });
+            }
+            if (data.family) {
+
+                Object.assign(dataMap, {
+                    "fName": data.family.fName,
+                    "fOcc": data.family.fOcc,
+                    "mName": data.family.mName,
+                    "mOcc": data.family.mOcc
+                });
+                if (data.fCon) {
+                    Object.assign(dataMap, {
+                        "fmobile": data.family.fCon.mobile_no,
+                        "flandline": data.family.fCon.landline,
+                        "fmail": data.family.fCon.mail_id
+                    });
+                }
+                if (data.fCon) {
+                    Object.assign(dataMap, {
+                        "mmobile": data.family.mCon.mobile_no,
+                        "mlandline": data.family.mCon.landline,
+                        "mmail": data.family.mCon.mail_id
+                    });
+                }
+            }
+            addData(dataMap);
+            addReligion(data.religion.religion, data, religion.caste_id);
+            if (data.siblings) {
+                addSiblingData(data.siblings);
+            }
+        }).catch(err => {
+            swal("Failed", err.message, "error");
+        });
+        function addData(data) {
+            document.querySelectorAll('form').forEach(form => {
+                form.querySelectorAll('input,select,textarea').forEach(inp => {
+                    if (inp.type !== 'file') {
+                        for (const [key, val] of Object.entries(data)) {
+                            if (inp.name === key) {
+                                inp.value = val;
+                            }
+                        }
+                    } else {
+                        document.getElementById('profilePic').src = 'http://localhost/matrimony/public/uploads/images/' + data.photo;
+                    }
+
+                });
+                disableForm(form);
+            });
+
+        }
+        function addSiblingData(sibData) {
+            let sibNode = document.getElementById('sibDet');
+            let sibAcc = document.getElementById('sib_details');
+            for (const [key, val] of Object.entries(sibData)) {
+                let Template = `
+            <div class="grid-auto-3fluid"">
+                <div class="flex-col">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Gender:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="gender" data-validate="required">
+                            <option value="">${val.sex}</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-col form-m-age">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Age:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <input name="age" type="number" value="${val.age}" data-validate="required">
+                    </div>
+                </div>
+                <div class="flex-col">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Married:</div>
+                        <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="married" data-validate="required">
+                            <option value="">${val.marital_status}</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                </div>    
+                    `;
+                renderToDOM(Template, sibNode);
+            }
+            disableForm(document.getElementById('SiblingData'));
+
+        }
+        // religion and caste fetching
+        function addReligion(religion, caste_id) {
+            let relNode = document.getElementById('religion'),
+                temp = `<option value="{{value}}">{{valuesh}}</option>`,
+                c = compile(temp),
+                dat = [],
+                client = new HttpClient('http://localhost', 'matrimony/religion/all', 'get', '');
+            client.request().then((d) => {
+                let retData = d.data
+                Object.keys(retData).forEach((val, index) => {
+                    dat.push({ 'value': retData[val].religion, 'valuesh': retData[val].religion });
+                });
+                renderToDOM(render(c, dat), relNode);
+                var selectOptions = relNode.options;
+                for (var opt, j = 0; opt = selectOptions[j]; j++) {
+                    if (opt.value == religion) {
+                        relNode.selectedIndex = j;
+                        break;
+                    }
+                }
+                loadCaste(relNode.options[relNode.selectedIndex].value);
+
+            });
+            relNode.addEventListener('change', (e) => {
+                if (e.target.selectedIndex) {
+                    loadCaste(e.target.value);
+                }
+            });
+            function loadCaste(rel) {
+                let casteNode = document.getElementsByName('caste_id')[0],
+                    temp = `<option value="{{value}}">{{valuesh}}</option>`,
+                    c = compile(temp),
+                    dat = [];
+                dat = [];
+                casteNode.textContent = '';
+                client = new HttpClient('http://localhost', 'matrimony/religion/caste/?rel=' + rel, 'get', '');
+                client.request().then((d) => {
+                    let retData = d.data
+                    Object.keys(retData).forEach((val, index) => {
+                        dat.push({ 'value': retData[val].id, 'valuesh': retData[val].caste });
+                    });
+                    renderToDOM(render(c, dat), casteNode);
+                    var selectOptions = casteNode.options;
+                    for (var opt, j = 0; opt = selectOptions[j]; j++) {
+                        if (opt.value == caste_id) {
+                            casteNode.selectedIndex = j;
+                            break;
+                        }
+                    }
+                });
+            }
+        };
+        //after form submit
+
+        async function sendRequest(endpoint, method, contentType = false, form = false, addition = false) {
+            let client, data;
+            if (method === 'get' || method === 'GET') {
+                client = new HttpClient('http://localhost', endpoint, 'GET', '');
+            } else {
+                data = serialize(form, contentType, addition);
+                if (contentType === 'application/json') {
+                    client = new HttpClient('http://localhost', endpoint, method, { 'Content-Type': contentType }, data);
+                } else {
+                    client = new HttpClient('http://localhost', endpoint, method, null, data);
+
+                }
+            }
+            return new Promise(function (resolve, reject) {
+                client.request().then((data) => {
+                    if (method === 'GET' || method === 'get') {
+
+                        resolve(data);
+                    } else {
+                        if (data.status === 'success') {
+                            resolve(data);
+                        } else {
+                            swal("Failed", 'Something happened', "error");
+
+                        }
+                    }
+
+                }).catch(error => {
+                    swal("Failed", error.message, "error");
+                });
+            });
+
+        }
+
+    </script>
     <script>
         $(document).ready(function () {
             $('#memTbl').DataTable();
