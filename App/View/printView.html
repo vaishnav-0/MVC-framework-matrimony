@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/printview.css">
+    <link rel="stylesheet" href="assets/css/validate.css">
+    <link rel="stylesheet" href="assets/css/horoscope.css">
+    <link rel="stylesheet" href="assets/css/accordion.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+    <title>Matrimony</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="topnav">
+            <div class="brand">
+                <div class="brandname">XYX Matrimony</div>
+            </div>
+            <div class="navopt">
+                <span>
+                    <a href="#">Home</a>
+                </span>
+                <span>
+                    <a href="#">Members</a>
+                </span>
+                <span>
+                    <a href="#">Settings</a>
+                </span>
+                <span>
+                    <a href="#">About</a>
+                </span>
+            </div>
+        </nav>
+        <div class="formcontainer">
+            <form name="member" data-next="accord2-accord3" id="memberData">
+                <div class="grid-auto-autofit-min330">
+                    <div class="grid-auto-2">
+                        <div class="flex-row col-2 row-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Photo:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="file" name="photo" id="profileUp">
+                                <div class="profilePhoto">
+                                    <img id="profilePic" src="assets/img/altProfile.jpg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Name:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="name" data-validate="required">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Join Date:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="date" name="join_date">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Age:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" readonly id="memage">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">DOB:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="date" name="dob" data-validate="required" onchange="showAge(event);">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Gender:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <select name="gender" data-validate="required">
+                                    <option value="">-</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Religion:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <select id="religion" name="religion" data-validate="required">
+                                    <option value="">-</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Caste:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <select name="caste_id" data-validate="required">
+                                    <option value="">-</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="grid-auto-2">
+                        <div class="flex-row col-2 row-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Address:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <textarea name="addr" data-validate="required"></textarea>
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">District:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="dist" data-validate="required">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">City/Town:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="city" data-validate="required">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Landmark:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="landmark">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Pin Code:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="pin" data-validate="pin">
+                            </div>
+                        </div>
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Phone no:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+
+                            <div class="fieldinp">
+                                <input name="mobile" type="text" data-validate="phone">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname"> Email: </div>
+                                <div class="errorField"></div>
+
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="mail" data-validate="email">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Landline:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+
+                            <div class="fieldinp">
+                                <input name="landline" type="text" data-validate="number">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="grid-auto-2">
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Star:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input name="star" type="text">
+                            </div>
+                        </div>
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Qualification:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input name="qualification" type="text">
+                            </div>
+                        </div>
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Occupation:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input name="occupation" type="text">
+                            </div>
+                        </div>
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Height:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input name="height" type="text">
+                            </div>
+                        </div>
+
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Physique:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input name="physique" type="text">
+                            </div>
+                        </div>
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Complexion:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input name="complexion" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="grid-auto-autofit-min330">
+                <form id="familyData" data-next="accord21">
+                    <div class="grid-auto-2">
+
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Father's name:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="fName" data-validate="required">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Father's contact no:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="fmobile" data-validate="phoneNotReq">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Father's landline:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="flandline" data-validate="phoneNotReq">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Father's email:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="fmail" data-validate="email">
+                            </div>
+                        </div>
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Father's occupation:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="fOcc">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Mother's name:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="mName" data-validate="required">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Mother's contact no:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="mmobile" data-validate="phoneNotReq">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Mother's landline:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="mlandline" data-validate="phoneNotReq">
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Mother's email:</div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="mmail" data-validate="email">
+                            </div>
+                        </div>
+                        <div class="flex-row col-2">
+                            <div class="fieldtitle">
+                                <div class="fieldname">Mother's occupation:
+
+                                </div>
+                                <div class="errorField">
+                                </div>
+                            </div>
+                            <div class="fieldinp">
+                                <input type="text" name="mOcc">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form id="SiblingData">
+                    <div class="flex-row">
+                        Siblings
+                    </div>
+                    <div class="grid-auto-1fluid" id="sibDet">
+
+                    </div>
+                </form>
+
+            </div>
+
+
+
+
+            <form id="HoroscopeData">
+                <div class="grid-auto-autofit-min330">
+                    <div class="test">
+                        <div class="panel">
+
+                            <!-- board 1 -->
+                            <div class="board" id="board1">
+                                <textarea class="square" name="a1"></textarea>
+                                <textarea class="square" name="a2"></textarea>
+                                <textarea class="square" name="a3"></textarea>
+                                <textarea class="square" name="a4"></textarea>
+                                <textarea class="square" name="a5"></textarea>
+                                <textarea class="square" name="a6"></textarea>
+                                <textarea class="square" name="a7"></textarea>
+                                <textarea class="square" name="a8"></textarea>
+                                <textarea class="square" name="a9"></textarea>
+                                <textarea class="square" name="a10"></textarea>
+                                <textarea class="square" name="a11"></textarea>
+                                <textarea class="square" name="a12"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="board" id="board2">
+                            <textarea class="square" name="b1"></textarea>
+                            <textarea class="square" name="b2"></textarea>
+                            <textarea class="square" name="b3"></textarea>
+                            <textarea class="square" name="b4"></textarea>
+                            <textarea class="square" name="b5"></textarea>
+                            <textarea class="square" name="b6"></textarea>
+                            <textarea class="square" name="b7"></textarea>
+                            <textarea class="square" name="b8"></textarea>
+                            <textarea class="square" name="b9"></textarea>
+                            <textarea class="square" name="b10"></textarea>
+                            <textarea class="square" name="b11"></textarea>
+                            <textarea class="square" name="b12"></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+    <script src="assets/js/sweetalert.min.js"></script>
+    <script src="assets/js/image.js"></script>
+    <script type="module">
+        // init
+        let memId = 59, memberData;
+        import { render, compile, renderToDOM } from './assets/js/templating.js';
+        import HttpClient from './assets/js/httpClient.js';
+        import serialize from './assets/js/getters.js';
+
+
+       
+
+
+
+        function disableForm(form) {
+            form.querySelectorAll('input,textarea,select').forEach(e => {
+                e.disabled = true;
+            });
+        }
+
+        function populate() {
+            return new Promise((resolve, reject) => {
+                sendRequest('matrimony/member/details/?id=' + memId, 'GET').then((dat) => {
+                    if (dat.status === 'success') {
+                        resolve(dat.data);
+                    }
+                    else {
+                        reject('Member not found');
+                    }
+                });
+            });
+        }
+        populate().then(data => {
+            console.log(data);
+
+            let dataMap = {
+                "photo": data.photo,
+                "name": data.name,
+                "join_date": data.join_date,
+                "dob": data.dob,
+                "gender": data.gender,
+                "religion": data.religion.religion,
+                "caste_id": data.religion.caste,
+                "addr": data.address.address,
+                "dist": data.address.district,
+                "city": data.address.city,
+                "landmark": data.address.landmark,
+                "pin": data.address.pin,
+                "mobile": data.contact.mobile_no,
+                "mail": data.contact.mail_id,
+                "landline": data.contact.landline,
+                "star": data.star,
+                "qualification": data.qualification,
+                "occupation": data.occupation,
+                "height": data.height,
+                "physique": data.physique,
+                "complexion": data.complexion
+            }
+            if (data.horoscope) {
+                Object.assign(dataMap, {
+                    "a1": data.horoscope.board1.a1,
+                    "a2": data.horoscope.board1.a2,
+                    "a3": data.horoscope.board1.a3,
+                    "a4": data.horoscope.board1.a4,
+                    "a5": data.horoscope.board1.a5,
+                    "a6": data.horoscope.board1.a6,
+                    "a7": data.horoscope.board1.a7,
+                    "a8": data.horoscope.board1.a8,
+                    "a9": data.horoscope.board1.a9,
+                    "a10": data.horoscope.board1.a10,
+                    "a11": data.horoscope.board1.a11,
+                    "a12": data.horoscope.board1.a12,
+                    "b1": data.horoscope.board2.b1,
+                    "b2": data.horoscope.board2.b2,
+                    "b3": data.horoscope.board2.b3,
+                    "b4": data.horoscope.board2.b4,
+                    "b5": data.horoscope.board2.b5,
+                    "b6": data.horoscope.board2.b6,
+                    "b7": data.horoscope.board2.b7,
+                    "b8": data.horoscope.board2.b8,
+                    "b9": data.horoscope.board2.b9,
+                    "b10": data.horoscope.board2.b10,
+                    "b11": data.horoscope.board2.b11,
+                    "b12": data.horoscope.board2.b12
+                });
+            }
+            if (data.family) {
+
+                Object.assign(dataMap, {
+                    "fName": data.family.fName,
+                    "fOcc": data.family.fOcc,
+                    "mName": data.family.mName,
+                    "mOcc": data.family.mOcc
+                });
+                if (data.fCon) {
+                    Object.assign(dataMap, {
+                        "fmobile": data.family.fCon.mobile_no,
+                        "flandline": data.family.fCon.landline,
+                        "fmail": data.family.fCon.mail_id
+                    });
+                }
+                if (data.fCon) {
+                    Object.assign(dataMap, {
+                        "mmobile": data.family.mCon.mobile_no,
+                        "mlandline": data.family.mCon.landline,
+                        "mmail": data.family.mCon.mail_id
+                    });
+                }
+            }
+            addData(dataMap);
+            addReligion(data.religion.religion, data,religion.caste_id);
+            if (data.siblings) {
+                addSiblingData(data.siblings);
+            }
+        }).catch(err => {
+            swal("Failed", err.message, "error");
+        });
+        function addSiblingData(sibData) {
+            let sibNode = document.getElementById('sibDet');
+            let sibAcc = document.getElementById('sib_details');
+            for (const [key, val] of Object.entries(sibData)) {
+                let Template = `
+            <div class="grid-auto-3fluid"">
+                <div class="flex-row">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Gender:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="gender" data-validate="required">
+                            <option value="">${val.sex}</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-row form-m-age">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Age:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <input name="age" type="number" value="${val.age}" data-validate="required">
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Married:</div>
+                        <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="married" data-validate="required">
+                            <option value="">${val.marital_status}</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                </div>    
+                    `;
+                renderToDOM(Template, sibNode);
+            }
+            disableForm(document.getElementById('SiblingData'));
+
+        }
+        function addData(data) {
+            document.querySelectorAll('form').forEach(form => {
+                form.querySelectorAll('input,select,textarea').forEach(inp => {
+                    if (inp.type !== 'file') {
+                        for (const [key, val] of Object.entries(data)) {
+                            if (inp.name === key) {
+                                inp.value = val;
+                            }
+                        }
+                    } else {
+                        document.getElementById('profilePic').src = 'http://localhost/matrimony/public/uploads/images/' + data.photo;
+                    }
+
+                });
+                disableForm(form);
+            });
+
+        }
+        // religion and caste fetching
+        function addReligion(religion,rel_id) {
+            let relNode = document.getElementById('religion'),
+                temp = `<option value="{{value}}">{{valuesh}}</option>`,
+                c = compile(temp),
+                dat = [],
+                client = new HttpClient('http://localhost', 'matrimony/religion/all', 'get', '');
+            client.request().then((d) => {
+                let retData = d.data
+                Object.keys(retData).forEach((val, index) => {
+                    dat.push({ 'value': retData[val].religion, 'valuesh': retData[val].religion });
+                });
+                renderToDOM(render(c, dat), relNode);
+                var selectOptions = relNode.options;
+                for (var opt, j = 0; opt = selectOptions[j]; j++) {
+                    if (opt.value == religion) {
+                        relNode.selectedIndex = j;
+                        break;
+                    }
+                }
+                loadCaste(relNode.options[relNode.selectedIndex].value, rel_id);
+
+            });
+
+            function loadCaste(rel,rel_id) {
+                let casteNode = document.getElementsByName('caste_id')[0],
+                    temp = `<option value="{{value}}">{{valuesh}}</option>`,
+                    c = compile(temp),
+                    dat = [];
+                dat = [];
+                casteNode.textContent = '';
+                client = new HttpClient('http://localhost', 'matrimony/religion/caste/?rel=' + rel, 'get', '');
+                client.request().then((d) => {
+                    let retData = d.data
+                    Object.keys(retData).forEach((val, index) => {
+                        dat.push({ 'value': retData[val].id, 'valuesh': retData[val].caste });
+                    });
+                    renderToDOM(render(c, dat), casteNode);
+                    var selectOptions = casteNode.options;
+                    for (var opt, j = 0; opt = selectOptions[j]; j++) {
+                        if (opt.value == rel_id) {
+                            casteNode.selectedIndex = j;
+                            break;
+                        }
+                    }
+                    replaceInput();
+                });
+            }
+        };
+        function replaceInput() {
+            document.querySelectorAll('input,textarea').forEach(inp => {
+                var div = document.createElement('div');
+                div.setAttribute('class', inp.getAttribute('class'))
+                div.innerHTML = inp.value;
+                inp.parentNode.replaceChild(div, inp);
+            });
+            document.querySelectorAll('select').forEach(inp => {
+                var div = document.createElement('div');
+                div.innerHTML = inp.options[inp.selectedIndex].innerHTML
+                inp.parentNode.replaceChild(div, inp);
+            });
+        }
+        
+        //after form submit
+
+        async function sendRequest(endpoint, method, contentType = false, form = false, addition = false) {
+            let client, data;
+            if (method === 'get' || method === 'GET') {
+                client = new HttpClient('http://localhost', endpoint, 'GET', '');
+            } else {
+                data = serialize(form, contentType, addition);
+                if (contentType === 'application/json') {
+                    client = new HttpClient('http://localhost', endpoint, method, { 'Content-Type': contentType }, data);
+                } else {
+                    client = new HttpClient('http://localhost', endpoint, method, null, data);
+
+                }
+            }
+            return new Promise(function (resolve, reject) {
+                client.request().then((data) => {
+                    if (method === 'GET' || method === 'get') {
+
+                        resolve(data);
+                    } else {
+                        if (data.status === 'success') {
+                            resolve(data);
+                        } else {
+                            swal("Failed", 'Something happened', "error");
+
+                        }
+                    }
+
+                }).catch(error => {
+                    swal("Failed", error.message, "error");
+                });
+            });
+
+        }
+
+    </script>
+    <script>
+        function showAge(e) {
+            let today = new Date(),
+                DOB = new Date(e.target.value),
+                targetElm = document.getElementById('memage'),
+                nowMonth = parseInt(today.getMonth()),
+                nowYear = parseInt(today.getFullYear()),
+                DOBMonth = DOB.getMonth(),
+                DOBYear = DOB.getUTCFullYear(), age;
+            if (DOBMonth <= nowMonth) {
+                age = nowYear - DOBYear;
+            } else {
+                age = nowYear - DOBYear - 1;
+            }
+            targetElm.value = age;
+
+        }
+
+    </script>
+</body>
+
+</html>

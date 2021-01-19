@@ -31,13 +31,67 @@ class Member extends BaseController
         $result = $this->memberModel->getAllMember();
         return $this->cntrlRespond(['data' => $result]);
     }
+    public function getAllDet()
+    {
+        $result = $this->memberModel->getMember($this->reqBody->id)[0];
+        if (!$result) {
+            return $this->cntrlRespond(false);
+        }
+        if($json = json_decode($result['horoscope'])){
+            $result['horoscope'] = $json;
+        }
+        if ($result['contact_id']) {
+            $memCon = $this->callController('Contact', 'get', array(
+                "id" => $result['contact_id'],
+            ))->data->{0};
+            $result['contact'] = $memCon;
+        }
+        if ($result['caste_rel_id']) {
+            $memRel = $this->callController('Religion', 'getRelAndCaste', array(
+                "id" => $result['caste_rel_id']
+            ))->data->{0};
+            $result['religion'] = $memRel;
+        }
+        if ($result['a_id']) {
+            $memAdd = $this->callController('Address', 'get', array(
+                "id" => $result['a_id'],
+            ))->data->{0};
+            $result['address'] = $memAdd;
+        }
+        if ($result['family_id']) {
+            $memFam = $this->callController('Family', 'get', array(
+                "id" => $result['family_id'],
+            ))->data->{0};
+            $result['family'] = $memFam;
+            if ($memFam->fCId) {
+                $fCon = $this->callController('Contact', 'get', array(
+                    "id" => $memFam->fCId
+                ))->data->{0};
+                $result['family']->{'fCon'} = $fCon;
+            }
+            if ($memFam->mCId) {
+                $mCon = $this->callController('Contact', 'get', array(
+                    "id" => $memFam->mCId
+                ))->data->{0};
+                $result['family']->{'mCon'} = $mCon;
+            }
+            $memSib = $this->callController('Sibling', 'getWFam', array(
+                "id" => $memFam->pId,
+            ));
+            if ($memSib->status === 'success') {
+                $result['family']->{'sibling'} = $memSib->data;
+            }
+        }
 
+        
+        return $this->cntrlRespond(['data' => $result]);
+    }
     public function edit()
-    {   
-        $image = 'default.jpg'; 
+    {
+        $image = 'default.jpg';
         if ($_FILES['photo']['error'] === 0) {
             $imageUploader = new imageUploader;
-            $image = $imageUploader->addImage($_FILES['photo'], $this->reqBody->name);
+            $image = $imageUploader->addImage($_FILES['photo'], json_decode($this->get()->getBody())->data->{0}->name);
         }
         $result = $this->memberModel->editMember(
             $this->reqBody->id,
@@ -60,6 +114,7 @@ class Member extends BaseController
                 'horoscope' => $this->reqBody->horo
             )
         );
+        
         $memconId = $this->callController('Contact', 'edit', array(
             "id" => $this->reqBody->id,
             "mobile" => $this->reqBody->mobile,
@@ -83,7 +138,7 @@ class Member extends BaseController
     
     public function add()
     {
-        $image = 'default.jpg'; 
+        $image = 'default.jpg';
         if ($_FILES['photo']['error'] === 0) {
             $imageUploader = new imageUploader;
             $image = $imageUploader->addImage($_FILES['photo'], $this->reqBody->name);
@@ -132,7 +187,7 @@ class Member extends BaseController
             "mail" =>$this->reqBody->mail,
             "landline" =>$this->reqBody->landline
         ))->data->id;
-        if($memconId){
+        if ($memconId) {
             $this->memberModel->editMember(
                 $memId,
                 array(

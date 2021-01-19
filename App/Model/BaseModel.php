@@ -99,6 +99,7 @@ class BaseModel extends tableModel
         if (!$query->execute()) {
             return false;
         }           
+
         return true;
     }
     public function delete($id)
@@ -147,7 +148,7 @@ class BaseModel extends tableModel
     public function filter(array $data)
     {
         $data = \filterArray($data);
-        if (!$data) {
+        if (empty($data)) {
             return false;
         }
         return $data;

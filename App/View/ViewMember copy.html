@@ -498,13 +498,61 @@
     </script>
     <script type="module">
         // init
-        let memId = 59, memberData;
+        let memId = 62, memberData;
         import { render, compile, renderToDOM } from './assets/js/templating.js';
         import HttpClient from './assets/js/httpClient.js';
         import serialize from './assets/js/getters.js';
 
 
-        
+        function addSiblingData(sibData) {
+            let sibNode = document.getElementById('sibDet');
+            let sibAcc = document.getElementById('sib_details');
+            for (const [key, val] of Object.entries(sibData)) {
+                let Template = `
+            <div class="grid-auto-3fluid"">
+                <div class="flex-col">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Gender:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="gender" data-validate="required">
+                            <option value="">${val.sex}</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-col form-m-age">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Age:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <input name="age" type="number" value="${val.age}" data-validate="required">
+                    </div>
+                </div>
+                <div class="flex-col">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Married:</div>
+                        <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="married" data-validate="required">
+                            <option value="">${val.marital_status}</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                </div>    
+                    `;
+                renderToDOM(Template, sibNode);
+            }
+            disableForm(document.getElementById('SiblingData'));
+
+        }
 
 
 
@@ -524,6 +572,59 @@
                         reject('Member not found');
                     }
                 });
+                /*
+                sendRequest('matrimony/member/?id=' + memId, 'GET').then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData = dat.data[0];
+                        let h;
+                        if (h = JSON.parse(memberData.horoscope)) {
+                            memberData.horoscope = h;
+                        }
+                        return sendRequest('matrimony/address/?id=' + memberData.a_id, 'GET');
+                    } else {
+                        return new Error('Member not found')
+                    }
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.address = dat.data[0];
+                    }
+                    return sendRequest('matrimony/contact/?id=' + memberData.contact_id, 'GET');
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.contact = dat.data[0];
+                    }
+                    return sendRequest('matrimony/family/?id=' + memberData.family_id, 'GET');
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.family = dat.data[0];
+                    }
+                    return sendRequest('matrimony/contact/?id=' + memberData.family.fCId, 'GET');
+
+
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.family.fCon = dat.data[0];
+                    }
+                    return sendRequest('matrimony/contact/?id=' + memberData.family.mCId, 'GET');
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.family.mCon = dat.data[0];
+                    }
+                    return sendRequest('matrimony/family/sibling/?id=' + memberData.family.pId, 'GET');
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.siblings = dat.data;
+                    }
+                    return sendRequest('http://localhost/matrimony/religion/?id=' + memberData.caste_rel_id, 'GET');
+
+                }).then((dat) => {
+                    if (dat.status === 'success') {
+                        memberData.religion = dat.data[0];
+                    }
+                    resolve(memberData);
+                }).catch(err => {
+                    throw new Error(err.message)
+                });*/
             });
         }
         populate().then(data => {
@@ -550,7 +651,8 @@
                 "occupation": data.occupation,
                 "height": data.height,
                 "physique": data.physique,
-                "complexion": data.complexion
+                "complexion": data.complexion,
+                "siblings": data.siblings
             }
             if (data.horoscope) {
                 Object.assign(dataMap, {
@@ -604,7 +706,6 @@
                 }
             }
             addData(dataMap);
-            addReligion(data.religion.religion, data,religion.caste_id);
             if (data.siblings) {
                 addSiblingData(data.siblings);
             }
@@ -627,59 +728,11 @@
                 });
                 disableForm(form);
             });
-
-        }
-        function addSiblingData(sibData) {
-            let sibNode = document.getElementById('sibDet');
-            let sibAcc = document.getElementById('sib_details');
-            for (const [key, val] of Object.entries(sibData)) {
-                let Template = `
-            <div class="grid-auto-3fluid"">
-                <div class="flex-col">
-                    <div class="fieldtitle">
-                        <div class="fieldname">Gender:</div>
-                            <div class="errorField"></div>
-                    </div>
-                    <div class="fieldinp">
-                        <select name="gender" data-validate="required">
-                            <option value="">${val.sex}</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="flex-col form-m-age">
-                    <div class="fieldtitle">
-                        <div class="fieldname">Age:</div>
-                            <div class="errorField"></div>
-                    </div>
-                    <div class="fieldinp">
-                        <input name="age" type="number" value="${val.age}" data-validate="required">
-                    </div>
-                </div>
-                <div class="flex-col">
-                    <div class="fieldtitle">
-                        <div class="fieldname">Married:</div>
-                        <div class="errorField"></div>
-                    </div>
-                    <div class="fieldinp">
-                        <select name="married" data-validate="required">
-                            <option value="">${val.marital_status}</option>
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-                </div>
-                </div>    
-                    `;
-                renderToDOM(Template, sibNode);
-            }
-            disableForm(document.getElementById('SiblingData'));
+            addReligion();
 
         }
         // religion and caste fetching
-        function addReligion(religion,caste_id) {
+        function addReligion() {
             let relNode = document.getElementById('religion'),
                 temp = `<option value="{{value}}">{{valuesh}}</option>`,
                 c = compile(temp),
@@ -693,7 +746,7 @@
                 renderToDOM(render(c, dat), relNode);
                 var selectOptions = relNode.options;
                 for (var opt, j = 0; opt = selectOptions[j]; j++) {
-                    if (opt.value == religion) {
+                    if (opt.value == memberData.religion.religion) {
                         relNode.selectedIndex = j;
                         break;
                     }
@@ -722,7 +775,7 @@
                     renderToDOM(render(c, dat), casteNode);
                     var selectOptions = casteNode.options;
                     for (var opt, j = 0; opt = selectOptions[j]; j++) {
-                        if (opt.value == caste_id) {
+                        if (opt.value == memberData.caste_rel_id) {
                             casteNode.selectedIndex = j;
                             break;
                         }

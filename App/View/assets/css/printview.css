@@ -1,0 +1,449 @@
+/* ---------------BASE--------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Jost;
+    font-weight: 200;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Thin.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Light.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Regular.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Medium.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(/matrimony/App/View/assets/fonts/Jost/static/Jost-Bold.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Firasans;
+    src: url(/matrimony/App/View/assets/fonts/Fira_Sans/FiraSans-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Firasans;
+    src: url(/matrimony/App/View/assets/fonts/Fira_Sans/FiraSans-Light.ttf);
+    font-weight: 200;
+}
+
+:root {
+    --bg-color: #131C21;
+    --bg-chat-color: #C4C4C4;
+    --bg-nav-color: #2A2F32;
+    --border-thin-color: #d4d4d4;
+    --click-active-bg: rgba(255, 255, 255, 0.05);
+    --inputbox-bg: #33383b;
+    --inputheight: 15px;
+    --tranparent: rgba(0, 0, 0, 0);
+    --bluegreen: #5FB2BA;
+    --bluegreenfont: white;
+}
+
+.none {
+    display: none !important;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    resize: none;
+    border: 1px solid #B5ACAC;
+    border-radius: 5px;
+    caret-color: #B5ACAC;
+    outline: none;
+    padding: 0 4px 0 4px;
+    background-color: var(--tranparent);
+}
+
+button {
+    border: 0;
+    box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    color: var(--bluegreenfont);
+    background-color: #5FB2BA;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+ form{
+     margin-top: 10px;
+     border: 1px solid black;
+     padding: 0px 5px 0 5px;
+ }
+/* ---------------LAYOUT--------------- */
+
+.wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #f5f3fb;
+    overflow-y: auto;
+}
+
+.topnav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+}
+
+.brand {}
+
+.navopt {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.topnav::after {
+    /* Hidden pseudo element for alignment. Only change this when you change .brandname*/
+    content: "XYZ MATRIMONY";
+    font-family: "Firasans";
+    font-size: 1.6rem;
+    font-weight: 200;
+    visibility: hidden;
+}
+
+.formcontainer {
+    margin: 40px auto 0 auto;
+    max-width: 1185px;
+}
+
+.formheadbtn {
+    position: relative;
+    border-radius: 0;
+    width: 100%;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formheading {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.formtitle {
+    margin-left: 4px;
+    text-align: left;
+}
+
+.formheadcaret {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+.grid-auto-autofit-min330 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    grid-gap: 1rem;
+    grid-auto-flow: dense;
+}
+
+.grid-auto-3fluid {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    grid-auto-rows: 75px;
+    grid-auto-flow: row;
+    column-gap: 15px;
+}
+
+.grid-auto-1fluid {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-auto-rows: 75px;
+    grid-auto-flow: row;
+    column-gap: 15px;
+}
+
+.subform1 {}
+
+.subform2 {}
+
+.subform3 {}
+
+.grid-auto-2 {
+    margin: 10px 0 10px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-template: repeat(auto-fit, 75px) /repeat(2, 1fr); */
+    grid-auto-rows: 75px;
+    /*Customize row height(input field height according to layout) here*/
+    grid-auto-flow: row;
+    column-gap: 15px;
+}
+
+.flex-col {
+    margin: 10px 0 10px 0;
+    justify-self: stretch;
+    min-width: 0;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.flex-row {
+    margin: 10px 0 10px 0;
+    justify-self: stretch;
+    min-width: 0;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.flex-row-reverse {
+    margin: 10px 0 10px 0;
+    justify-self: stretch;
+    min-width: 0;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+}
+
+.row-2 {
+    grid-row-end: span 2;
+}
+
+.row-3 {
+    grid-row-end: span 3;
+}
+
+.row-4 {
+    grid-row-end: span 4;
+}
+
+.row-2 .fieldinp {
+    height: 100%;
+}
+
+.col-2 {
+    grid-column-end: span 2;
+}
+
+.fieldtitle {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.errorField {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.fieldinp {
+    flex: 1 0;
+    position: relative;
+}
+.fieldname{
+    font-weight: 300;
+}
+.profilePhoto {
+    width: max-content;
+    height: 100%;
+    padding-bottom: 10px;
+}
+
+#profileUp {
+    display: none;
+}
+.board > div::before{
+    content: '';
+    width: 100%;
+    display: block;
+    padding-top: 100%;
+}
+#HoroscopeData{
+    padding: 20px;
+}
+/*-------------------MODULES-----------------------*/
+
+.formSubmitBtn {
+    border: 0;
+    background-color: var(--bluegreen);
+    color: var(--bluegreenfont);
+    box-shadow: 1.5px 1.5px 5px rgba(0, 0, 0, 0.25);
+    width: 100px;
+    border-radius: 20px;
+    padding: 5px 0 5px 0;
+    margin-top: 15px;
+}
+
+.formheading::after {
+    content: "";
+    background: linear-gradient(#77B1B4, #77B1B4);
+    width: 100%;
+    height: 2px;
+}
+
+.topnav {
+    background-color: white;
+}
+
+.brandname {
+    /*Before editing look for .topnav:after used for aligning*/
+    font-family: "Firasans";
+    font-size: 1.6rem;
+    font-weight: 200;
+}
+
+.navopt a {
+    font-family: "Firasans";
+    font-size: 1.4rem;
+    font-weight: 200;
+    color: black;
+    text-decoration: none;
+}
+
+.formtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+
+
+#profilePic {
+    height: 100%;
+}
+
+.formheadbtn {
+    box-shadow: none;
+    color: var(--inputbox-bg);
+    background-color: var(--tranparent);
+}
+
+.keyboard {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.keyboardKey {
+    border-radius: 0;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+}
+
+.add-sib-btn {
+    align-self: center;
+    margin-left: 5px;
+    width: 30px;
+    height: max-content;
+}
+
+#sibDet {
+    margin-top: 15px;
+}
+
+.form-m-age {
+    width: 50px;
+}
+
+/*----------STATES----------------------*/
+
+.activeformhead {
+    width: 20%;
+}
+
+button:active {
+    box-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 0.25);
+    transform: translate(1px, 1px);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border: 1px solid #6b6a6a;
+}
+
+.formheadbtn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.formheadbtn:focus {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.errmsg-fadeout {
+    opacity: 0 !important;
+}
+
+@media screen and (max-width:1400px) {
+    .formcontainer {
+        margin: 40px auto 0 auto;
+        width: 85%;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .formcontainer {
+        width: 95%;
+    }
+}
+
+
+/*----------ANIMATIONS----------------------*/
