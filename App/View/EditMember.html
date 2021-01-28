@@ -53,6 +53,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="flex-col">
+                                    <div class="fieldtitle">
+                                        <div class="fieldname">Id:</div>
+                                        <div class="errorField">
+                                        </div>
+                                    </div>
+                                    <div class="fieldinp">
+                                        <input type="text" id="memberId" name="memberId" disabled>
+                                    </div>
+                                </div>
                                 <div class="flex-col col-2">
                                     <div class="fieldtitle">
                                         <div class="fieldname">Name:</div>
@@ -103,8 +113,8 @@
                                     <div class="fieldinp">
                                         <select name="gender" data-validate="required">
                                             <option value="">-</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
                                             <option value="Other">Other</option>
                                         </select>
 
@@ -293,7 +303,7 @@
                             </div>
                         </div>
                         <div class="flex-row-reverse">
-                            <button class="formSubmitBtn">Add</button>
+                            <button class="formSubmitBtn">Edit</button>
                         </div>
                     </form>
                 </div>
@@ -304,7 +314,7 @@
                     <div class="grid-auto-autofit-min330">
                         <form id="familyData" data-next="accord21">
                             <div class="grid-auto-2">
-
+                                <input type="hidden" id="familyId" name="familyId">
                                 <div class="flex-col">
                                     <div class="fieldtitle">
                                         <div class="fieldname">Father's name:</div>
@@ -413,15 +423,16 @@
                         </form>
                     </div>
                     <div class="accordion" id="accord21" data-index="2-1" data-target="sib_details"
-                        data-title="Siblings">
+                        data-title="Siblings" data-isdisabled="true">
                         <div class="accordionContent" id="sib_details">
-                            <form id="SiblingData">
+                            <form id="siblingData">
                                 <div class="flex-row">
                                     <div class="fieldtitle">
                                         <div class="fieldname">Add sibling:</div>
                                         <div class="errorField">
                                         </div>
                                     </div>
+                                    <button type="button" class="add-sib-btn" id="sibAdd">+</button>
                                 </div>
                                 <div class="grid-auto-1fluid" id="sibDet"></div>
                                 <div class="flex-row-reverse">
@@ -438,67 +449,62 @@
         </div>
         <div class="accordion" id="accord3" data-index="3" data-target="horo" data-title="Horoscope">
             <div class="accordionContent" id="horo">
-                <form id="HoroscopeData">
+                <form id="horoscopeData">
                     <div class="grid-auto-autofit-min330">
-                        <div class="grid-auto-2">
-                            <div class="flex-col col-2 row-4">
-                                <div class="panel">
+                        <div class="squareGrid">
+                            <div class="panel">
 
-                                    <!-- board 1 -->
-                                    <div class="board" id="board1">
-                                        <textarea class="square" name="a1"></textarea>
-                                        <textarea class="square" name="a2"></textarea>
-                                        <textarea class="square" name="a3"></textarea>
-                                        <textarea class="square" name="a4"></textarea>
-                                        <textarea class="square" name="a5"></textarea>
-                                        <textarea class="square" name="a6"></textarea>
-                                        <textarea class="square" name="a7"></textarea>
-                                        <textarea class="square" name="a8"></textarea>
-                                        <textarea class="square" name="a9"></textarea>
-                                        <textarea class="square" name="a10"></textarea>
-                                        <textarea class="square" name="a11"></textarea>
-                                        <textarea class="square" name="a12"></textarea>
+                                <!-- board 1 -->
+                                <div class="board" id="board1">
+                                    <textarea class="square" name="a1"></textarea>
+                                    <textarea class="square" name="a2"></textarea>
+                                    <textarea class="square" name="a3"></textarea>
+                                    <textarea class="square" name="a4"></textarea>
+                                    <textarea class="square" name="a5"></textarea>
+                                    <textarea class="square" name="a6"></textarea>
+                                    <textarea class="square" name="a7"></textarea>
+                                    <textarea class="square" name="a8"></textarea>
+                                    <textarea class="square" name="a9"></textarea>
+                                    <textarea class="square" name="a10"></textarea>
+                                    <textarea class="square" name="a11"></textarea>
+                                    <textarea class="square" name="a12"></textarea>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="grid-auto-2">
-                            <div class="flex-col col-2 row-4">
-                                <div class="keyboard" id="keyB">
-                                    <button type="button" class="keyboardKey" value="ബൂ">ബൂ</button>
-                                    <button type="button" class="keyboardKey" value="ച">ച</button>
-                                    <button type="button" class="keyboardKey" value="കു">കു</button>
-                                    <button type="button" class="keyboardKey" value="ഗു">ഗു</button>
-                                    <button type="button" class="keyboardKey" value="മ">മ</button>
-                                    <button type="button" class="keyboardKey" value="മാ">മാ</button>
-                                    <button type="button" class="keyboardKey" value="ല">ല</button>
-                                    <button type="button" class="keyboardKey" value="ര">ര</button>
-                                    <button type="button" class="keyboardKey" value="സ">സ</button>
-                                    <button type="button" class="keyboardKey" value="ശി">ശി</button>
-                                    <button type="button" class="keyboardKey" value="ശു">ശു</button>
-                                </div>
+                        <div class="flex-row">
+                            <div class="keyboard" id="keyB">
+                                <button type="button" class="keyboardKey" value="ബൂ">ബൂ</button>
+                                <button type="button" class="keyboardKey" value="ച">ച</button>
+                                <button type="button" class="keyboardKey" value="കു">കു</button>
+                                <button type="button" class="keyboardKey" value="ഗു">ഗു</button>
+                                <button type="button" class="keyboardKey" value="മ">മ</button>
+                                <button type="button" class="keyboardKey" value="മാ">മാ</button>
+                                <button type="button" class="keyboardKey" value="ല">ല</button>
+                                <button type="button" class="keyboardKey" value="ര">ര</button>
+                                <button type="button" class="keyboardKey" value="സ">സ</button>
+                                <button type="button" class="keyboardKey" value="ശി">ശി</button>
+                                <button type="button" class="keyboardKey" value="ശു">ശു</button>
                             </div>
+
                         </div>
-                        <div class="grid-auto-2">
-                            <div class="flex-col col-2 row-4">
-                                <div class="panel">
+                        <div class="squareGrid">
+                            <div class="panel">
 
-                                    <div class="board" id="board2">
-                                        <textarea class="square" name="b1"></textarea>
-                                        <textarea class="square" name="b2"></textarea>
-                                        <textarea class="square" name="b3"></textarea>
-                                        <textarea class="square" name="b4"></textarea>
-                                        <textarea class="square" name="b5"></textarea>
-                                        <textarea class="square" name="b6"></textarea>
-                                        <textarea class="square" name="b7"></textarea>
-                                        <textarea class="square" name="b8"></textarea>
-                                        <textarea class="square" name="b9"></textarea>
-                                        <textarea class="square" name="b10"></textarea>
-                                        <textarea class="square" name="b11"></textarea>
-                                        <textarea class="square" name="b12"></textarea>
+                                <div class="board" id="board2">
+                                    <textarea class="square" name="b1"></textarea>
+                                    <textarea class="square" name="b2"></textarea>
+                                    <textarea class="square" name="b3"></textarea>
+                                    <textarea class="square" name="b4"></textarea>
+                                    <textarea class="square" name="b5"></textarea>
+                                    <textarea class="square" name="b6"></textarea>
+                                    <textarea class="square" name="b7"></textarea>
+                                    <textarea class="square" name="b8"></textarea>
+                                    <textarea class="square" name="b9"></textarea>
+                                    <textarea class="square" name="b10"></textarea>
+                                    <textarea class="square" name="b11"></textarea>
+                                    <textarea class="square" name="b12"></textarea>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -526,7 +532,7 @@
         document.querySelectorAll('.accordion').forEach((elm) => {
             bind(elm);
         });
-        init({"open": true});
+        init({ "open": true });
     </script>
     <script type="module">
         // init
@@ -625,9 +631,270 @@
         import HttpClient from './assets/js/httpClient.js';
         import serialize from './assets/js/getters.js';
 
+        // form filling
+        let memId = 681;
         (function () {
-            addSiblingField();
+            let relNode = document.getElementById('religion'),
+                casteNode = document.getElementsByName('caste_id')[0],
+                temp = `<option value="{{value}}">{{valuesh}}</option>`,
+                c = compile(temp),
+                dat = [],
+                client = new HttpClient('http://localhost', 'matrimony/religion/all', 'get', '');
+            relNode.addEventListener('change', (e) => {
+                if (e.target.selectedIndex) {
+                    loadCaste(e.target.value);
+                }
+            });
+            client.request().then((d) => {
+                let retData = d.data;
+                Object.keys(retData).forEach((val, index) => {
+                    dat.push({ 'value': retData[val].religion, 'valuesh': retData[val].religion });
+                });
+                renderToDOM(render(c, dat), relNode);
+            });
+
+            function loadCaste(rel) {
+                dat = [];
+                casteNode.textContent = '';
+                client = new HttpClient('http://localhost', 'matrimony/religion/caste/?rel=' + rel, 'get', '');
+                client.request().then((d) => {
+                    if (d.status == 'success') {
+                        let retData = d.data
+                        Object.keys(retData).forEach((val, index) => {
+                            dat.push({ 'value': retData[val].id, 'valuesh': retData[val].caste });
+                        });
+                        renderToDOM(render(c, dat), casteNode);
+                    }
+
+                });
+            }
         })();
+
+
+        let formMap = new Object();
+        document.querySelectorAll('form').forEach(form => {
+            formMap[form.getAttribute('id')] = new Object();
+            form.querySelectorAll('input,select,textarea').forEach(inp => {
+                formMap[form.getAttribute('id')][inp.name] = inp;
+            });
+
+        });
+        console.log(formMap);
+
+
+
+        function selectOption(value, node) {
+            var selectOptions = node.options;
+            for (var opt, j = 0; j < node.length; j++) {
+                let opt = selectOptions[j];
+                if (opt.value == value) {
+                    node.selectedIndex = j;
+                    return node.selectedOptions[0];
+                }
+            }
+        }
+        function disableForm(form) {
+            form.querySelectorAll('input,textarea,select').forEach(e => {
+                e.disabled = true;
+            });
+        }
+        function populate() {
+            return new Promise((resolve, reject) => {
+                sendRequest('matrimony/member/details/?id=' + memId, 'GET').then((dat) => {
+                    if (dat.status === 'success') {
+                        resolve(dat.data);
+                    }
+                    else {
+                        reject('Member not found');
+                    }
+                });
+            });
+        }
+        populate().then(data => {
+
+            let dataMap = {
+                'memberData': {
+                    "memberId": data.id,
+                    "photo": data.photo,
+                    "name": data.name,
+                    "join_date": data.join_date,
+                    "dob": data.dob,
+                    "gender": data.gender,
+                    "religion": data.religion,
+                    "caste_id": data.caste,
+                    "addr": data.address,
+                    "dist": data.district,
+                    "city": data.city,
+                    "landmark": data.landmark,
+                    "pin": data.pin,
+                    "mobile": data.mobile_no,
+                    "mail": data.mail_id,
+                    "landline": data.landline,
+                    "star": data.star,
+                    "qualification": data.qualification,
+                    "occupation": data.occupation,
+                    "height": data.height,
+                    "physique": data.physique,
+                    "complexion": data.complexion
+                },
+                'familyData': {
+                    "familyId": data.family,
+                    "fName": data.father,
+                    "fOcc": data.fOcc,
+                    "mName": data.mother,
+                    "mOcc": data.mOcc,
+                    "fmobile": data.F_mobile,
+                    "flandline": data.F_landline,
+                    "fmail": data.F_mail,
+                    "mmobile": data.M_mobile,
+                    "mlandline": data.M_landline,
+                    "mmail": data.M_mail
+                }
+            }
+            if (data.horoscope) {
+                Object.assign(dataMap, {
+                    'horoscopeData': {
+                        "a1": data.horoscope.board1.a1,
+                        "a2": data.horoscope.board1.a2,
+                        "a3": data.horoscope.board1.a3,
+                        "a4": data.horoscope.board1.a4,
+                        "a5": data.horoscope.board1.a5,
+                        "a6": data.horoscope.board1.a6,
+                        "a7": data.horoscope.board1.a7,
+                        "a8": data.horoscope.board1.a8,
+                        "a9": data.horoscope.board1.a9,
+                        "a10": data.horoscope.board1.a10,
+                        "a11": data.horoscope.board1.a11,
+                        "a12": data.horoscope.board1.a12,
+                        "b1": data.horoscope.board2.b1,
+                        "b2": data.horoscope.board2.b2,
+                        "b3": data.horoscope.board2.b3,
+                        "b4": data.horoscope.board2.b4,
+                        "b5": data.horoscope.board2.b5,
+                        "b6": data.horoscope.board2.b6,
+                        "b7": data.horoscope.board2.b7,
+                        "b8": data.horoscope.board2.b8,
+                        "b9": data.horoscope.board2.b9,
+                        "b10": data.horoscope.board2.b10,
+                        "b11": data.horoscope.board2.b11,
+                        "b12": data.horoscope.board2.b12
+                    }
+                });
+            }
+            addData(dataMap);
+            addReligion(data.religion, data.caste_rel_id);
+            if (data.family) {
+                document.getElementById('sib_details').parentElement.removeAttribute('data-isdisabled');
+            }
+            if (data.siblings) {
+                addSiblingData(data.siblings);
+            }
+        });
+
+        function addData(d) {
+            for (const [form, formObj] of Object.entries(d)) {
+                for (const [k, v] of Object.entries(formObj)) {
+
+                    if (formMap[form][k]) {
+                        let inp = formMap[form][k];
+                        if (inp.nodeName === 'SELECT') {
+                            if (inp.length > 1) {
+                                selectOption(v, inp);
+                            }
+                        } else if (inp.nodeName === 'INPUT' || inp.nodeName === 'TEXTAREA') {
+                            if (inp.type !== 'file') {
+                                inp.value = v;
+
+                            }
+                        } else {
+                            if (k === 'photo')
+                                document.getElementById('profilePic').src = 'http://localhost/matrimony/public/uploads/images/' + v;
+                        }
+                    }
+
+                }
+                // disableForm(document.getElementById(form));
+            }
+
+
+            showAge();
+
+        }
+
+        function addSiblingData(sibData) {
+            let sibNode = document.getElementById('sibDet');
+            let sibAcc = document.getElementById('sib_details');
+            for (const [key, val] of Object.entries(sibData)) {
+                let Template = `
+            <div class="grid-auto-3fluid"">
+                <div class="flex-col">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Gender:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="gender" data-validate="required">
+                            <option value="">${val.gender}</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-col form-m-age">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Age:</div>
+                            <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <input name="age" type="number" value="${val.age}" data-validate="required">
+                    </div>
+                </div>
+                <div class="flex-col">
+                    <div class="fieldtitle">
+                        <div class="fieldname">Married:</div>
+                        <div class="errorField"></div>
+                    </div>
+                    <div class="fieldinp">
+                        <select name="married" data-validate="required">
+                            <option value="">${val.marital_status}</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+                </div>    
+                    `;
+                renderToDOM(Template, sibNode);
+            }
+            //  disableForm(document.getElementById('SiblingData'));
+
+        }
+
+        function addReligion(religion, caste_id) {
+            let relNode = document.getElementById('religion'),
+                casteNode = document.getElementsByName('caste_id')[0],
+                relInt = setInterval(() => {
+                    if (relNode.length > 1) {
+                        let sel = selectOption(religion, relNode);
+                        let changeEvent = new Event('change', {
+                            view: window,
+                            bubbles: true,
+                            cancelable: true
+                        });
+                        relNode.dispatchEvent(changeEvent);
+                        clearInterval(relInt);
+                    }
+                }, 200),
+                casteInt = setInterval(() => {
+                    if (casteNode.length > 1) {
+                        selectOption(caste_id, casteNode);
+                        clearInterval(casteInt);
+                    }
+                }, 200);
+
+        }
+
 
         //sibling add
         document.getElementById('sibAdd').addEventListener('click', siblingData);
@@ -701,77 +968,43 @@
             active.value += val;
 
         }
-        // religion and caste fetching
-        (function () {
-            let relNode = document.getElementById('religion'),
-                casteNode = document.getElementsByName('caste_id')[0],
-                temp = `<option value="{{value}}">{{valuesh}}</option>`,
-                c = compile(temp),
-                dat = [],
-                client = new HttpClient('http://localhost', 'matrimony/religion/all', 'get', '');
-            client.request().then((d) => {
-                let retData = d.data
-                Object.keys(retData).forEach((val, index) => {
-                    dat.push({ 'value': retData[val].religion, 'valuesh': retData[val].religion });
-                });
-                renderToDOM(render(c, dat), relNode);
-            });
-            relNode.addEventListener('change', (e) => {
-                if (e.target.selectedIndex) {
-                    loadCaste(e.target.value);
-                }
-            });
-            function loadCaste(rel) {
-                dat = [];
-                casteNode.textContent = '';
-                client = new HttpClient('http://localhost', 'matrimony/religion/caste/?rel=' + rel, 'get', '');
-                client.request().then((d) => {
-                    let retData = d.data
-                    Object.keys(retData).forEach((val, index) => {
-                        dat.push({ 'value': retData[val].id, 'valuesh': retData[val].caste });
-                    });
-                    renderToDOM(render(c, dat), casteNode);
-                });
-            }
-        })();
+
         //after form submit
         document.addEventListener('validForm', (e) => {
             if (e.target.id === 'memberData') {
-                addMember(e.target);
+                editMember(e.target);
             }
             else if (e.target.id === 'familyData') {
                 editFamily(e.target);
             }
-            else if (e.target.id === 'SiblingData') {
+            else if (e.target.id === 'siblingData') {
                 editSibling(e.target);
             }
-            else if (e.target.id === 'HoroscopeData') {
+            else if (e.target.id === 'horoscopeData') {
                 editHoro(e.target);
             }
 
         });
-        function updateMemberData(){
-            sendRequest('matrimony/member/?id=' + memberData.id, 'GET').then((d) => {
-                    window.memberData = d.data[0];
-                    swal("Success", "Data updated", "success");
-                });
-        }
-        function updateFamilyData(){
-                    sendRequest('matrimony/family/?id=' + data.data.id, 'GET').then((dat) => {
-                        window.memberData.family = dat.data[0];
-                        swal("Success", "Data updated", "success");
-                    });
-        }
         function editMember(form) {
-            sendRequest('matrimony/member', 'PATCH', 'multipart/form-data', form, { 'id': memberData.id}).then((data) => {
-                updateMemberData();
+            let memId = document.getElementById('memberId').value;
+            sendRequest('matrimony/member', 'PATCH', 'multipart/form-data', form, { 'id': memId }).then((data) => {
+                if (data.status === 'success') {
+                    swal("Sucess", data.message, "success");
+                }
+                else {
+                    swal("Failed", "Something is wrong", "error");
+                }
             });
         }
         function editFamily(form) {
-            sendRequest('matrimony/family', 'PATCH', 'multipart/form-data', form, { 'id': memberData.id}).then((data) => {
-                sendRequest('matrimony/member/', 'PATCH', 'multipart/form-data', null, { 'id': memberData.id, 'family': memberData.family.pId }).then((d) => {
-                    updateFamilyData();
-                });
+            let famId = document.getElementById('familyId').value;
+            sendRequest('matrimony/family', 'PATCH', 'multipart/form-data', form, { 'id': famId }).then((data) => {
+                if (data.status === 'success') {
+                    swal("Sucess", data.message, "success");
+                }
+                else {
+                    swal("Failed", "Something is wrong", "error");
+                }
             });
         }
         function editSibling(form) {
@@ -852,9 +1085,9 @@
         }
     </script>
     <script>
-        function showAge(e) {
+        function showAge() {
             let today = new Date(),
-                DOB = new Date(e.target.value),
+                DOB = new Date(document.getElementsByName('dob')[0].value),
                 targetElm = document.getElementById('memage'),
                 nowMonth = parseInt(today.getMonth()),
                 nowYear = parseInt(today.getFullYear()),

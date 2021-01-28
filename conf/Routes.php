@@ -26,7 +26,8 @@ class Routes
         // member routes
         $router->group(['prefix'=>'member', 'middleware' => new MiddleAuth()], function ($group) {
             $group->get("", [Member::class,"get"]);
-            $group->get("details", [Member::class,"getAllDet"]);
+            $group->get("details", [Member::class,"getMemDet"]);
+            $group->get("details/all", [Member::class,"getAllMemDet"]);
             $group->get("all", [Member::class,"getAll"]);
             $group->post("", [Member::class,"add"]);
             $group->patch("", [Member::class,"edit"]);

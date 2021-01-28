@@ -157,7 +157,7 @@ button:disabled {
 }
 
 .formcontainer {
-    margin: 40px auto 0 auto;
+    margin: 40px auto 40px auto;
     max-width: 1185px;
 }
 
@@ -273,6 +273,32 @@ button:disabled {
 
 .col-2 {
     grid-column-end: span 2;
+}
+
+.col-3 {
+    grid-column-end: span 3;
+}
+
+.col-4 {
+    grid-column-end: span 4;
+}
+
+.squareGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+}
+
+.squareGrid>div {
+    padding: 1rem;
+    place-items: center;
+}
+
+.squareGrid>div::before {
+    content: "";
+    display: block;
+    background-color: blueviolet;
+    padding-bottom: 100%;
 }
 
 .fieldtitle {
@@ -420,7 +446,7 @@ textarea:focus {
 
 @media screen and (max-width:1400px) {
     .formcontainer {
-        margin: 40px auto 0 auto;
+        margin: 40px auto 40px auto;
         width: 85%;
     }
 }

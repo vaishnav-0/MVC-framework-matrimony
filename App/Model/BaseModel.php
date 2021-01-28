@@ -96,9 +96,9 @@ class BaseModel extends tableModel
         } else {
             $query = $this->bindWhere($query, [$this->primaryKey => $id]);
         }
-        if (!$query->execute()) {
+      /*  if (!$query->execute()) {
             return false;
-        }           
+        }         */  
 
         return true;
     }

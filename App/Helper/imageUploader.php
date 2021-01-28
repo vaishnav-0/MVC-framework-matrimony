@@ -15,7 +15,7 @@ class imageUploader
         if ($upload) {
             return $upload->getName().'.'.$image->getMime();
         } else {
-            return $image->getError();
+            return false;
         }
     }
 }

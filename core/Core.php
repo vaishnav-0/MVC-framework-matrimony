@@ -25,7 +25,7 @@ class main
     private static function Route($router)
     {
         $req = new Request;
-        $req = $req->withUrl(Request::getReqUrl())->withMethod(Request::getReqMethod())->withPath(Request::getReqPath())->withParsedBody(Request::getReqBody());
+        $req = $req->withUrl(Request::getReqUrl())->withMethod(Request::getReqMethod())->withPath(Request::getReqPath())->withBody(Request::getReqBody());
         return $router->match($req);
     }
     private static function respond(Response $res)

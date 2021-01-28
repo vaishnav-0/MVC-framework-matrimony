@@ -434,7 +434,7 @@ textarea:focus {
 
 @media screen and (max-width:1400px) {
     .formcontainer {
-        margin: 40px auto 0 auto;
+        margin: 40px auto 40px auto;
         width: 85%;
     }
 }

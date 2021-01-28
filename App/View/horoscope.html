@@ -7,49 +7,56 @@
     <title>Horoscope</title>
     <link rel="stylesheet" href="./assets/css/horoscope.css" />
     <style>
-        .panel {
-            display: flex;
-            justify-content: space-evenly;
-        }
+       .panel{
+           display: grid;
+           grid-template-columns: repeat(2,900px);
+           grid-gap: 2rem;
+       }
+       .container{
+           height: 400px;
+       }
     </style>
 </head>
 
 <body>
-    <div class="panel">
-        <!-- board 1 -->
-        <form class="board" id="board1">
-            <input class="square" name="1" />
-            <input class="square" name="2" />
-            <input class="square" name="3" />
-            <input class="square" name="4" />
-            <input class="square" name="5" />
-            <input class="square" name="6" />
-            <input class="square" name="7" />
-            <input class="square" name="8" />
-            <input class="square" name="9" />
-            <input class="square" name="10" />
-            <input class="square" name="11" />
-            <input class="square" name="12" />
+    <div class="container">
+        <div class="panel">
+            <!-- board 1 -->
+            <form class="board" id="board1">
+                <input class="square" name="1" />
+                <input class="square" name="2" />
+                <input class="square" name="3" />
+                <input class="square" name="4" />
+                <input class="square" name="5" />
+                <input class="square" name="6" />
+                <input class="square" name="7" />
+                <input class="square" name="8" />
+                <input class="square" name="9" />
+                <input class="square" name="10" />
+                <input class="square" name="11" />
+                <input class="square" name="12" />
 
-        </form>
-        <!-- board 2 -->
-        <form class="board" id="board2">
-            <input class="square" name="1" />
-            <input class="square" name="2" />
-            <input class="square" name="3" />
-            <input class="square" name="4" />
-            <input class="square" name="5" />
-            <input class="square" name="6" />
-            <input class="square" name="7" />
-            <input class="square" name="8" />
-            <input class="square" name="9" />
-            <input class="square" name="10" />
-            <input class="square" name="11" />
-            <input class="square" name="12" />
+            </form>
+            <!-- board 2 -->
+            <form class="board" id="board2">
+                <input class="square" name="1" />
+                <input class="square" name="2" />
+                <input class="square" name="3" />
+                <input class="square" name="4" />
+                <input class="square" name="5" />
+                <input class="square" name="6" />
+                <input class="square" name="7" />
+                <input class="square" name="8" />
+                <input class="square" name="9" />
+                <input class="square" name="10" />
+                <input class="square" name="11" />
+                <input class="square" name="12" />
 
-        </form>
-        <button type="button" onclick="addBoard()">test</button>
+            </form>
+        </div>
+
     </div>
+
     <script src="assets/js/httpClient.js"></script>
     <script>
 
@@ -58,8 +65,8 @@
             let form2 = new FormData(document.getElementById('board2'));
 
             let data = new Object();
-            data.board1 =  Object.fromEntries(form1);
-            data.board2 =  Object.fromEntries(form2);
+            data.board1 = Object.fromEntries(form1);
+            data.board2 = Object.fromEntries(form2);
             data = JSON.stringify(data)
 
             const a = new HttpClient('https://localhost', '/member', 'POST', '', '');

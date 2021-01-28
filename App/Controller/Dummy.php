@@ -1,6 +1,6 @@
 <?php
 namespace Matr\Controller;
-use Core\data\test;
+use Core\data\test as test;
 class Dummy extends BaseController
 {
 

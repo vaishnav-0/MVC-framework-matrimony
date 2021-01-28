@@ -12,7 +12,7 @@ abstract class tableModel
     public function __construct(string $tableName)
     {
         $this->tableName = $tableName;
-        $this->con = Connection::getCon();
+        $this->con = Connection::getInstance()->getCon();
         $this->setColumns();
         $this->setPrimaryKey();
 

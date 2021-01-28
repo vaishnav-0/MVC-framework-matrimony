@@ -38,7 +38,7 @@ class Request
         $req = RequestParser::parse();
         return $req->params;
     }
-    public function withParsedBody($params){
+    public function withBody($params){
         $new = clone $this;
         foreach ($params as $key => $value) {
             $new->body->{$key} = $value;

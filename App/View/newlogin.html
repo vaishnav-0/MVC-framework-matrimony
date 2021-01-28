@@ -41,7 +41,7 @@
                         </div>
                         <div class="feildcont">
                             <div class="feildinp">
-                                <button type="button" onclick="login()">Login</button>
+                                <button type="button" id="submit">Login</button>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
         import HttpClient from './assets/js/httpClient.js';
         import getFormData from './assets/js/getters.js'
 
-        window.login = function () {
+        document.getElementById('submit').addEventListener('click', () => {
             let data = getFormData(document.getElementById('login'), 'application/x-www-form-urlencoded');
             let client = new HttpClient('http://localhost', 'matrimony/login', 'post', '', data);
             let request = client.request().then((data) => {
@@ -73,7 +73,7 @@
                 }
             });
 
-        }
+        });
     </script>
     </body>
 </body>
